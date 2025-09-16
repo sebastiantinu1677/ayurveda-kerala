@@ -1,0 +1,10 @@
+{{/*
+  Usage: {{ partial "picture.html" (dict "ctx" . "src" .Params.image "alt" $.Title "class" "w-full h-48 object-cover rounded-t-lg" "loading" "lazy") }}
+*/}}
+{{ $src := .src }}
+{{ $alt := .alt }}
+{{ $class := .class }}
+{{ $loading := or .loading "lazy" }}
+{{ $decoding := or .decoding "async" }}
+<img loading="{{ $loading }}" decoding="{{ $decoding }}" src="{{ $src | relURL }}" alt="{{ $alt }}" class="{{ $class }}">
+

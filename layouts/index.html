@@ -44,21 +44,21 @@
   <h2 class="text-3xl font-bold mb-8 text-center">Top Ziele in Kerala</h2>
   <div class="grid md:grid-cols-3 gap-8">
     <a href="/reisen/kerala-backwaters/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
-      <img loading="lazy" src="/images/houseboat-backwaters.jpg" alt="Backwaters" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+      {{ partial "picture.html" (dict "ctx" . "src" "/images/houseboat-backwaters.jpg" "alt" "Backwaters" "class" "w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" "loading" "lazy") }}
       <div class="p-4">
         <h3 class="text-xl font-semibold">Backwaters</h3>
         <p class="text-gray-600 text-sm">Hausboot, Kanäle & Dorferlebnisse</p>
       </div>
     </a>
     <a href="/reisen/kerala-tea-hills/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
-      <img loading="lazy" src="/images/kerala-tea.jpg" alt="Munnar Teehügel" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+      {{ partial "picture.html" (dict "ctx" . "src" "/images/kerala-tea.jpg" "alt" "Munnar Teehügel" "class" "w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" "loading" "lazy") }}
       <div class="p-4">
         <h3 class="text-xl font-semibold">Munnar</h3>
         <p class="text-gray-600 text-sm">Teeplantagen & milde Wanderungen</p>
       </div>
     </a>
     <a href="/reisen/yoga-retreat-kerala/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
-      <img loading="lazy" src="/images/sunset-beach.jpg" alt="Strand Kerala" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+      {{ partial "picture.html" (dict "ctx" . "src" "/images/sunset-beach.jpg" "alt" "Strand Kerala" "class" "w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" "loading" "lazy") }}
       <div class="p-4">
         <h3 class="text-xl font-semibold">Strand</h3>
         <p class="text-gray-600 text-sm">Yoga am Meer & Ayurveda</p>
@@ -138,6 +138,15 @@
     </details>
   </div>
 </section>
+<script type="application/ld+json">
+{{- $faqs := slice
+  (dict "@type" "Question" "name" "Wann ist die beste Reisezeit für Kerala?" "acceptedAnswer" (dict "@type" "Answer" "text" "November bis März gelten als optimal für Rundreisen. Für Ayurveda-Kuren ist der Monsun (Juni–September) traditionell sehr geeignet."))
+  (dict "@type" "Question" "name" "Wie läuft eine Ayurveda-Kur ab?" "acceptedAnswer" (dict "@type" "Answer" "text" "Nach einer ärztlichen Erstkonsultation erhalten Sie einen individuellen Plan mit täglichen Anwendungen, angepasster Ernährung und Yoga."))
+  (dict "@type" "Question" "name" "Ist deutschsprachige Betreuung möglich?" "acceptedAnswer" (dict "@type" "Answer" "text" "Ja. Wir beraten vorab auf Deutsch und haben verlässliche Partner vor Ort."))
+-}}
+{{- $faqPage := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqs -}}
+{{ $faqPage | jsonify | safeHTML }}
+</script>
 <!-- Reviews -->
 <section id="reviews" class="max-w-6xl mx-auto py-16 px-6 reveal">
   <div class="max-w-4xl mx-auto text-center mb-6">

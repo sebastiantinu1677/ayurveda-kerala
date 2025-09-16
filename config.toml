@@ -27,6 +27,9 @@ title = "Ayurveda Kerala"
 [outputs]
   home = ["HTML", "RSS", "SITEMAP", "ROBOTS"]
 
+[minify]
+  minifyOutput = true
+
   [[menu.footer]]
     name = "Impressum"
     url = "/impressum/"

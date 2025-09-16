@@ -1,61 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Blogs on Ayurveda Kerala</title>
-    <link>http://localhost:1313/blog/</link>
-    <description>Recent content in Blogs on Ayurveda Kerala</description>
-    <generator>Hugo</generator>
-    <language>de-de</language>
-    <lastBuildDate>Tue, 16 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Ayurveda für Einsteiger: 7 praktische Tipps</title>
-      <link>http://localhost:1313/blog/ayurveda-tipps-fuer-einsteiger/</link>
-      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/ayurveda-tipps-fuer-einsteiger/</guid>
-      <description>&lt;p&gt;Ayurveda muss nicht kompliziert sein. Mit kleinen Routinen wie warmem Wasser am Morgen, Ölziehen und regelmäßigen Schlafzeiten spüren viele schon nach kurzer Zeit mehr Energie.&lt;/p&gt;&#xA;&lt;p&gt;Weitere Tipps: Saisonal kochen, Gewürze wie Ingwer und Kreuzkümmel nutzen, digitale Pausen einplanen.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Ayurvedische Ernährung: Die Basics</title>
-      <link>http://localhost:1313/blog/ayurveda-ernaehrung-basics/</link>
-      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/ayurveda-ernaehrung-basics/</guid>
-      <description>&lt;p&gt;Im Ayurveda stehen Verdauungsfeuer (Agni) und Balance im Mittelpunkt. Warmes, frisch gekochtes Essen, Gewürze und bewusste Pausen sind zentrale Elemente.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Beste Reisezeit für Kerala: Wetter &amp; Ayurveda</title>
-      <link>http://localhost:1313/blog/beste-reisezeit-kerala/</link>
-      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/beste-reisezeit-kerala/</guid>
-      <description>&lt;p&gt;Zwischen November und März ist es meist trocken und angenehm warm – perfekt für Rundreisen. Der Monsun (Juni–September) ist traditionell ideal für Ayurveda-Kuren.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Kerala Reiseplanung: Die ultimative Checkliste</title>
-      <link>http://localhost:1313/blog/kerala-reiseplanung-checkliste/</link>
-      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/kerala-reiseplanung-checkliste/</guid>
-      <description>&lt;p&gt;Von e-Visa-Antrag bis Moskitonetz: Diese Checkliste führt Sie Schritt für Schritt durch die Vorbereitung. Unser Team in Kerala hilft bei Transfers und Hotelbuchungen.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Yoga in Kerala: Die 5 besten Orte</title>
-      <link>http://localhost:1313/blog/yoga-in-kerala-die-besten-orte/</link>
-      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/yoga-in-kerala-die-besten-orte/</guid>
-      <description>&lt;p&gt;Ob Varkala, Kovalam oder die Westghats – Kerala bietet beeindruckende Kulissen für Yoga. Entscheidend sind gute Lehrer, saubere Shalas und ausgewogene Verpflegung.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Die besten Reisezeiten für Kerala</title>
-      <link>http://localhost:1313/blog/reisezeit-kerala/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/reisezeit-kerala/</guid>
-      <description>&lt;p&gt;Die beste Reisezeit für Kerala ist zwischen November und März.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Warum Ayurveda in Kerala einzigartig ist</title>
-      <link>http://localhost:1313/blog/ayurveda-kerala/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/ayurveda-kerala/</guid>
-      <description>&lt;p&gt;Kerala ist berühmt für authentische Ayurveda-Behandlungen.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blogs on Ayurveda Kerala</title><link>http://localhost:1313/blog/</link><description>Recent content in Blogs on Ayurveda Kerala</description><generator>Hugo</generator><language>de-de</language><lastBuildDate>Tue, 16 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Ayurveda für Einsteiger: 7 praktische Tipps</title><link>http://localhost:1313/blog/ayurveda-tipps-fuer-einsteiger/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/ayurveda-tipps-fuer-einsteiger/</guid><description>&lt;p&gt;Ayurveda muss nicht kompliziert sein. Mit kleinen Routinen wie warmem Wasser am Morgen, Ölziehen und regelmäßigen Schlafzeiten spüren viele schon nach kurzer Zeit mehr Energie.&lt;/p&gt;
+&lt;p&gt;Weitere Tipps: Saisonal kochen, Gewürze wie Ingwer und Kreuzkümmel nutzen, digitale Pausen einplanen.&lt;/p&gt;</description></item><item><title>Ayurveda-Kur planen: Checkliste</title><link>http://localhost:1313/blog/ayurveda-kur-planen-checkliste/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/ayurveda-kur-planen-checkliste/</guid><description>&lt;p&gt;Wie lange, welche Kurform, wann? Diese kompakte Liste führt durch die wichtigsten Entscheidungen – inklusive Tipps für Budget und Vorab-Check beim Hausarzt.&lt;/p&gt;
+&lt;p&gt;Nächste Schritte: Wählen Sie ein Resort in unserer /reisen/ayurveda-deluxe-kur/ oder lesen Sie unsere Hinweise zur /ayurveda-kur-kerala/.&lt;/p&gt;</description></item><item><title>Ayurvedische Ernährung: Die Basics</title><link>http://localhost:1313/blog/ayurveda-ernaehrung-basics/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/ayurveda-ernaehrung-basics/</guid><description>&lt;p&gt;Im Ayurveda stehen Verdauungsfeuer (Agni) und Balance im Mittelpunkt. Warmes, frisch gekochtes Essen, Gewürze und bewusste Pausen sind zentrale Elemente.&lt;/p&gt;</description></item><item><title>Ayurvedische Frühstücksrezepte: Warm &amp; leicht</title><link>http://localhost:1313/blog/ayurveda-fruehstueck-rezepte/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/ayurveda-fruehstueck-rezepte/</guid><description>&lt;p&gt;Warm, leicht verdaulich und gewürzt: So startet der Tag ayurvedisch. Wir zeigen drei schnelle Ideen, die sich auch auf Reisen umsetzen lassen.&lt;/p&gt;
+&lt;p&gt;Mehr Ayurveda erleben? Unsere /reisen/ayurveda-deluxe-kur/ und Infos zur /ayurveda-kur-kerala/.&lt;/p&gt;</description></item><item><title>Beste Reisezeit für Kerala: Wetter &amp; Ayurveda</title><link>http://localhost:1313/blog/beste-reisezeit-kerala/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/beste-reisezeit-kerala/</guid><description>&lt;p&gt;Zwischen November und März ist es meist trocken und angenehm warm – perfekt für Rundreisen. Der Monsun (Juni–September) ist traditionell ideal für Ayurveda-Kuren.&lt;/p&gt;</description></item><item><title>Kerala Festivals: Onam, Thrissur Pooram &amp; mehr</title><link>http://localhost:1313/blog/kerala-festivals/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/kerala-festivals/</guid><description>&lt;p&gt;mit kunstvollen Pookalam-Blumenmustern bis zu Thrissur Pooram mit imposanten Prozessionen – diese Feste sollten Sie kennen.&lt;/p&gt;
+&lt;p&gt;Reiseidee dazu: Backwaters mit Dorfbesuchen {{&amp;lt; relref &amp;ldquo;/reisen/kerala-backwaters/atur-Auszeit in {{&amp;lt; relref &amp;ldquo;/reisen/kerala-tea-hills/�����&lt;/p&gt;</description></item><item><title>Kerala Reiseplanung: Die ultimative Checkliste</title><link>http://localhost:1313/blog/kerala-reiseplanung-checkliste/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/kerala-reiseplanung-checkliste/</guid><description>&lt;p&gt;Von e-Visa-Antrag bis Moskitonetz: Diese Checkliste führt Sie Schritt für Schritt durch die Vorbereitung. Unser Team in Kerala hilft bei Transfers und Hotelbuchungen.&lt;/p&gt;</description></item><item><title>Kulturelle Tipps für Kerala: Dos &amp; Don’ts</title><link>http://localhost:1313/blog/kulturelle-tipps-kerala/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/kulturelle-tipps-kerala/</guid><description>&lt;p&gt;elbesuchen barfuß bis dezenter Kleidung: Diese kurzen Hinweise helfen, kulturell sensibel und entspannt durch Kerala zu reisen.&lt;/p&gt;
+&lt;p&gt;Interessiert an einer Kombination aus Kultur und Erholung? Hier sind passende Angebote: {{&amp;lt; relref &amp;ldquo;/reisen/kerala-tea-hills/ref &amp;ldquo;/reisen/goldenes-dreieck-indien/�����&lt;/p&gt;</description></item><item><title>Packliste Kerala: Was wirklich mit muss</title><link>http://localhost:1313/blog/packliste-kerala/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/packliste-kerala/</guid><description>&lt;p&gt;ngsaktiver Kleidung bis Steckdosenadapter: Unsere kompakte Packliste für Kerala hilft beim effizienten Packen – inklusive Ayurveda-Extras wie Zungenschaber und Reiseapotheke.&lt;/p&gt;
+&lt;p&gt;Weiterführend: Schauen Sie sich unsere Reisebausteine an – etwa das {{&amp;lt; relref &amp;ldquo;/reisen/kerala-backwaters/&amp;lt; relref &amp;ldquo;/ayurveda-kur-kerala/�����&lt;/p&gt;</description></item><item><title>Yoga in Kerala: Die 5 besten Orte</title><link>http://localhost:1313/blog/yoga-in-kerala-die-besten-orte/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/yoga-in-kerala-die-besten-orte/</guid><description>&lt;p&gt;Ob Varkala, Kovalam oder die Westghats – Kerala bietet beeindruckende Kulissen für Yoga. Entscheidend sind gute Lehrer, saubere Shalas und ausgewogene Verpflegung.&lt;/p&gt;</description></item><item><title>Die besten Reisezeiten für Kerala</title><link>http://localhost:1313/blog/reisezeit-kerala/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/reisezeit-kerala/</guid><description>&lt;p&gt;Die beste Reisezeit für Kerala ist zwischen November und März.&lt;/p&gt;</description></item><item><title>Warum Ayurveda in Kerala einzigartig ist</title><link>http://localhost:1313/blog/ayurveda-kerala/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://localhost:1313/blog/ayurveda-kerala/</guid><description>&lt;p&gt;Kerala ist berühmt für authentische Ayurveda-Behandlungen.&lt;/p&gt;</description></item></channel></rss>
