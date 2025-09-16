@@ -1,0 +1,47 @@
+{{ define "main" }}
+<section class="max-w-5xl mx-auto py-12 px-4">
+  <div class="text-center mb-8">
+    <h1 class="text-4xl font-bold mb-2">{{ .Title }}</h1>
+    <p class="text-gray-700">{{ .Description }}</p>
+    <div class="mt-4 inline-flex items-center gap-2 bg-white shadow rounded-full px-4 py-2">
+      <span class="text-yellow-500">★★★★★</span>
+      <span class="font-semibold">{{ with .Params.ratingValue }}{{ . }}{{ else }}4,8{{ end }}/5</span>
+      <span class="text-gray-600">aus {{ with .Params.reviewCount }}{{ . }}{{ else }}120{{ end }} Bewertungen</span>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    {{ range .Params.reviews }}
+      {{ $letters := findRE "\\b\\pL" .author }}
+      {{ $initials := upper (delimit $letters "") }}
+      <div class="bg-white shadow rounded-lg p-6 flex gap-4 items-center">
+        <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">{{ $initials }}</div>
+        <div>
+          <p class="text-yellow-500">{{ if eq .rating 5 }}★★★★★{{ else if eq .rating 4 }}★★★★☆{{ else }}★★★☆☆{{ end }}</p>
+          <p class="mt-1 font-semibold">{{ .title }}</p>
+          <p class="mt-1">{{ .body }}</p>
+          <p class="mt-1 text-sm text-gray-600">– {{ .author }} • {{ .date }}</p>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+
+  <div class="mt-10 text-center">
+    <a href="/kontakt/" class="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg shadow hover:bg-yellow-700">Eigene Erfahrung teilen</a>
+  </div>
+</section>
+
+{{ if .Params.ratingValue }}
+<script type="application/ld+json">
+{{- $rev := slice -}}
+{{- range .Params.reviews }}
+  {{- $r := dict "@type" "Review" "author" .author "datePublished" .date "name" .title "reviewBody" .body "reviewRating" (dict "@type" "Rating" "ratingValue" .rating "bestRating" "5") -}}
+  {{- $rev = $rev | append $r -}}
+{{- end -}}
+{{- $aggr := dict "@type" "AggregateRating" "ratingValue" .Params.ratingValue "reviewCount" .Params.reviewCount -}}
+{{- $prod := dict "@context" "https://schema.org" "@type" "Product" "name" "Ayurveda Kerala Reisen" "image" (printf "%simages/logo.png" .Site.BaseURL) "description" .Description "aggregateRating" $aggr "review" $rev -}}
+{{ $prod | jsonify | safeHTML }}
+</script>
+{{ end }}
+{{ end }}
+
