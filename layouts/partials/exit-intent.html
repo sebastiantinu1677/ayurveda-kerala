@@ -1,0 +1,82 @@
+{{/*
+  Exit-intent popup for lead capture
+  Usage: {{ partial "exit-intent.html" . }}
+*/}}
+<div id="exit-intent-popup" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-lg max-w-md w-full p-6 relative">
+      <button id="close-popup" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      
+      <div class="text-center">
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Warten Sie! 🛑</h3>
+        <p class="text-gray-600 mb-4">
+          Verpassen Sie nicht unseren <strong>kostenlosen Kerala Reiseführer</strong> mit Insider-Tipps!
+        </p>
+        
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+          <h4 class="font-semibold text-yellow-800 mb-2">Was Sie erhalten:</h4>
+          <ul class="text-sm text-yellow-700 text-left space-y-1">
+            <li>✓ 15-seitiger Reiseführer</li>
+            <li>✓ Ayurveda-Basics für Einsteiger</li>
+            <li>✓ Komplette Packliste</li>
+            <li>✓ Kulturelle Hinweise</li>
+            <li>✓ Beste Reisezeiten</li>
+          </ul>
+        </div>
+        
+        {{ partial "lead-capture.html" . }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const popup = document.getElementById('exit-intent-popup');
+  const closeBtn = document.getElementById('close-popup');
+  let hasShown = false;
+  
+  // Check if user has already seen the popup
+  if (localStorage.getItem('exit-intent-shown')) {
+    return;
+  }
+  
+  // Exit intent detection
+  document.addEventListener('mouseleave', function(e) {
+    if (e.clientY <= 0 && !hasShown) {
+      showPopup();
+    }
+  });
+  
+  // Show popup after 30 seconds if user hasn't left
+  setTimeout(() => {
+    if (!hasShown) {
+      showPopup();
+    }
+  }, 30000);
+  
+  function showPopup() {
+    hasShown = true;
+    popup.classList.remove('hidden');
+    localStorage.setItem('exit-intent-shown', 'true');
+  }
+  
+  function hidePopup() {
+    popup.classList.add('hidden');
+  }
+  
+  closeBtn.addEventListener('click', hidePopup);
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      hidePopup();
+    }
+  });
+  
+  // Hide popup after successful form submission
+  document.addEventListener('leadCaptureSuccess', hidePopup);
+});
+</script>

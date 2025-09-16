@@ -29,7 +29,18 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', gaId);
+      gtag('config', gaId, {
+        custom_map: {
+          'custom_parameter_1': 'page_category',
+          'custom_parameter_2': 'user_type'
+        }
+      });
+      
+      // Enhanced ecommerce tracking
+      gtag('config', gaId, {
+        send_page_view: true,
+        enhanced_ecommerce: true
+      });
     })();
   </script>
   {{ end }}
@@ -74,6 +85,63 @@
       s.async = 1;
       d.getElementsByTagName("head")[0].appendChild(s);
   })();
+  </script>
+
+  <!-- Advanced Analytics & Conversion Tracking -->
+  <script>
+  // Enhanced conversion tracking
+  function trackConversion(eventName, value, currency = 'EUR') {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', eventName, {
+        'event_category': 'conversion',
+        'event_label': eventName,
+        'value': value,
+        'currency': currency
+      });
+    }
+  }
+  
+  // Track user interactions
+  document.addEventListener('DOMContentLoaded', function() {
+    // Track form submissions
+    document.addEventListener('submit', function(e) {
+      if (e.target.id === 'leadCaptureForm') {
+        trackConversion('lead_capture', 1);
+      } else if (e.target.id === 'contactForm') {
+        trackConversion('contact_form', 1);
+      } else if (e.target.id === 'quickBookingForm') {
+        trackConversion('booking_inquiry', 1);
+      }
+    });
+    
+    // Track button clicks
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('a[href*="wa.me"]')) {
+        trackConversion('whatsapp_click', 1);
+      } else if (e.target.matches('a[href*="/kontakt/"]')) {
+        trackConversion('contact_page_click', 1);
+      } else if (e.target.matches('a[href*="/reisen/"]')) {
+        trackConversion('tour_page_click', 1);
+      }
+    });
+    
+    // Track scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', function() {
+      const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      if (scrollPercent > maxScroll && scrollPercent % 25 === 0) {
+        maxScroll = scrollPercent;
+        trackConversion('scroll_depth_' + scrollPercent, 1);
+      }
+    });
+    
+    // Track time on page
+    let startTime = Date.now();
+    window.addEventListener('beforeunload', function() {
+      const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+      trackConversion('time_on_page', timeOnPage);
+    });
+  });
   </script>
 
   <link rel="canonical" href="{{ .Site.BaseURL }}{{ .RelPermalink }}">

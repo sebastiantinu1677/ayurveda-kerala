@@ -1,14 +1,12 @@
 ---
 title: "Kerala Backwaters Hausboot-Erlebnis"
-date: 2025-09-16
-description: "Entspannte Hausboot-Fahrt durch die Backwaters von Kerala inklusive authentischer Küche und Dorferlebnissen."
+description: "Berühmte Backwaters auf traditionellen Hausbooten."
 image: "/images/houseboat-backwaters.jpg"
-type: "reisen"
-tags: ["Kerala", "Backwaters", "Hausboot", "Natur"]
+pricefrom: 290
+duration: "2-3 Tage"
 categories: ["Rundreisen"]
-duration: "2–3 Tage"
-priceFrom: "ab 290 € p.P."
-slug: "kerala-backwaters"
+tags: ["Kerala", "Backwaters", "Hausboot", "Natur"]
+bestSeason: "Ganzjährig"
 ---
 
 Erleben Sie die berühmten Backwaters von Kerala auf einem traditionellen Hausboot. Entschleunigen Sie zwischen Reisfeldern, Kokospalmen und kleinen Dörfern – begleitet von frisch gekochter südindischer Küche an Bord.

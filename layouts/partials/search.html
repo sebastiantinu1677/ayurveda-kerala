@@ -1,0 +1,196 @@
+{{/*
+  Search functionality
+  Usage: {{ partial "search.html" . }}
+*/}}
+<div class="relative">
+  <div class="flex items-center">
+    <input 
+      type="text" 
+      id="search-input" 
+      placeholder="Reisen, Ayurveda, Yoga suchen..." 
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+    >
+    <button 
+      id="search-btn" 
+      class="ml-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition"
+    >
+      🔍
+    </button>
+  </div>
+  
+  <div id="search-results" class="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 hidden z-50 max-h-96 overflow-y-auto">
+    <!-- Results will be populated here -->
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const searchResults = document.getElementById('search-results');
+  
+  // Debug: Check if elements are found
+  console.log('Search elements found:', {
+    input: !!searchInput,
+    button: !!searchBtn,
+    results: !!searchResults
+  });
+  
+  // Static search data - manually curated for reliability
+  const searchData = [
+    {
+      title: "Ayurveda Kur",
+      url: "/reisen/ayurveda-kur/",
+      description: "Authentische Ayurveda-Kuren mit Panchakarma, Yoga und Meditation.",
+      type: "reisen"
+    },
+    {
+      title: "Kerala Rundreise",
+      url: "/reisen/kerala-rundreise/",
+      description: "Backwaters, Teeplantagen, Strände und kulturelle Highlights.",
+      type: "reisen"
+    },
+    {
+      title: "Yoga & Meditation",
+      url: "/reisen/yoga-meditation/",
+      description: "Yoga-Retreats in den schönsten Orten Keralas.",
+      type: "reisen"
+    },
+    {
+      title: "Ayurveda für Einsteiger: 7 praktische Tipps",
+      url: "/blog/ayurveda-kerala/",
+      description: "Grundlagen des Ayurveda für den Alltag.",
+      type: "blog"
+    },
+    {
+      title: "Beste Reisezeit für Kerala",
+      url: "/blog/reisezeit-kerala/",
+      description: "Wetter, Saison und optimale Reisezeiten.",
+      type: "blog"
+    },
+    {
+      title: "Ayurveda Wellness Woche",
+      url: "/reisen/ayurveda-wellness-woche/",
+      description: "Eine Woche Entspannung mit ayurvedischen Behandlungen.",
+      type: "reisen"
+    },
+    {
+      title: "Kerala Backwaters",
+      url: "/reisen/kerala-backwaters/",
+      description: "Berühmte Backwaters auf traditionellen Hausbooten.",
+      type: "reisen"
+    },
+    {
+      title: "Yoga in Kerala: Die 5 besten Orte",
+      url: "/blog/yoga-in-kerala-die-besten-orte/",
+      description: "Die besten Yoga-Orte für authentische Retreats.",
+      type: "blog"
+    },
+    {
+      title: "Kerala Reiseplanung: Checkliste",
+      url: "/blog/kerala-reiseplanung-checkliste/",
+      description: "Praktische Checkliste für Ihre Kerala-Reise.",
+      type: "blog"
+    },
+    {
+      title: "Panchakarma Detox Kur",
+      url: "/reisen/panchakarma-detox-kur/",
+      description: "Intensive Reinigungskur für Körper und Geist.",
+      type: "reisen"
+    },
+    {
+      title: "Kerala Familienreise",
+      url: "/reisen/kerala-familienreise/",
+      description: "Perfekte Reise für Familien mit Kindern.",
+      type: "reisen"
+    },
+    {
+      title: "Ayurveda Ernährung: Basics",
+      url: "/blog/ayurveda-ernaehrung-basics/",
+      description: "Grundlagen der ayurvedischen Ernährung.",
+      type: "blog"
+    }
+  ];
+  
+  function performSearch(query) {
+    if (!query || query.length < 2) {
+      searchResults.classList.add('hidden');
+      return;
+    }
+    
+    const searchTerm = query.toLowerCase().trim();
+    const results = searchData.filter(item => {
+      return (
+        item.title.toLowerCase().includes(searchTerm) ||
+        item.description.toLowerCase().includes(searchTerm) ||
+        item.type.toLowerCase().includes(searchTerm)
+      );
+    }).slice(0, 6);
+    
+    if (results.length > 0) {
+      searchResults.innerHTML = results.map(result => `
+        <a href="${result.url}" class="block p-3 hover:bg-gray-50 border-b border-gray-100 last:border-b-0 transition-colors">
+          <div class="font-semibold text-gray-900 mb-1">${result.title}</div>
+          <div class="text-sm text-gray-600">${result.description}</div>
+          <div class="text-xs text-gray-400 mt-1">${result.type === 'reisen' ? '🏖️ Reise' : '📝 Blog'}</div>
+        </a>
+      `).join('');
+      searchResults.classList.remove('hidden');
+    } else {
+      searchResults.innerHTML = `
+        <div class="p-4 text-center text-gray-500">
+          <div class="text-lg mb-2">🔍</div>
+          <div>Keine Ergebnisse für "${query}" gefunden</div>
+          <div class="text-sm mt-1">Versuchen Sie: ayurveda, kerala, yoga, reisen</div>
+        </div>
+      `;
+      searchResults.classList.remove('hidden');
+    }
+  }
+  
+  // Event listeners
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(window.searchTimeout);
+      window.searchTimeout = setTimeout(() => performSearch(e.target.value), 300);
+    });
+    
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        console.log('Enter pressed, searching for:', e.target.value);
+        performSearch(e.target.value);
+      }
+    });
+  }
+  
+  if (searchBtn) {
+    searchBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Search button clicked');
+      if (searchInput && searchInput.value) {
+        console.log('Searching for:', searchInput.value);
+        performSearch(searchInput.value);
+      } else {
+        console.log('No search input value');
+      }
+    });
+  }
+  
+  // Hide results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.relative')) {
+      searchResults.classList.add('hidden');
+    }
+  });
+  
+  // Show results on focus
+  if (searchInput) {
+    searchInput.addEventListener('focus', () => {
+      if (searchInput.value.length >= 2) {
+        performSearch(searchInput.value);
+      }
+    });
+  }
+});
+</script>

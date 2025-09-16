@@ -1,13 +1,45 @@
 {{ define "main" }}
-<article class="max-w-3xl mx-auto py-12 px-4">
-  <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
-  {{ with .Params.image }}
-    {{ partial "picture.html" (dict "ctx" $ "src" . "alt" $.Title "class" "w-full h-64 object-cover rounded mb-6" "loading" "lazy") }}
-  {{ end }}
-  <div class="prose max-w-none">
-    {{ .Content }}
+{{ partial "breadcrumb.html" . }}
+<div class="max-w-6xl mx-auto py-12 px-4">
+  <div class="grid lg:grid-cols-3 gap-8">
+    <!-- Main Content -->
+    <div class="lg:col-span-2">
+      <article>
+        <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+        {{ with .Params.image }}
+          {{ partial "picture.html" (dict "src" . "alt" $.Title "class" "w-full h-64 object-cover rounded mb-6" "loading" "lazy") }}
+        {{ end }}
+        <div class="prose max-w-none">
+          {{ .Content }}
+        </div>
+        
+        {{ partial "social-share.html" . }}
+        {{ partial "related-content.html" . }}
+      </article>
+    </div>
+    
+    <!-- Sidebar with Booking Widget -->
+    <div class="lg:col-span-1">
+      {{ if eq .Section "reisen" }}
+        {{ partial "booking-widget.html" . }}
+      {{ else }}
+        <!-- Contact CTA for non-tour pages -->
+        <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+          <h3 class="text-xl font-bold mb-4">Haben Sie Fragen?</h3>
+          <p class="text-gray-600 mb-4">Unser Team steht Ihnen gerne zur Verfügung!</p>
+          <div class="space-y-3">
+            <a href="/kontakt/" class="block w-full bg-yellow-600 text-white py-3 rounded-lg font-semibold text-center hover:bg-yellow-700 transition">
+              Kontakt aufnehmen
+            </a>
+            <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" target="_blank" class="block w-full bg-green-600 text-white py-3 rounded-lg font-semibold text-center hover:bg-green-700 transition">
+              WhatsApp Chat
+            </a>
+          </div>
+        </div>
+      {{ end }}
+    </div>
   </div>
-</article>
+</div>
 
 {{ if .Params.ratingValue }}
 <script type="application/ld+json">

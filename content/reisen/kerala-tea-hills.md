@@ -1,7 +1,7 @@
 ---
 title: "Munnar & Teehügel – Natur pur"
 date: 2025-09-16
-description: "Wandern durch Teeplantagen, Gewürzgärten und Nebelwälder – die grüne Seite Keralas."
+description: "Wandern durch Teeplantagen und Gewürzgärten."
 image: "/images/kerala-tea.jpg"
 type: "reisen"
 tags: ["Munnar", "Natur", "Wandern"]

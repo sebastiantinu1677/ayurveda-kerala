@@ -1,0 +1,288 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+<section class="max-w-4xl mx-auto py-12 px-4">
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+    <p class="text-xl text-gray-600">{{ .Description }}</p>
+  </div>
+  
+  <!-- FAQ Categories -->
+  <div class="space-y-8">
+    
+    <!-- Ayurveda-Kuren Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-yellow-600 mb-6 flex items-center">
+        <span class="mr-3">🧘‍♀️</span>
+        Ayurveda-Kuren
+      </h2>
+      <div class="space-y-4">
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Wie lange dauert eine Ayurveda-Kur?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Eine Ayurveda-Kur kann zwischen 7 und 21 Tagen dauern. Die klassische Panchakarma-Kur dauert 14-21 Tage, während sanfte Detox-Programme bereits ab 7 Tagen möglich sind.
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Wann ist die beste Zeit für eine Ayurveda-Kur?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Traditionell ist die Monsunzeit (Juni-September) die beste Zeit für Ayurveda-Kuren, da der Körper dann am empfänglichsten für die Behandlungen ist. Aber auch in der Trockenzeit (November-März) sind Kuren sehr effektiv.
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Muss ich vorher zum Arzt?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Ja, wir empfehlen eine ärztliche Beratung vor der Reise, besonders bei chronischen Erkrankungen. Bringen Sie auch Ihre Medikamentenliste mit.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Reiseplanung Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-yellow-600 mb-6 flex items-center">
+        <span class="mr-3">✈️</span>
+        Reiseplanung
+      </h2>
+      <div class="space-y-4">
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Wie buche ich eine Reise?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Kontaktieren Sie uns per E-Mail, WhatsApp oder über unser Kontaktformular. Wir erstellen Ihnen ein individuelles Angebot basierend auf Ihren Wünschen.
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Was ist im Preis enthalten?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Je nach Paket sind Flüge, Unterkunft, Verpflegung, Ayurveda-Behandlungen, Yoga-Klassen und Transfers enthalten. Details finden Sie in den jeweiligen Reisebeschreibungen.
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Kann ich die Reise stornieren?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Ja, Stornierungsbedingungen finden Sie in unseren AGB. Wir empfehlen eine Reiserücktrittsversicherung.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Vor Ort Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-yellow-600 mb-6 flex items-center">
+        <span class="mr-3">🏨</span>
+        Vor Ort
+      </h2>
+      <div class="space-y-4">
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Sprechen die Menschen vor Ort Deutsch?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Unsere Partner-Resorts haben deutschsprachige Betreuer. In den meisten touristischen Bereichen wird auch Englisch gesprochen.
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Wie ist das Essen?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Die Ayurveda-Küche ist vegetarisch und sehr gesund. Bei Rundreisen bieten wir auch internationale Küche an. Spezielle Diätwünsche können berücksichtigt werden.
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Ist Kerala sicher?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Ja, Kerala gilt als eines der sichersten Bundesstaaten Indiens. Wir arbeiten nur mit vertrauenswürdigen Partnern zusammen.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Gesundheit & Versicherung Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-yellow-600 mb-6 flex items-center">
+        <span class="mr-3">🏥</span>
+        Gesundheit & Versicherung
+      </h2>
+      <div class="space-y-4">
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Welche Impfungen brauche ich?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Empfohlene Impfungen sind Hepatitis A/B, Typhus und Tetanus. Eine Malaria-Prophylaxe ist normalerweise nicht nötig, aber fragen Sie Ihren Arzt.
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Brauche ich eine Reiseversicherung?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Ja, eine Auslandskrankenversicherung ist dringend empfohlen. Eine Reiserücktrittsversicherung ist ebenfalls sinnvoll.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Technische Fragen Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-yellow-600 mb-6 flex items-center">
+        <span class="mr-3">💳</span>
+        Buchung & Bezahlung
+      </h2>
+      <div class="space-y-4">
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Wie kann ich bezahlen?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Wir akzeptieren Überweisung, PayPal und Kreditkarte. Eine Anzahlung von 30% ist bei Buchung fällig, der Rest 4 Wochen vor Reiseantritt.
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Bekomme ich eine Rechnung?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Ja, Sie erhalten eine ordnungsgemäße Rechnung für Ihre Buchung.
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 pb-4">
+          <button class="faq-question w-full text-left flex justify-between items-center py-2 hover:text-yellow-600 transition">
+            <span class="font-semibold text-lg">Kann ich die Reise umbuchen?</span>
+            <span class="faq-icon text-yellow-600 text-xl">+</span>
+          </button>
+          <div class="faq-answer hidden mt-3 text-gray-700">
+            Umbuchungen sind je nach Verfügbarkeit möglich. Es können Umbuchungsgebühren anfallen.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Contact CTA -->
+  <div class="mt-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg p-8 text-center text-white">
+    <h3 class="text-2xl font-bold mb-4">Haben Sie weitere Fragen?</h3>
+    <p class="text-lg mb-6">Unser Team steht Ihnen gerne zur Verfügung!</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/kontakt/" class="bg-white text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+        Kontakt aufnehmen
+      </a>
+      <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" target="_blank" class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+        WhatsApp Chat
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Accordion JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    const icon = item.querySelector('.faq-icon');
+    
+    question.addEventListener('click', () => {
+      const isOpen = !answer.classList.contains('hidden');
+      
+      // Close all other FAQ items
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.querySelector('.faq-answer').classList.add('hidden');
+          otherItem.querySelector('.faq-icon').textContent = '+';
+        }
+      });
+      
+      // Toggle current item
+      if (isOpen) {
+        answer.classList.add('hidden');
+        icon.textContent = '+';
+      } else {
+        answer.classList.remove('hidden');
+        icon.textContent = '−';
+      }
+    });
+  });
+});
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie lange dauert eine Ayurveda-Kur?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Eine Ayurveda-Kur kann zwischen 7 und 21 Tagen dauern. Die klassische Panchakarma-Kur dauert 14-21 Tage, während sanfte Detox-Programme bereits ab 7 Tagen möglich sind."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wann ist die beste Zeit für eine Ayurveda-Kur?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traditionell ist die Monsunzeit (Juni-September) die beste Zeit für Ayurveda-Kuren, da der Körper dann am empfänglichsten für die Behandlungen ist. Aber auch in der Trockenzeit (November-März) sind Kuren sehr effektiv."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie buche ich eine Reise?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kontaktieren Sie uns per E-Mail, WhatsApp oder über unser Kontaktformular. Wir erstellen Ihnen ein individuelles Angebot basierend auf Ihren Wünschen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist Kerala sicher?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, Kerala gilt als eines der sichersten Bundesstaaten Indiens. Wir arbeiten nur mit vertrauenswürdigen Partnern zusammen."
+      }
+    }
+  ]
+}
+</script>
+{{ end }}

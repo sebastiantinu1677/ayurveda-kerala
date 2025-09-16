@@ -1,9 +1,12 @@
 ---
 title: "Ayurveda Kur"
-description: "Authentische Ayurveda-Kuren in Kerala: Panchakarma, Yoga, Meditation und ayurvedische Küche für ganzheitliche Regeneration."
+description: "Authentische Ayurveda-Kuren mit Panchakarma, Yoga und Meditation."
 image: "/images/ayurveda-massage.jpg"
-price: "1299"
+pricefrom: 1299
 duration: "14 Tage"
+categories: ["Ayurveda"]
+tags: ["Ayurveda", "Panchakarma", "Yoga", "Meditation"]
+bestSeason: "Ganzjährig"
 ratingValue: "4.8"
 reviewCount: "23"
 reviews:

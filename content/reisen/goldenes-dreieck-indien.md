@@ -1,7 +1,7 @@
 ---
 title: "Golden Triangle: Delhi – Agra – Jaipur"
 date: 2025-09-16
-description: "Die Klassiker Nordindiens: Taj Mahal, Rosa Stadt Jaipur und pulsierendes Delhi – perfekt mit Kerala kombinierbar."
+description: "Die Klassiker Nordindiens: Taj Mahal, Jaipur und Delhi."
 image: "/images/sunset-beach.jpg"
 type: "reisen"
 tags: ["Indien", "Kulturreise", "Taj Mahal"]

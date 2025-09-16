@@ -8,3 +8,20 @@
 /* Reveal animations */
 .reveal, .reveal-item { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.revealed, .reveal-item.revealed { opacity: 1; transform: translateY(0); }
+
+/* Lazy loading for images */
+img[data-src] {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+img[data-src].loaded {
+  opacity: 1;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+.will-change-opacity {
+  will-change: opacity;
+}

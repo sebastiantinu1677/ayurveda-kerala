@@ -1,7 +1,7 @@
 ---
 title: "Ayurveda Deluxe Kur in Kerala"
 date: 2025-09-16
-description: "Intensive Panchakarma-Kur mit persönlicher Betreuung, täglicher Massage und ayurvedischer Gourmetküche."
+description: "Luxuriöse Ayurveda-Kur mit persönlicher Betreuung."
 image: "/images/ayurveda-massage.jpg"
 type: "reisen"
 tags: ["Ayurveda", "Panchakarma", "Gesundheit"]

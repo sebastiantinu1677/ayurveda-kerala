@@ -1,0 +1,48 @@
+{{/*
+  Related content suggestions
+  Usage: {{ partial "related-content.html" . }}
+*/}}
+{{ if or .Params.tags .Params.categories }}
+  {{ $related := slice }}
+  
+  {{ if .Params.tags }}
+    {{ range .Params.tags }}
+      {{ $tagged := where $.Site.Pages "Params.tags" "intersect" (slice .) }}
+      {{ if $tagged }}
+        {{ $related = $related | union $tagged }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  
+  {{ if .Params.categories }}
+    {{ range .Params.categories }}
+      {{ $categorized := where $.Site.Pages "Params.categories" "intersect" (slice .) }}
+      {{ if $categorized }}
+        {{ $related = $related | union $categorized }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  
+  {{ if $related }}
+    {{ $related = $related | uniq }}
+    {{ $related = where $related "Permalink" "!=" .Permalink }}
+    {{ $related = $related | first 3 }}
+    
+    {{ if $related }}
+      <div class="mt-12 bg-gray-50 rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">Das könnte Sie auch interessieren</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          {{ range $related }}
+            <a href="{{ .Permalink }}" class="block bg-white rounded-lg p-4 shadow hover:shadow-md transition">
+              {{ with .Params.image }}
+                {{ partial "picture.html" (dict "src" . "alt" $.Title "class" "w-full h-32 object-cover rounded mb-3" "loading" "lazy") }}
+              {{ end }}
+              <h4 class="font-semibold text-gray-900 mb-2">{{ .Title }}</h4>
+              <p class="text-sm text-gray-600">{{ .Description | truncate 100 }}</p>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  {{ end }}
+{{ end }}
