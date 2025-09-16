@@ -9,8 +9,8 @@ var klaroConfig = {
     privacyPolicy: '/privacy-policy/',
     lang: 'de',
 
-    // 👇 Explicitly configure notice position
-    notice: {
+    // 👇 Force position of the notice
+    consentNotice: {
         position: 'bottom-left',
     },
 
