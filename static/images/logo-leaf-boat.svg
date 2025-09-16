@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
+      <g>
+        <ellipse cx="90" cy="75" rx="50" ry="45" fill="#2E7D32"/>
+        <polygon points="90,30 140,75 90,120 40,75" fill="white" />
+        <rect x="160" y="95" width="170" height="20" fill="#DAA520"/>
+        <polygon points="160,95 140,115 160,115" fill="#DAA520"/>
+        <path d="M 140 135 A 110 30 0 0 0 360 135" stroke="#2E7D32" stroke-width="6" fill="none"/>
+        </g>
+      <text x="360" y="120" font-family="serif" font-size="60" fill="#2E7D32">Ayurveda Kerala</text>
+      <line x1="360" y1="130" x2="730" y2="130" stroke="#DAA520" stroke-width="4"/>
+    </svg>

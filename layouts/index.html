@@ -1,0 +1,71 @@
+{{ define "main" }}
+
+<!-- Hero -->
+<section class="relative bg-yellow-50 py-20 text-center">
+  <img loading="lazy" src="/images/hero-backwaters.jpg" alt="Ayurveda Kerala" class="absolute inset-0 w-full h-full object-cover opacity-40">
+  <div class="relative z-10">
+    <h1 class="text-5xl font-bold mb-4">Ayurveda & Reisen in Kerala</h1>
+    <p class="text-lg mb-6">Authentische Ayurveda-Kuren, Yoga-Retreats und unvergessliche Rundreisen</p>
+    <a href="/reisen/" class="bg-yellow-600 text-white px-6 py-3 rounded-lg shadow hover:bg-yellow-700">Unsere Reisen ansehen</a>
+  </div>
+</section>
+
+<!-- Featured Reisen -->
+<section class="max-w-6xl mx-auto py-16 px-6">
+  <h2 class="text-3xl font-bold mb-8 text-center">Beliebte Reisen</h2>
+  <div class="grid md:grid-cols-3 gap-8">
+    {{ range first 3 (where .Site.RegularPages "Section" "reisen") }}
+      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow hover:shadow-lg transition">
+        {{ with .Params.image }}
+          <img loading="lazy" src="{{ . }}" alt="{{ $.Title }}" class="w-full h-48 object-cover rounded-t-lg">
+        {{ end }}
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">{{ .Title }}</h3>
+          <p class="text-gray-600 text-sm">{{ .Description }}</p>
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</section>
+
+<!-- Latest Blog -->
+<section class="bg-gray-100 py-16 px-6">
+  <h2 class="text-3xl font-bold mb-8 text-center">Neu im Blog</h2>
+  <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+    {{ range first 2 (where .Site.RegularPages "Section" "blog") }}
+      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow hover:shadow-lg transition">
+        {{ with .Params.image }}
+          <img loading="lazy" src="{{ . }}" alt="{{ $.Title }}" class="w-full h-48 object-cover rounded-t-lg">
+        {{ end }}
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">{{ .Title }}</h3>
+          <p class="text-gray-600 text-sm">{{ .Description }}</p>
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews" class="max-w-5xl mx-auto py-16 px-6">
+  <h2 class="text-3xl font-bold mb-8 text-center">Kundenbewertungen</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="bg-white shadow rounded-lg p-6">
+      <p class="text-yellow-500">★★★★★</p>
+      <p class="mt-2">„Eine unvergessliche Ayurveda-Kur – ich komme wieder!“</p>
+      <p class="mt-2 font-semibold">– Anna M.</p>
+    </div>
+    <div class="bg-white shadow rounded-lg p-6">
+      <p class="text-yellow-500">★★★★★</p>
+      <p class="mt-2">„Sehr gut organisiert, wunderschöne Natur und tolle Betreuung.“</p>
+      <p class="mt-2 font-semibold">– Thomas B.</p>
+    </div>
+    <div class="bg-white shadow rounded-lg p-6">
+      <p class="text-yellow-500">★★★★☆</p>
+      <p class="mt-2">„Yoga und Meditation haben mir viel innere Ruhe gebracht.“</p>
+      <p class="mt-2 font-semibold">– Sabine K.</p>
+    </div>
+  </div>
+</section>
+
+{{ end }}

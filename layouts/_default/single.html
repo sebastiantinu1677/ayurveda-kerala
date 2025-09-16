@@ -1,0 +1,28 @@
+{{ define "main" }}
+<article class="max-w-3xl mx-auto py-12 px-4">
+  <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+  {{ with .Params.image }}
+    <img loading="lazy" src="{{ . }}" alt="{{ $.Title }}" class="w-full h-64 object-cover rounded mb-6">
+  {{ end }}
+  <div class="prose max-w-none">
+    {{ .Content }}
+  </div>
+</article>
+
+{{ if .Params.ratingValue }}
+<script type="application/ld+json">
+{{- $rev := slice -}}
+{{- range .Params.reviews }}
+  {{- $r := dict "@type" "Review" "author" .author "datePublished" .date "name" .title "reviewBody" .body "reviewRating" (dict "@type" "Rating" "ratingValue" .rating "bestRating" "5") -}}
+  {{- $rev = $rev | append $r -}}
+{{- end -}}
+{{- $prod := dict "@context" "https://schema.org" "@type" "Product" "name" .Title "image" .Params.image "description" .Description "aggregateRating" (dict "@type" "AggregateRating" "ratingValue" .Params.ratingValue "reviewCount" .Params.reviewCount) "review" $rev -}}
+{{ $prod | jsonify | safeHTML }}
+</script>
+{{ end }}
+
+<script type="application/ld+json">
+{{- $bc := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" (slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.BaseURL) (dict "@type" "ListItem" "position" 2 "name" (.Section | title) "item" (printf "%s%s/" .Site.BaseURL .Section)) (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)) -}}
+{{ $bc | jsonify | safeHTML }}
+</script>
+{{ end }}

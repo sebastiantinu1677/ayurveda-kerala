@@ -1,0 +1,55 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ if .Title }}{{ .Title }} | Ayurveda Kerala{{ else }}Ayurveda Kerala – Reisen & Ayurveda-Kuren{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}Ayurveda-Reisen, Yoga-Retreats und Rundreisen in Kerala, Indien.{{ end }}">
+
+  <link rel="icon" href="{{ .Site.Params.favicon }}" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  {{ with .Site.Params.googleAnalytics }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ . }}');</script>
+  {{ end }}
+
+  {{- $org := dict "@context" "https://schema.org" "@type" "Organization" "name" "Ayurveda Kerala" "url" .Site.BaseURL "logo" (printf "%simages/logo.png" .Site.BaseURL) "contactPoint" (dict "@type" "ContactPoint" "telephone" (printf "+%s" (default "49123456789" .Site.Params.whatsapp.number)) "contactType" "customer service" "areaServed" "DE" "availableLanguage" "German") "sameAs" (slice "https://www.facebook.com/ayurvedakerala" "https://www.instagram.com/ayurvedakerala") -}}
+  <script type="application/ld+json">{{ $org | jsonify | safeHTML }}</script>
+
+  {{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Ayurveda Kerala" "image" (printf "%simages/logo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Hauptstraße 12" "addressLocality" "Leonberg" "postalCode" "71229" "addressCountry" "DE") "telephone" (printf "+%s" (default "49123456789" .Site.Params.whatsapp.number)) "priceRange" "$$" -}}
+  <script type="application/ld+json">{{ $lb | jsonify | safeHTML }}</script>
+
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ .Title }} | Ayurveda Kerala" />
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}Authentische Ayurveda- & Kerala-Reisen aus Deutschland{{ end }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:image" content="{{ with .Params.image }}{{ . }}{{ else }}/images/hero-backwaters.jpg{{ end }}" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ .Title }} | Ayurveda Kerala" />
+  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}Authentische Ayurveda- & Kerala-Reisen aus Deutschland{{ end }}" />
+  <meta name="twitter:image" content="{{ with .Params.image }}{{ . }}{{ else }}/images/hero-backwaters.jpg{{ end }}" />
+
+
+  <!-- Crisp Chat -->
+  <script type="text/javascript">
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = "b96ad9f7-853f-4c78-a0e6-a7eaa36eab93";
+  (function() {
+      d = document;
+      s = d.createElement("script");
+      s.src = "https://client.crisp.chat/l.js";
+      s.async = 1;
+      d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+  </script>
+
+  <link rel="canonical" href="https://ayurveda-kerala.de{{ .RelPermalink }}">
+</head>

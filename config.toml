@@ -1,0 +1,23 @@
+baseURL = "/"
+languageCode = "de-de"
+title = "Ayurveda Kerala"
+
+[pagination]
+  pagerSize = 5
+
+[params]
+  googleAnalytics = "G-XXXXXXXXXX"
+  favicon = "/images/favicon.ico"
+
+[params.whatsapp]
+  number = "49123456789"
+
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+
+[outputs]
+  home = ["HTML", "RSS", "SITEMAP", "ROBOTS"]

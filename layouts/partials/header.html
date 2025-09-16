@@ -1,0 +1,54 @@
+<header class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <!-- Logo + Site Title -->
+    <a href="/" class="flex items-center space-x-3">
+      <img src="/images/logo.png" alt="Ayurveda Kerala Logo" class="h-10">
+      <span class="font-bold text-xl text-gray-800">Ayurveda Kerala</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="/reisen/" class="text-gray-700 hover:text-yellow-600 font-medium">Reisen</a>
+      <a href="/blog/" class="text-gray-700 hover:text-yellow-600 font-medium">Blog</a>
+      <a href="/kontakt/" class="text-gray-700 hover:text-yellow-600 font-medium">Kontakt</a>
+      <a href="/#reviews" class="text-gray-700 hover:text-yellow-600 font-medium">Bewertungen</a>
+    </nav>
+
+    <!-- Mobile Hamburger Button -->
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu (animated) -->
+  <nav id="mobile-menu"
+       class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out md:hidden bg-white border-t border-gray-200">
+    <a href="/reisen/" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Reisen</a>
+    <a href="/blog/" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Blog</a>
+    <a href="/kontakt/" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Kontakt</a>
+    <a href="/#reviews" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Bewertungen</a>
+  </nav>
+
+  <!-- Toggle Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      let open = false;
+      btn.addEventListener("click", () => {
+        open = !open;
+        if (open) {
+          menu.classList.remove("max-h-0");
+          menu.classList.add("max-h-96"); // expands smoothly
+        } else {
+          menu.classList.remove("max-h-96");
+          menu.classList.add("max-h-0"); // collapses smoothly
+        }
+      });
+    });
+  </script>
+</header>
