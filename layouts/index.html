@@ -2,7 +2,7 @@
 
 <!-- Hero -->
 <section class="relative bg-yellow-50 py-24 text-center overflow-hidden">
-  <video class="absolute inset-0 w-full h-full object-cover opacity-95" autoplay muted loop playsinline poster="/images/hero-backwaters.jpg">
+  <video class="absolute inset-0 w-full h-full object-cover opacity-95" autoplay muted loop playsinline poster="/images/hero-backwaters.jpg" preload="metadata">
     <source src="/images/hero-backwaters.webm" type="video/webm">
     <source src="/images/hero-backwaters.mp4" type="video/mp4">
   </video>
@@ -120,6 +120,12 @@
   </div>
 </section>
 
+<!-- Lead Capture -->
+<section class="max-w-4xl mx-auto py-16 px-6">
+  <h2 class="text-3xl font-bold mb-8 text-center">Kostenloser Kerala Reiseführer</h2>
+  {{ partial "lead-capture.html" . }}
+</section>
+
 <!-- FAQ -->
 <section class="max-w-5xl mx-auto py-16 px-6">
   <h2 class="text-3xl font-bold mb-8 text-center">Häufige Fragen</h2>
@@ -232,6 +238,26 @@
       track.addEventListener("mouseleave", () => timer = setInterval(next, 5000));
       window.addEventListener("resize", update);
     });
+
+    // Enhanced lazy loading with IntersectionObserver
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+              observer.unobserve(img);
+            }
+          }
+        });
+      }, { rootMargin: '50px' });
+
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
   </script>
 </section>
 

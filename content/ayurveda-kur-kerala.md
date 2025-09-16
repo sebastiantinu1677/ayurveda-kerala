@@ -15,4 +15,3 @@ Entdecken Sie authentische Ayurveda-Kuren in Kerala – von sanften Detox-Progra
 
 {{< relref "/reisen/ayurveda-deluxe-kur.md" >}}
 
-

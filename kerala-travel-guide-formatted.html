@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala Reiseführer 2025 - Ayurveda Kerala</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f59e0b, #10b981);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .toc {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid #f59e0b;
+        }
+        
+        .toc h2 {
+            color: #1e40af;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .toc li:before {
+            content: "📋";
+            position: absolute;
+            left: 0;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid #10b981;
+        }
+        
+        .section h2 {
+            color: #1e40af;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h3 {
+            color: #374151;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .section h4 {
+            color: #4b5563;
+            font-size: 1.1em;
+            margin: 20px 0 10px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #f59e0b;
+            margin: 20px 0;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fef2f2, #fecaca);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #ef4444;
+            margin: 20px 0;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #f0fdf4, #bbf7d0);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #10b981;
+            margin: 20px 0;
+        }
+        
+        .checklist {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .checklist ul {
+            list-style: none;
+        }
+        
+        .checklist li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            color: #6b7280;
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .contact-box h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
+        .contact-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #fbbf24;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #10b981;
+        }
+        
+        .card h4 {
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: #1f2937;
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .footer h3 {
+            color: #fbbf24;
+            margin-bottom: 15px;
+        }
+        
+        @media print {
+            .container {
+                max-width: none;
+                padding: 20px;
+            }
+            
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌴 Kerala Reiseführer 2025</h1>
+            <p class="subtitle">Authentische Ayurveda-Kuren, Yoga-Retreats & Rundreisen</p>
+        </div>
+
+        <div class="toc">
+            <h2>📋 Inhaltsverzeichnis</h2>
+            <ul>
+                <li><a href="#kerala-uberblick">Kerala im Überblick</a></li>
+                <li><a href="#reisezeit">Beste Reisezeit</a></li>
+                <li><a href="#packliste">Packliste</a></li>
+                <li><a href="#ayurveda">Ayurveda-Basics</a></li>
+                <li><a href="#kultur">Kulturelle Hinweise</a></li>
+                <li><a href="#ziele">Top Ziele</a></li>
+                <li><a href="#essen">Essen & Trinken</a></li>
+                <li><a href="#transport">Transport & Unterkunft</a></li>
+                <li><a href="#sicherheit">Sicherheit & Gesundheit</a></li>
+                <li><a href="#kontakte">Kontakte & Notfallnummern</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="kerala-uberblick">
+            <h2><span class="emoji">🌴</span>Kerala im Überblick</h2>
+            <p>Kerala, auch "Gottes eigenes Land" genannt, liegt im Südwesten Indiens und ist bekannt für:</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h4>🏞️ Backwaters</h4>
+                    <p>Einzigartige Kanäle und Lagunen</p>
+                </div>
+                <div class="card">
+                    <h4>🧘 Ayurveda</h4>
+                    <p>Jahrtausende alte Heilkunst</p>
+                </div>
+                <div class="card">
+                    <h4>🌿 Natur</h4>
+                    <p>Teeplantagen, Kokospalmen, Strände</p>
+                </div>
+                <div class="card">
+                    <h4>🎭 Kultur</h4>
+                    <p>Tempel, Feste, traditionelle Kunst</p>
+                </div>
+            </div>
+
+            <h3>Wichtige Städte</h3>
+            <ul>
+                <li><strong>Kochi (Cochin)</strong>: Hauptstadt, Flughafen, historische Altstadt</li>
+                <li><strong>Alleppey</strong>: Backwaters, Hausboote</li>
+                <li><strong>Munnar</strong>: Teeplantagen, Hügellandschaft</li>
+                <li><strong>Varkala</strong>: Strand, Yoga, Ayurveda</li>
+                <li><strong>Kovalam</strong>: Beliebter Strandort</li>
+            </ul>
+        </div>
+
+        <div class="section" id="reisezeit">
+            <h2><span class="emoji">📅</span>Beste Reisezeit</h2>
+            
+            <div class="success-box">
+                <h3>✅ November - März (Trockenzeit)</h3>
+                <ul>
+                    <li><strong>Optimal für Rundreisen</strong></li>
+                    <li>Warm, aber angenehm (25-32°C)</li>
+                    <li>Wenig Regen</li>
+                    <li>Beste Zeit für Backwaters</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🧘 Juni - September (Monsun)</h3>
+                <ul>
+                    <li><strong>Traditionell beste Zeit für Ayurveda-Kuren</strong></li>
+                    <li>Kühler (22-28°C)</li>
+                    <li>Intensive Regenfälle</li>
+                    <li>Grüne, üppige Natur</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ April - Mai (Vormonsun)</h3>
+                <ul>
+                    <li>Sehr heiß (30-35°C)</li>
+                    <li>Hohe Luftfeuchtigkeit</li>
+                    <li>Wenig Touristen</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="packliste">
+            <h2><span class="emoji">🧳</span>Packliste</h2>
+            
+            <h3>Kleidung</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Leichte, atmungsaktive Kleidung (Baumwolle, Leinen)</li>
+                    <li>Lange Hosen/Röcke für Tempelbesuche</li>
+                    <li>Langärmelige Shirts für Sonnenschutz</li>
+                    <li>Badekleidung für Strand und Ayurveda</li>
+                    <li>Regenjacke (besonders in Monsunzeit)</li>
+                    <li>Bequeme Schuhe (Sandalen, Turnschuhe)</li>
+                    <li>Socken für Tempel (barfuß, aber Socken erlaubt)</li>
+                </ul>
+            </div>
+
+            <h3>Ayurveda-Extras</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Zungenschaber (Kupfer oder Edelstahl)</li>
+                    <li>Öl für Nasya (Sesamöl)</li>
+                    <li>Kräutertee (Ingwer, Tulsi)</li>
+                    <li>Yoga-Matte (falls nicht vor Ort verfügbar)</li>
+                </ul>
+            </div>
+
+            <h3>Elektronik</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Steckdosenadapter (Typ D, M - 230V)</li>
+                    <li>Powerbank für Ausflüge</li>
+                    <li>Kamera mit wasserdichter Hülle</li>
+                    <li>Handy mit WhatsApp (wichtig für Kommunikation)</li>
+                </ul>
+            </div>
+
+            <h3>Gesundheit</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Reiseapotheke (Durchfallmittel, Schmerztabletten)</li>
+                    <li>Mückenschutz (DEET-haltig)</li>
+                    <li>Sonnenschutz (hoher LSF)</li>
+                    <li>Handdesinfektionsmittel</li>
+                    <li>Impfpass (Hepatitis A/B empfohlen)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="ayurveda">
+            <h2><span class="emoji">🧘</span>Ayurveda-Basics</h2>
+            
+            <h3>Was ist Ayurveda?</h3>
+            <p>Ayurveda ist eine 5000 Jahre alte Heilkunst, die auf dem Gleichgewicht der drei Doshas basiert:</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <h4>🌬️ Vata</h4>
+                    <p>Luft/Raum - Bewegung, Nervensystem</p>
+                </div>
+                <div class="card">
+                    <h4>🔥 Pitta</h4>
+                    <p>Feuer/Wasser - Verdauung, Stoffwechsel</p>
+                </div>
+                <div class="card">
+                    <h4>🌍 Kapha</h4>
+                    <p>Erde/Wasser - Struktur, Stabilität</p>
+                </div>
+            </div>
+
+            <h3>Typische Anwendungen</h3>
+            <ul>
+                <li><strong>Abhyanga</strong>: Ölmassage mit warmen Ölen</li>
+                <li><strong>Shirodhara</strong>: Ölstrom auf die Stirn</li>
+                <li><strong>Panchakarma</strong>: Entgiftungs- und Reinigungstherapie</li>
+                <li><strong>Nasya</strong>: Nasenbehandlung mit Ölen</li>
+                <li><strong>Kizhi</strong>: Kräuterstempel-Massage</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>💡 Tipps für Einsteiger</h3>
+                <ol>
+                    <li><strong>Langsam starten</strong> - nicht alle Anwendungen auf einmal</li>
+                    <li><strong>Viel trinken</strong> - besonders nach Massagen</li>
+                    <li><strong>Ruhe einplanen</strong> - Ayurveda wirkt entspannend</li>
+                    <li><strong>Offen sein</strong> - für neue Erfahrungen</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="section" id="kultur">
+            <h2><span class="emoji">🙏</span>Kulturelle Hinweise</h2>
+            
+            <h3>Kleidung</h3>
+            <ul>
+                <li><strong>Tempelbesuche</strong>: Schultern und Knie bedeckt</li>
+                <li><strong>Frauen</strong>: Vermeiden Sie zu enge oder aufreizende Kleidung</li>
+                <li><strong>Männer</strong>: Lange Hosen in religiösen Stätten</li>
+                <li><strong>Schuhe</strong>: In Tempeln und Privathäusern ausziehen</li>
+            </ul>
+
+            <h3>Verhalten</h3>
+            <ul>
+                <li><strong>Respektvoll</strong>: Zeigen Sie Respekt vor religiösen Stätten</li>
+                <li><strong>Fotos</strong>: Fragen Sie vor dem Fotografieren von Menschen</li>
+                <li><strong>Linkshändig</strong>: Verwenden Sie die rechte Hand zum Essen/Geben</li>
+                <li><strong>Kopf</strong>: Berühren Sie niemals jemandes Kopf</li>
+            </ul>
+
+            <h3>Trinkgeld</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>🍽️ Restaurants</h4>
+                    <p>10-15% des Rechnungsbetrags</p>
+                </div>
+                <div class="card">
+                    <h4>🚗 Fahrer/Guide</h4>
+                    <p>200-500 INR pro Tag</p>
+                </div>
+                <div class="card">
+                    <h4>🏨 Hotelpersonal</h4>
+                    <p>50-100 INR pro Service</p>
+                </div>
+                <div class="card">
+                    <h4>🧘 Ayurveda-Therapeuten</h4>
+                    <p>100-200 INR pro Behandlung</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="ziele">
+            <h2><span class="emoji">🏞️</span>Top Ziele</h2>
+            
+            <div class="card">
+                <h3>🚤 Backwaters (Alleppey)</h3>
+                <ul>
+                    <li><strong>Hausboot-Touren</strong>: 1-3 Tage auf traditionellen Kettuvallams</li>
+                    <li><strong>Dorfbesuche</strong>: Authentische Einblicke in das ländliche Leben</li>
+                    <li><strong>Kanu-Touren</strong>: Durch schmale Kanäle</li>
+                    <li><strong>Beste Zeit</strong>: November - März</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🌿 Munnar</h3>
+                <ul>
+                    <li><strong>Teeplantagen</strong>: Besichtigungen und Wanderungen</li>
+                    <li><strong>Eravikulam National Park</strong>: Nilgiri-Tahr (Bergziegen)</li>
+                    <li><strong>Mattupetty Dam</strong>: Stausee mit Bootsfahrten</li>
+                    <li><strong>Klima</strong>: Kühl und angenehm (15-25°C)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🏛️ Kochi (Cochin)</h3>
+                <ul>
+                    <li><strong>Fort Kochi</strong>: Historische Altstadt mit Kolonialarchitektur</li>
+                    <li><strong>Chinesische Fischernetze</strong>: Traditionelle Fischereimethode</li>
+                    <li><strong>Jüdische Synagoge</strong>: Älteste Synagoge im Commonwealth</li>
+                    <li><strong>Kathakali</strong>: Traditionelle Tanzdramen</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🏖️ Varkala</h3>
+                <ul>
+                    <li><strong>Klippenstrand</strong>: Einzigartige Lage auf Klippen</li>
+                    <li><strong>Yoga-Studios</strong>: Zahlreiche Angebote für alle Levels</li>
+                    <li><strong>Ayurveda-Zentren</strong>: Professionelle Behandlungen</li>
+                    <li><strong>Sonnenuntergänge</strong>: Spektakuläre Aussichten</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="essen">
+            <h2><span class="emoji">🍽️</span>Essen & Trinken</h2>
+            
+            <h3>Typische Gerichte</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>🥞 Dosa</h4>
+                    <p>Dünne Reispfannkuchen mit verschiedenen Füllungen</p>
+                </div>
+                <div class="card">
+                    <h4>🍚 Idli</h4>
+                    <p>Gedämpfte Reiskuchen</p>
+                </div>
+                <div class="card">
+                    <h4>🍲 Sambhar</h4>
+                    <p>Würzige Linsensuppe</p>
+                </div>
+                <div class="card">
+                    <h4>🥥 Coconut Chutney</h4>
+                    <p>Kokosnuss-Dip</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Sicherheit beim Essen</h3>
+                <ul>
+                    <li><strong>Wasser</strong>: Nur abgefülltes Wasser trinken</li>
+                    <li><strong>Eis</strong>: Vermeiden Sie Eis in Getränken</li>
+                    <li><strong>Obst</strong>: Nur geschältes Obst essen</li>
+                    <li><strong>Straßenstände</strong>: Vorsichtig bei rohen Salaten</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="transport">
+            <h2><span class="emoji">🚗</span>Transport & Unterkunft</h2>
+            
+            <h3>Anreise</h3>
+            <ul>
+                <li><strong>Flughafen</strong>: Kochi International Airport (COK)</li>
+                <li><strong>Direktflüge</strong>: Von Dubai, Singapur, Frankfurt</li>
+                <li><strong>Inlandsflüge</strong>: Von Delhi, Mumbai, Bangalore</li>
+            </ul>
+
+            <h3>Transport vor Ort</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>🚕 Taxi</h4>
+                    <p>Bequem, aber teuer</p>
+                </div>
+                <div class="card">
+                    <h4>🚙 Auto mieten</h4>
+                    <p>Mit Fahrer empfohlen</p>
+                </div>
+                <div class="card">
+                    <h4>🚌 Bus</h4>
+                    <p>Günstig, aber langsam</p>
+                </div>
+                <div class="card">
+                    <h4>🚂 Zug</h4>
+                    <p>Scenic, besonders Munnar</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="sicherheit">
+            <h2><span class="emoji">🏥</span>Sicherheit & Gesundheit</h2>
+            
+            <h3>Impfungen</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Hepatitis A (empfohlen)</li>
+                    <li>Hepatitis B (bei längerem Aufenthalt)</li>
+                    <li>Typhus (bei ländlichen Gebieten)</li>
+                    <li>Tollwut (bei Tierkontakt möglich)</li>
+                </ul>
+            </div>
+
+            <h3>Notfallkontakte</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>🚨 Polizei</h4>
+                    <p>100</p>
+                </div>
+                <div class="card">
+                    <h4>🚒 Feuerwehr</h4>
+                    <p>101</p>
+                </div>
+                <div class="card">
+                    <h4>🚑 Rettungsdienst</h4>
+                    <p>108</p>
+                </div>
+                <div class="card">
+                    <h4>👮 Tourist Police</h4>
+                    <p>1091</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <h3>📞 Ayurveda Kerala Team</h3>
+            <p>Wir sind für Sie da - vor, während und nach Ihrer Reise!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>WhatsApp</strong>
+                    +49 123 456 789
+                </div>
+                <div class="contact-item">
+                    <strong>E-Mail</strong>
+                    info@ayurveda-kerala.de
+                </div>
+                <div class="contact-item">
+                    <strong>Website</strong>
+                    www.ayurveda-kerala.de
+                </div>
+                <div class="contact-item">
+                    <strong>Bürozeiten</strong>
+                    Mo-Fr 9-18 Uhr<br>Sa 10-14 Uhr
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">💡</span>Insider-Tipps</h2>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h4>💰 Geld</h4>
+                    <ul>
+                        <li>Währung: Indische Rupie (INR)</li>
+                        <li>ATM: In größeren Städten verfügbar</li>
+                        <li>Kreditkarten: In Hotels akzeptiert</li>
+                        <li>Bargeld: Für Märkte wichtig</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>📱 Internet</h4>
+                    <ul>
+                        <li>WiFi: In den meisten Hotels</li>
+                        <li>SIM-Karte: Lokale Anbieter</li>
+                        <li>Roaming: Deutsche Anbieter oft teuer</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Checkliste vor der Abreise</h3>
+            <div class="checklist">
+                <ul>
+                    <li>Visum beantragen</li>
+                    <li>Impfungen auffrischen</li>
+                    <li>Reiseversicherung abschließen</li>
+                    <li>Flugtickets buchen</li>
+                    <li>Unterkunft bestätigen</li>
+                    <li>Transfers organisieren</li>
+                    <li>Geld wechseln</li>
+                    <li>Koffer packen</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>🎯 Viel Spaß in Kerala!</h3>
+            <p>Mit diesem Reiseführer sind Sie bestens vorbereitet für eine unvergessliche Reise nach Kerala!</p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                © 2025 Ayurveda Kerala - Alle Rechte vorbehalten
+            </p>
+        </div>
+    </div>
+</body>
+</html>

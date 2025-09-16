@@ -1,6 +1,6 @@
 ---
-title: "Ayurveda Kur (14 Tage)"
-description: "Traditionelle Ayurveda-Kuren in Kerala mit Yoga, Meditation und gesunder Ernährung."
+title: "Ayurveda Kur"
+description: "Authentische Ayurveda-Kuren in Kerala: Panchakarma, Yoga, Meditation und ayurvedische Küche für ganzheitliche Regeneration."
 image: "/images/ayurveda-massage.jpg"
 price: "1299"
 duration: "14 Tage"
@@ -19,4 +19,4 @@ reviews:
     rating: "4"
 ---
 
-Erleben Sie eine **14-tägige authentische Ayurveda-Kur** in Kerala.
+Erleben Sie eine **authentische Ayurveda-Kur** in Kerala mit traditionellen Panchakarma-Anwendungen, Yoga und ayurvedischer Ernährung.

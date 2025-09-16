@@ -1,5 +1,6 @@
 ---
 title: "Impressum"
+description: "Impressum und rechtliche Angaben von Ayurveda Kerala - Reiseberatung für Ayurveda-Kuren und Yoga-Retreats in Kerala, Indien."
 url: "/impressum/"
 ---
 
@@ -10,8 +11,8 @@ Musterstraße 12
 70193 Stuttgart / Leonberg  
 Deutschland  
 
-Telefon: +49 123 456 789  
-E-Mail: info@ayurveda-kerala.de  
+Telefon: +49 15233145220  
+E-Mail: sebastiantinu@gmail.com  
 
 **Vertreten durch:**  
 Sebastian Tinu  

@@ -37,8 +37,11 @@
   {{- $org := dict "@context" "https://schema.org" "@type" "Organization" "name" "Ayurveda Kerala" "url" .Site.BaseURL "logo" (printf "%simages/logo.png" .Site.BaseURL) "contactPoint" (dict "@type" "ContactPoint" "telephone" (printf "+%s" (default "49123456789" .Site.Params.whatsapp.number)) "contactType" "customer service" "areaServed" "DE" "availableLanguage" "German") "sameAs" (slice "https://www.facebook.com/ayurvedakerala" "https://www.instagram.com/ayurvedakerala") -}}
   <script type="application/ld+json">{{ $org | jsonify | safeHTML }}</script>
 
-  {{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Ayurveda Kerala" "image" (printf "%simages/logo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Hauptstraße 12" "addressLocality" "Leonberg" "postalCode" "71229" "addressCountry" "DE") "telephone" (printf "+%s" (default "49123456789" .Site.Params.whatsapp.number)) "priceRange" "$$" -}}
+  {{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Ayurveda Kerala" "image" (printf "%simages/logo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Hauptstraße 12" "addressLocality" "Leonberg" "postalCode" "71229" "addressCountry" "DE") "telephone" (printf "+%s" (default "49123456789" .Site.Params.whatsapp.number)) "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" -}}
   <script type="application/ld+json">{{ $lb | jsonify | safeHTML }}</script>
+
+  {{- $service := dict "@context" "https://schema.org" "@type" "Service" "name" "Ayurveda Reisen Kerala" "description" "Deutschsprachige Beratung für Ayurveda-Kuren, Yoga-Retreats und Rundreisen in Kerala, Indien" "provider" (dict "@type" "Organization" "name" "Ayurveda Kerala") "areaServed" (dict "@type" "Country" "name" "Deutschland") "serviceType" "Reiseberatung" "offers" (dict "@type" "Offer" "priceCurrency" "EUR" "availability" "https://schema.org/InStock") -}}
+  <script type="application/ld+json">{{ $service | jsonify | safeHTML }}</script>
 
   <link rel="icon" href="/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">

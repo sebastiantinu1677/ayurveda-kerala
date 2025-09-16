@@ -15,4 +15,3 @@ Finden Sie Ihr passendes Yoga-Retreat in Indien: Kerala für Natur & Ayurveda, G
 
 {{< relref "/reisen/yoga-retreat-kerala.md" >}}
 
-
