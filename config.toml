@@ -21,3 +21,8 @@ title = "Ayurveda Kerala"
 
 [outputs]
   home = ["HTML", "RSS", "SITEMAP", "ROBOTS"]
+
+  [[menu.footer]]
+    name = "Impressum"
+    url = "/impressum/"
+    weight = 20
