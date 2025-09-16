@@ -6,6 +6,17 @@ var klaroConfig = {
     htmlTexts: true,
     acceptAll: true,
     hideDeclineAll: false,
+
+    // 👇 Add this
+    noticeAsModal: false,
+    styling: { theme: ['light'] },
+    embedded: false,
+    lang: 'de',
+    acceptAllImplicit: false,
+    // 👇 Move the popup to bottom left
+    privacyPolicy: '/privacy-policy/',
+    noticePosition: 'bottom-left',
+
     translations: {
         de: {
             consentModal: {
