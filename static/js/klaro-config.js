@@ -6,22 +6,23 @@ var klaroConfig = {
     htmlTexts: true,
     acceptAll: true,
     hideDeclineAll: false,
-
-    // 👇 Add this
-    noticeAsModal: false,
-    styling: { theme: ['light'] },
-    embedded: false,
-    lang: 'de',
-    acceptAllImplicit: false,
-    // 👇 Move the popup to bottom left
     privacyPolicy: '/privacy-policy/',
-    noticePosition: 'bottom-left',
+    lang: 'de',
+
+    // 👇 Explicitly configure notice position
+    notice: {
+        position: 'bottom-left',
+    },
 
     translations: {
         de: {
             consentModal: {
                 title: 'Cookies & Datenschutz',
                 description: 'Wir nutzen Cookies, um unsere Website und Werbedienste zu verbessern. Bitte wählen Sie, welche Sie erlauben möchten.',
+            },
+            consentNotice: {
+                description: 'Wir verwenden Cookies für Analyse und Werbung. Sie können wählen.',
+                learnMore: 'Mehr erfahren',
             },
             acceptAll: 'Alle akzeptieren',
             decline: 'Nur notwendige Cookies',
@@ -31,6 +32,7 @@ var klaroConfig = {
             },
         }
     },
+
     services: [
         {
             name: 'google-analytics',
