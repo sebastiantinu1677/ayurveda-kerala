@@ -2,65 +2,143 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ayurveda Kerala</title>
-    <link>//localhost:1313/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Ayurveda Kerala</description>
     <generator>Hugo</generator>
     <language>de-de</language>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ayurveda Deluxe Kur in Kerala</title>
+      <link>http://localhost:1313/reisen/ayurveda-deluxe-kur/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/reisen/ayurveda-deluxe-kur/</guid>
+      <description>&lt;p&gt;Diese Premium-Kur kombiniert klassische Panchakarma-Anwendungen mit modernem Komfort. Individuelle Diagnostik, tägliche Öl- und Synchronmassagen sowie achtsame Yoga-Sessions unterstützen die Regeneration.&lt;/p&gt;&#xA;&lt;h3 id=&#34;beispiel-leistungen&#34;&gt;Beispiel-Leistungen&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ärztliche Erstkonsultation und Kurplan&lt;/li&gt;&#xA;&lt;li&gt;Tägliche Anwendungen (90–120 Minuten)&lt;/li&gt;&#xA;&lt;li&gt;Ayurvedische Vollpension, Tee und Kräutergetränke&lt;/li&gt;&#xA;&lt;li&gt;Yoga &amp;amp; Meditation (täglich)&lt;/li&gt;&#xA;&lt;li&gt;Flughafentransfer und Betreuung vor Ort&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Ayurveda für Einsteiger: 7 praktische Tipps</title>
+      <link>http://localhost:1313/blog/ayurveda-tipps-fuer-einsteiger/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/ayurveda-tipps-fuer-einsteiger/</guid>
+      <description>&lt;p&gt;Ayurveda muss nicht kompliziert sein. Mit kleinen Routinen wie warmem Wasser am Morgen, Ölziehen und regelmäßigen Schlafzeiten spüren viele schon nach kurzer Zeit mehr Energie.&lt;/p&gt;&#xA;&lt;p&gt;Weitere Tipps: Saisonal kochen, Gewürze wie Ingwer und Kreuzkümmel nutzen, digitale Pausen einplanen.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ayurvedische Ernährung: Die Basics</title>
+      <link>http://localhost:1313/blog/ayurveda-ernaehrung-basics/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/ayurveda-ernaehrung-basics/</guid>
+      <description>&lt;p&gt;Im Ayurveda stehen Verdauungsfeuer (Agni) und Balance im Mittelpunkt. Warmes, frisch gekochtes Essen, Gewürze und bewusste Pausen sind zentrale Elemente.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Beste Reisezeit für Kerala: Wetter &amp; Ayurveda</title>
+      <link>http://localhost:1313/blog/beste-reisezeit-kerala/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/beste-reisezeit-kerala/</guid>
+      <description>&lt;p&gt;Zwischen November und März ist es meist trocken und angenehm warm – perfekt für Rundreisen. Der Monsun (Juni–September) ist traditionell ideal für Ayurveda-Kuren.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Golden Triangle: Delhi – Agra – Jaipur</title>
+      <link>http://localhost:1313/reisen/goldenes-dreieck-indien/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/reisen/goldenes-dreieck-indien/</guid>
+      <description>&lt;p&gt;Diese Reise führt Sie zum UNESCO-Weltkulturerbe Taj Mahal, in die Festungen und Paläste Rajasthans und in Alt- und Neu-Delhi. Ideal als Vor- oder Nachprogramm zu einer Ayurveda-Kur in Kerala.&lt;/p&gt;&#xA;&lt;h2 id=&#34;programm-beispiel&#34;&gt;Programm (Beispiel)&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Delhi: Qutub Minar, Humayun-Mausoleum, Alt-Delhi-Rikschafahrt&lt;/li&gt;&#xA;&lt;li&gt;Agra: Taj Mahal bei Sonnenaufgang, Rotes Fort&lt;/li&gt;&#xA;&lt;li&gt;Jaipur: Amber-Fort, Stadtpalast, Hawa Mahal&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Auf Wunsch organisieren wir Inlandsflüge, deutschsprachige Guides und komfortable Hotels.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kerala Backwaters Hausboot-Erlebnis</title>
+      <link>http://localhost:1313/reisen/kerala-backwaters/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/reisen/kerala-backwaters/</guid>
+      <description>&lt;p&gt;Erleben Sie die berühmten Backwaters von Kerala auf einem traditionellen Hausboot. Entschleunigen Sie zwischen Reisfeldern, Kokospalmen und kleinen Dörfern – begleitet von frisch gekochter südindischer Küche an Bord.&lt;/p&gt;&#xA;&lt;h2 id=&#34;höhepunkte&#34;&gt;Höhepunkte&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Sonnenuntergang auf den Kanälen von Alleppey&lt;/li&gt;&#xA;&lt;li&gt;Frisch zubereitetes Kerala-Mittag- und Abendessen&lt;/li&gt;&#xA;&lt;li&gt;Besuch eines Dorfmarktes und kleiner Werkstätten&lt;/li&gt;&#xA;&lt;li&gt;Optional: Kanu-Ausflug durch schmalere Kanäle&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;inklusivleistungen&#34;&gt;Inklusivleistungen&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Privates Hausboot mit klimatisierter Kabine&lt;/li&gt;&#xA;&lt;li&gt;Vollpension an Bord&lt;/li&gt;&#xA;&lt;li&gt;Transfers ab/bis Cochin nach Absprache&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Kontaktieren Sie uns für ein individuelles Angebot und kombinieren Sie das Hausboot-Erlebnis mit einer Ayurveda-Kur oder einer Rundreise.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kerala Reiseplanung: Die ultimative Checkliste</title>
+      <link>http://localhost:1313/blog/kerala-reiseplanung-checkliste/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/kerala-reiseplanung-checkliste/</guid>
+      <description>&lt;p&gt;Von e-Visa-Antrag bis Moskitonetz: Diese Checkliste führt Sie Schritt für Schritt durch die Vorbereitung. Unser Team in Kerala hilft bei Transfers und Hotelbuchungen.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Munnar &amp; Teehügel – Natur pur</title>
+      <link>http://localhost:1313/reisen/kerala-tea-hills/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/reisen/kerala-tea-hills/</guid>
+      <description>&lt;p&gt;Entdecken Sie Munnar, die malerische Hügellandschaft Keralas. Sanfte Trekkingtouren, Teeplantagenbesuche und Aussichtspunkte mit spektakulären Panoramen.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Yoga &amp; Meditation Retreat in Kerala</title>
+      <link>http://localhost:1313/reisen/yoga-retreat-kerala/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/reisen/yoga-retreat-kerala/</guid>
+      <description>&lt;p&gt;Ideal für Einsteiger und Fortgeschrittene: Morgenyoga am Strand, Atemübungen (Pranayama) und geführte Meditationen in kleiner Gruppe.&lt;/p&gt;&#xA;&lt;p&gt;Optionale Workshops: Ayurvedische Kochstunde, Gewürzplantage, Tempelzeremonie.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Yoga in Kerala: Die 5 besten Orte</title>
+      <link>http://localhost:1313/blog/yoga-in-kerala-die-besten-orte/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/yoga-in-kerala-die-besten-orte/</guid>
+      <description>&lt;p&gt;Ob Varkala, Kovalam oder die Westghats – Kerala bietet beeindruckende Kulissen für Yoga. Entscheidend sind gute Lehrer, saubere Shalas und ausgewogene Verpflegung.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ayurveda Kur (14 Tage)</title>
-      <link>//localhost:1313/reisen/ayurveda-kur/</link>
+      <link>http://localhost:1313/reisen/ayurveda-kur/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/reisen/ayurveda-kur/</guid>
+      <guid>http://localhost:1313/reisen/ayurveda-kur/</guid>
       <description>&lt;p&gt;Erleben Sie eine &lt;strong&gt;14-tägige authentische Ayurveda-Kur&lt;/strong&gt; in Kerala.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Datenschutz</title>
-      <link>//localhost:1313/datenschutz/</link>
+      <link>http://localhost:1313/datenschutz/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/datenschutz/</guid>
+      <guid>http://localhost:1313/datenschutz/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Datenschutzerklärung&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Wir freuen uns über Ihr Interesse an unserer Website. Der Schutz Ihrer personenbezogenen Daten ist uns sehr wichtig. Nachfolgend informieren wir Sie über die Verarbeitung Ihrer Daten.&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-verantwortlicher&#34;&gt;1. Verantwortlicher&lt;/h3&gt;&#xA;&lt;p&gt;Ayurveda Kerala Reisen&lt;br&gt;&#xA;Musterstraße 12, 70193 Stuttgart / Leonberg&lt;br&gt;&#xA;Telefon: +49 123 456 789&lt;br&gt;&#xA;E-Mail: &lt;a href=&#34;mailto:info@ayurveda-kerala.de&#34;&gt;info@ayurveda-kerala.de&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;2-erhebung-und-speicherung-personenbezogener-daten&#34;&gt;2. Erhebung und Speicherung personenbezogener Daten&lt;/h3&gt;&#xA;&lt;p&gt;Wir erheben personenbezogene Daten nur, wenn Sie uns diese im Rahmen Ihrer Anfrage mitteilen.&lt;/p&gt;&#xA;&lt;h3 id=&#34;3-verwendung-der-daten&#34;&gt;3. Verwendung der Daten&lt;/h3&gt;&#xA;&lt;p&gt;Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht ohne Ihre Einwilligung an Dritte weitergegeben.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Die besten Reisezeiten für Kerala</title>
-      <link>//localhost:1313/blog/reisezeit-kerala/</link>
+      <title>Datenschutzerklärung</title>
+      <link>http://localhost:1313/privacy-policy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/blog/reisezeit-kerala/</guid>
+      <guid>http://localhost:1313/privacy-policy/</guid>
+      <description>&lt;h2 id=&#34;datenschutzerklärung&#34;&gt;Datenschutzerklärung&lt;/h2&gt;&#xA;&lt;p&gt;Wir verwenden Cookies, um unsere Website zu verbessern und personalisierte Inhalte anzubieten.&lt;br&gt;&#xA;Dazu gehören:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Google Analytics&lt;/strong&gt;: Zur Analyse des Besucherverhaltens.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Google Ads&lt;/strong&gt;: Für Marketing- und Remarketing-Zwecke.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Sie können in unserem Cookie-Banner auswählen, ob Sie diese Dienste zulassen möchten.&lt;br&gt;&#xA;Ihre Einwilligung können Sie jederzeit widerrufen.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Die besten Reisezeiten für Kerala</title>
+      <link>http://localhost:1313/blog/reisezeit-kerala/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/reisezeit-kerala/</guid>
       <description>&lt;p&gt;Die beste Reisezeit für Kerala ist zwischen November und März.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Impressum</title>
-      <link>//localhost:1313/impressum/</link>
+      <link>http://localhost:1313/impressum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/impressum/</guid>
+      <guid>http://localhost:1313/impressum/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Angaben gemäß § 5 TMG&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Ayurveda Kerala Reisen&lt;br&gt;&#xA;Musterstraße 12&lt;br&gt;&#xA;70193 Stuttgart / Leonberg&lt;br&gt;&#xA;Deutschland&lt;/p&gt;&#xA;&lt;p&gt;Telefon: +49 123 456 789&lt;br&gt;&#xA;E-Mail: &lt;a href=&#34;mailto:info@ayurveda-kerala.de&#34;&gt;info@ayurveda-kerala.de&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Vertreten durch:&lt;/strong&gt;&lt;br&gt;&#xA;Sebastian Tinu&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;strong&gt;Haftungsausschluss&lt;/strong&gt;&lt;br&gt;&#xA;Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Urheberrecht&lt;/strong&gt;&lt;br&gt;&#xA;Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Kerala Rundreise</title>
-      <link>//localhost:1313/reisen/kerala-rundreise/</link>
+      <link>http://localhost:1313/reisen/kerala-rundreise/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/reisen/kerala-rundreise/</guid>
+      <guid>http://localhost:1313/reisen/kerala-rundreise/</guid>
       <description>&lt;p&gt;Entdecken Sie Kerala bei einer unvergesslichen Rundreise:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Bootstour durch die Backwaters&lt;/li&gt;&#xA;&lt;li&gt;Besuch von Teeplantagen&lt;/li&gt;&#xA;&lt;li&gt;Safari im Nationalpark&lt;/li&gt;&#xA;&lt;li&gt;Entspannung an Stränden&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Kontakt</title>
-      <link>//localhost:1313/kontakt/</link>
+      <link>http://localhost:1313/kontakt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/kontakt/</guid>
-      <description>&lt;p&gt;Wir freuen uns, von Ihnen zu hören!&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Ayurveda Kerala Reisen&lt;/strong&gt;&lt;br&gt;&#xA;Musterstraße 12&lt;br&gt;&#xA;70193 Stuttgart / Leonberg&lt;br&gt;&#xA;Deutschland&lt;/p&gt;&#xA;&lt;p&gt;Telefon: +49 123 456 789&lt;br&gt;&#xA;E-Mail: &lt;a href=&#34;mailto:info@ayurveda-kerala.de&#34;&gt;info@ayurveda-kerala.de&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&#xA;💬 WhatsApp Chat&#xA;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;&#xA;&lt;p&gt;Sie können uns auch direkt über den Live-Chat (unten rechts) erreichen.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/kontakt/</guid>
+      <description></description>
     </item>
     <item>
       <title>Warum Ayurveda in Kerala einzigartig ist</title>
-      <link>//localhost:1313/blog/ayurveda-kerala/</link>
+      <link>http://localhost:1313/blog/ayurveda-kerala/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/blog/ayurveda-kerala/</guid>
+      <guid>http://localhost:1313/blog/ayurveda-kerala/</guid>
       <description>&lt;p&gt;Kerala ist berühmt für authentische Ayurveda-Behandlungen.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Yoga &amp; Meditation</title>
-      <link>//localhost:1313/reisen/yoga-meditation/</link>
+      <link>http://localhost:1313/reisen/yoga-meditation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/reisen/yoga-meditation/</guid>
+      <guid>http://localhost:1313/reisen/yoga-meditation/</guid>
       <description>&lt;p&gt;Stärken Sie Körper und Geist mit täglichen Yoga- und Meditations-Sessions.&lt;/p&gt;</description>
     </item>
   </channel>

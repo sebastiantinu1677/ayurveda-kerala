@@ -4,6 +4,9 @@
 
   <title>{{ if .Title }}{{ .Title }} | Ayurveda Kerala{{ else }}Ayurveda Kerala – Reisen & Ayurveda-Kuren{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}Ayurveda-Reisen, Yoga-Retreats und Rundreisen in Kerala, Indien.{{ end }}">
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 
   <link rel="icon" href="{{ .Site.Params.favicon }}" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -40,19 +43,21 @@
   <link rel="icon" href="/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{{ .Title }} | Ayurveda Kerala" />
+  <meta property="og:title" content="{{ if .Title }}{{ .Title }} | Ayurveda Kerala{{ else }}Ayurveda Kerala – Reisen & Ayurveda-Kuren{{ end }}" />
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}Authentische Ayurveda- & Kerala-Reisen aus Deutschland{{ end }}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ .Permalink }}" />
-  <meta property="og:image" content="{{ with .Params.image }}{{ . }}{{ else }}/images/hero-backwaters.jpg{{ end }}" />
+  <meta property="og:image" content="{{ with .Params.image }}{{ . | relURL }}{{ else }}{{ with .Site.Params.defaultImage }}{{ . | relURL }}{{ else }}/images/hero-backwaters.jpg{{ end }}{{ end }}" />
+  <meta property="og:site_name" content="Ayurveda Kerala" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ .Title }} | Ayurveda Kerala" />
+  <meta name="twitter:title" content="{{ if .Title }}{{ .Title }} | Ayurveda Kerala{{ else }}Ayurveda Kerala – Reisen & Ayurveda-Kuren{{ end }}" />
   <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}Authentische Ayurveda- & Kerala-Reisen aus Deutschland{{ end }}" />
-  <meta name="twitter:image" content="{{ with .Params.image }}{{ . }}{{ else }}/images/hero-backwaters.jpg{{ end }}" />
+  <meta name="twitter:image" content="{{ with .Params.image }}{{ . | relURL }}{{ else }}{{ with .Site.Params.defaultImage }}{{ . | relURL }}{{ else }}/images/hero-backwaters.jpg{{ end }}{{ end }}" />
 
   <!-- Crisp Chat -->
   <script type="text/javascript">
@@ -67,7 +72,16 @@
   })();
   </script>
 
-  <link rel="canonical" href="https://ayurveda-kerala.de{{ .RelPermalink }}">
+  <link rel="canonical" href="{{ .Site.BaseURL }}{{ .RelPermalink }}">
+  <link rel="alternate" hreflang="de" href="{{ .Permalink }}" />
+  <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+  {{- if eq .Kind "home" -}}
+  <script type="application/ld+json">
+  {{- $website := dict "@context" "https://schema.org" "@type" "WebSite" "url" .Site.BaseURL "name" "Ayurveda Kerala" "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q={search_term_string}" .Site.BaseURL) "query-input" "required name=search_term_string") -}}
+  {{ $website | jsonify | safeHTML }}
+  </script>
+  {{- end -}}
+  <link rel="preload" href="/css/custom.css" as="style">
   <link rel="stylesheet" href="/css/custom.css">
 
 </head>

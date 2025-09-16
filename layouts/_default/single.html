@@ -2,7 +2,7 @@
 <article class="max-w-3xl mx-auto py-12 px-4">
   <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
   {{ with .Params.image }}
-    <img loading="lazy" src="{{ . }}" alt="{{ $.Title }}" class="w-full h-64 object-cover rounded mb-6">
+    <img loading="lazy" src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-64 object-cover rounded mb-6">
   {{ end }}
   <div class="prose max-w-none">
     {{ .Content }}

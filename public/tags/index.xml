@@ -2,10 +2,137 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Ayurveda Kerala</title>
-    <link>//localhost:1313/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Ayurveda Kerala</description>
     <generator>Hugo</generator>
     <language>de-de</language>
-    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ayurveda</title>
+      <link>http://localhost:1313/tags/ayurveda/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ayurveda/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Backwaters</title>
+      <link>http://localhost:1313/tags/backwaters/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/backwaters/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ernährung</title>
+      <link>http://localhost:1313/tags/ern%C3%A4hrung/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ern%C3%A4hrung/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gesundheit</title>
+      <link>http://localhost:1313/tags/gesundheit/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/gesundheit/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hausboot</title>
+      <link>http://localhost:1313/tags/hausboot/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hausboot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Indien</title>
+      <link>http://localhost:1313/tags/indien/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/indien/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kerala</title>
+      <link>http://localhost:1313/tags/kerala/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/kerala/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kulturreise</title>
+      <link>http://localhost:1313/tags/kulturreise/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/kulturreise/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Meditation</title>
+      <link>http://localhost:1313/tags/meditation/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/meditation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Munnar</title>
+      <link>http://localhost:1313/tags/munnar/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/munnar/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Natur</title>
+      <link>http://localhost:1313/tags/natur/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/natur/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Panchakarma</title>
+      <link>http://localhost:1313/tags/panchakarma/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/panchakarma/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reisetipps</title>
+      <link>http://localhost:1313/tags/reisetipps/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/reisetipps/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reisezeit</title>
+      <link>http://localhost:1313/tags/reisezeit/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/reisezeit/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Retreat</title>
+      <link>http://localhost:1313/tags/retreat/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/retreat/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Taj Mahal</title>
+      <link>http://localhost:1313/tags/taj-mahal/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/taj-mahal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wandern</title>
+      <link>http://localhost:1313/tags/wandern/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/wandern/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Yoga</title>
+      <link>http://localhost:1313/tags/yoga/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/yoga/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

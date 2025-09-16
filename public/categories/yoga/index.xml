@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yoga on Ayurveda Kerala</title>
+    <link>http://localhost:1313/categories/yoga/</link>
+    <description>Recent content in Yoga on Ayurveda Kerala</description>
+    <generator>Hugo</generator>
+    <language>de-de</language>
+    <lastBuildDate>Tue, 16 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/yoga/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Yoga &amp; Meditation Retreat in Kerala</title>
+      <link>http://localhost:1313/reisen/yoga-retreat-kerala/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/reisen/yoga-retreat-kerala/</guid>
+      <description>&lt;p&gt;Ideal für Einsteiger und Fortgeschrittene: Morgenyoga am Strand, Atemübungen (Pranayama) und geführte Meditationen in kleiner Gruppe.&lt;/p&gt;&#xA;&lt;p&gt;Optionale Workshops: Ayurvedische Kochstunde, Gewürzplantage, Tempelzeremonie.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Yoga in Kerala: Die 5 besten Orte</title>
+      <link>http://localhost:1313/blog/yoga-in-kerala-die-besten-orte/</link>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/yoga-in-kerala-die-besten-orte/</guid>
+      <description>&lt;p&gt;Ob Varkala, Kovalam oder die Westghats – Kerala bietet beeindruckende Kulissen für Yoga. Entscheidend sind gute Lehrer, saubere Shalas und ausgewogene Verpflegung.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://ayurveda-kerala.de/"
 languageCode = "de-de"
 title = "Ayurveda Kerala"
 
@@ -8,6 +8,11 @@ title = "Ayurveda Kerala"
 [params]
   googleAnalytics = "AW-17574288605"
   favicon = "/images/favicon.ico"
+  defaultImage = "/images/hero-backwaters.jpg"
+  twitter = "https://twitter.com/ayurvedakerala"
+  facebook = "https://www.facebook.com/ayurvedakerala"
+  instagram = "https://www.instagram.com/ayurvedakerala"
+  email = "info@ayurveda-kerala.de"
 
 [params.whatsapp]
   number = "49123456789"

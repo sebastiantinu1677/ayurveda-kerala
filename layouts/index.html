@@ -1,32 +1,106 @@
 {{ define "main" }}
 
 <!-- Hero -->
-<section class="relative bg-yellow-50 py-20 text-center">
-  <img loading="lazy" src="/images/hero-backwaters.jpg" alt="Ayurveda Kerala" class="absolute inset-0 w-full h-full object-cover opacity-40">
-  <div class="relative z-10">
-    <h1 class="text-5xl font-bold mb-4">Ayurveda & Reisen in Kerala</h1>
-    <p class="text-lg mb-6">Authentische Ayurveda-Kuren, Yoga-Retreats und unvergessliche Rundreisen</p>
-    <a href="/reisen/" class="bg-yellow-600 text-white px-6 py-3 rounded-lg shadow hover:bg-yellow-700">Unsere Reisen ansehen</a>
+<section class="relative bg-yellow-50 py-24 text-center overflow-hidden">
+  <video class="absolute inset-0 w-full h-full object-cover opacity-40" autoplay muted loop playsinline poster="/images/hero-backwaters.jpg">
+    <source src="/images/hero-backwaters.webm" type="video/webm">
+    <source src="/images/hero-backwaters.mp4" type="video/mp4">
+  </video>
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-5 drop-shadow">Ayurveda, Yoga & Reisen in Kerala</h1>
+    <p class="text-xl md:text-2xl mb-8">Mit deutschsprachiger Beratung, lokalen Partnern und fairen Preisen.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/reisen/" class="bg-yellow-600 text-white px-8 py-4 rounded-lg shadow hover:bg-yellow-700 font-semibold">Reisen entdecken</a>
+      <a href="/kontakt/" class="bg-white text-yellow-700 px-8 py-4 rounded-lg shadow hover:bg-gray-100 font-semibold">Kostenlose Beratung</a>
+    </div>
+  </div>
+</section>
+
+<!-- USPs -->
+<section class="max-w-6xl mx-auto py-16 px-6 reveal">
+  <h2 class="text-3xl font-bold mb-8 text-center">Warum mit Ayurveda Kerala?</h2>
+  <div class="grid md:grid-cols-4 gap-6">
+    <div class="bg-white rounded-lg shadow p-6 reveal-item">
+      <h3 class="font-semibold text-lg mb-2">Deutschsprachige Betreuung</h3>
+      <p class="text-gray-600 text-sm">Beratung vor der Reise und Ansprechpartner vor Ort.</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6 reveal-item">
+      <h3 class="font-semibold text-lg mb-2">Handverlesene Partner</h3>
+      <p class="text-gray-600 text-sm">Ayurveda-Resorts, Guides und Fahrer mit Top-Bewertungen.</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6 reveal-item">
+      <h3 class="font-semibold text-lg mb-2">Flexible Bausteine</h3>
+      <p class="text-gray-600 text-sm">Kombinieren Sie Kur, Rundreise und Strand nach Wunsch.</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6 reveal-item">
+      <h3 class="font-semibold text-lg mb-2">Transparente Preise</h3>
+      <p class="text-gray-600 text-sm">Faire Konditionen ohne versteckte Gebühren.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Top Ziele -->
+<section class="max-w-6xl mx-auto py-16 px-6 reveal">
+  <h2 class="text-3xl font-bold mb-8 text-center">Top Ziele in Kerala</h2>
+  <div class="grid md:grid-cols-3 gap-8">
+    <a href="/reisen/kerala-backwaters/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
+      <img loading="lazy" src="/images/houseboat-backwaters.jpg" alt="Backwaters" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold">Backwaters</h3>
+        <p class="text-gray-600 text-sm">Hausboot, Kanäle & Dorferlebnisse</p>
+      </div>
+    </a>
+    <a href="/reisen/kerala-tea-hills/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
+      <img loading="lazy" src="/images/kerala-tea.jpg" alt="Munnar Teehügel" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold">Munnar</h3>
+        <p class="text-gray-600 text-sm">Teeplantagen & milde Wanderungen</p>
+      </div>
+    </a>
+    <a href="/reisen/yoga-retreat-kerala/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
+      <img loading="lazy" src="/images/sunset-beach.jpg" alt="Strand Kerala" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold">Strand</h3>
+        <p class="text-gray-600 text-sm">Yoga am Meer & Ayurveda</p>
+      </div>
+    </a>
   </div>
 </section>
 
 <!-- Featured Reisen -->
-<section class="max-w-6xl mx-auto py-16 px-6">
+<section class="max-w-6xl mx-auto py-16 px-6 reveal">
   <h2 class="text-3xl font-bold mb-8 text-center">Beliebte Reisen</h2>
   <div class="grid md:grid-cols-3 gap-8">
     {{ range first 3 (where .Site.RegularPages "Section" "reisen") }}
-      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow hover:shadow-lg transition">
+      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow hover:shadow-lg transition relative overflow-hidden reveal-item">
         {{ with .Params.image }}
-          <img loading="lazy" src="{{ . }}" alt="{{ $.Title }}" class="w-full h-48 object-cover rounded-t-lg">
+          <img loading="lazy" src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-48 object-cover rounded-t-lg">
         {{ end }}
+        <div class="absolute top-3 left-3">
+          <span class="bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded">Beliebtestes Paket</span>
+        </div>
         <div class="p-4">
           <h3 class="text-xl font-semibold mb-2">{{ .Title }}</h3>
           <p class="text-gray-600 text-sm">{{ .Description }}</p>
+          {{ with .Params.duration }}
+            <span class="inline-block mt-3 text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Ideal für {{ . }}</span>
+          {{ end }}
         </div>
       </a>
     {{ end }}
   </div>
 </section>
+
+<!-- WhatsApp CTA -->
+<section class="bg-green-700 text-yellow-200 py-10">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div>
+      <h3 class="text-2xl font-bold">Schnelle Fragen? Schreiben Sie uns auf WhatsApp!</h3>
+      <p class="text-yellow-100">Wir antworten in der Regel innerhalb weniger Minuten.</p>
+    </div>
+    <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" class="bg-yellow-500 text-green-900 px-6 py-3 rounded-lg font-semibold shadow hover:bg-yellow-400">Jetzt chatten</a>
+  </div>
+ </section>
 
 <!-- Latest Blog -->
 <section class="bg-gray-100 py-16 px-6">
@@ -35,7 +109,7 @@
     {{ range first 2 (where .Site.RegularPages "Section" "blog") }}
       <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow hover:shadow-lg transition">
         {{ with .Params.image }}
-          <img loading="lazy" src="{{ . }}" alt="{{ $.Title }}" class="w-full h-48 object-cover rounded-t-lg">
+          <img loading="lazy" src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-48 object-cover rounded-t-lg">
         {{ end }}
         <div class="p-4">
           <h3 class="text-xl font-semibold mb-2">{{ .Title }}</h3>
@@ -46,26 +120,110 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="max-w-5xl mx-auto py-16 px-6">
+  <h2 class="text-3xl font-bold mb-8 text-center">Häufige Fragen</h2>
+  <div class="space-y-4">
+    <details class="bg-white shadow rounded-lg p-4">
+      <summary class="font-semibold cursor-pointer">Wann ist die beste Reisezeit für Kerala?</summary>
+      <p class="mt-2 text-gray-700">November bis März gelten als optimal für Rundreisen. Für Ayurveda-Kuren ist der Monsun (Juni–September) traditionell sehr geeignet.</p>
+    </details>
+    <details class="bg-white shadow rounded-lg p-4">
+      <summary class="font-semibold cursor-pointer">Wie läuft eine Ayurveda-Kur ab?</summary>
+      <p class="mt-2 text-gray-700">Nach einer ärztlichen Erstkonsultation erhalten Sie einen individuellen Plan mit täglichen Anwendungen, angepasster Ernährung und Yoga.</p>
+    </details>
+    <details class="bg-white shadow rounded-lg p-4">
+      <summary class="font-semibold cursor-pointer">Ist deutschsprachige Betreuung möglich?</summary>
+      <p class="mt-2 text-gray-700">Ja. Wir beraten vorab auf Deutsch und haben verlässliche Partner vor Ort.</p>
+    </details>
+  </div>
+</section>
 <!-- Reviews -->
-<section id="reviews" class="max-w-5xl mx-auto py-16 px-6">
-  <h2 class="text-3xl font-bold mb-8 text-center">Kundenbewertungen</h2>
-  <div class="grid md:grid-cols-3 gap-6">
-    <div class="bg-white shadow rounded-lg p-6">
-      <p class="text-yellow-500">★★★★★</p>
-      <p class="mt-2">„Eine unvergessliche Ayurveda-Kur – ich komme wieder!“</p>
-      <p class="mt-2 font-semibold">– Anna M.</p>
-    </div>
-    <div class="bg-white shadow rounded-lg p-6">
-      <p class="text-yellow-500">★★★★★</p>
-      <p class="mt-2">„Sehr gut organisiert, wunderschöne Natur und tolle Betreuung.“</p>
-      <p class="mt-2 font-semibold">– Thomas B.</p>
-    </div>
-    <div class="bg-white shadow rounded-lg p-6">
-      <p class="text-yellow-500">★★★★☆</p>
-      <p class="mt-2">„Yoga und Meditation haben mir viel innere Ruhe gebracht.“</p>
-      <p class="mt-2 font-semibold">– Sabine K.</p>
+<section id="reviews" class="max-w-6xl mx-auto py-16 px-6 reveal">
+  <div class="max-w-4xl mx-auto text-center mb-6">
+    <div class="inline-flex items-center gap-2 bg-white shadow rounded-full px-4 py-2">
+      <span class="text-yellow-500">★★★★★</span>
+      <span class="font-semibold">4,8/5</span>
+      <span class="text-gray-600">aus 120+ Bewertungen</span>
     </div>
   </div>
+  <h2 class="text-3xl font-bold mb-8 text-center">Kundenstimmen</h2>
+  <div class="relative overflow-hidden">
+    <div id="testimonial-track" class="flex transition-transform duration-500 ease-out">
+      <div class="min-w-full md:min-w-[50%] px-3">
+        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
+          <img src="/images/kerala-office.jpg" alt="Anna" class="w-16 h-16 rounded-full object-cover">
+          <div>
+            <p class="text-yellow-500">★★★★★</p>
+            <p class="mt-1">„Eine unvergessliche Ayurveda-Kur – ich komme wieder!“</p>
+            <p class="mt-1 font-semibold">– Anna M.</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-3">
+        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
+          <img src="/images/smiling-traveler.jpg" alt="Thomas" class="w-16 h-16 rounded-full object-cover">
+          <div>
+            <p class="text-yellow-500">★★★★★</p>
+            <p class="mt-1">„Sehr gut organisiert, wunderschöne Natur und tolle Betreuung.“</p>
+            <p class="mt-1 font-semibold">– Thomas B.</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-3">
+        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
+          <img src="/images/yoga-retreat.jpg" alt="Sabine" class="w-16 h-16 rounded-full object-cover">
+          <div>
+            <p class="text-yellow-500">★★★★☆</p>
+            <p class="mt-1">„Yoga und Meditation haben mir viel innere Ruhe gebracht.“</p>
+            <p class="mt-1 font-semibold">– Sabine K.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center gap-3 mt-6">
+      <button id="prev-testimonial" class="w-3 h-3 rounded-full bg-gray-300" aria-label="Vorherige"></button>
+      <button id="next-testimonial" class="w-3 h-3 rounded-full bg-gray-800" aria-label="Nächste"></button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      // Reveal animations
+      const options = { threshold: 0.12 };
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('revealed');
+            observer.unobserve(e.target);
+          }
+        });
+      }, options);
+      document.querySelectorAll('.reveal, .reveal-item').forEach(el=>observer.observe(el));
+
+      const track = document.getElementById("testimonial-track");
+      const prevBtn = document.getElementById("prev-testimonial");
+      const nextBtn = document.getElementById("next-testimonial");
+      const slides = track.children.length;
+      let index = 0;
+
+      function update(){
+        const width = track.clientWidth;
+        track.style.transform = `translateX(-${index * width}px)`;
+      }
+
+      function next(){ index = (index + 1) % slides; update(); }
+      function prev(){ index = (index - 1 + slides) % slides; update(); }
+
+      nextBtn.addEventListener("click", next);
+      prevBtn.addEventListener("click", prev);
+
+      let timer = setInterval(next, 5000);
+      track.addEventListener("mouseenter", () => clearInterval(timer));
+      track.addEventListener("mouseleave", () => timer = setInterval(next, 5000));
+      window.addEventListener("resize", update);
+    });
+  </script>
 </section>
 
 {{ end }}
