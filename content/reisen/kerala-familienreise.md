@@ -1,7 +1,7 @@
 ---
 title: "Kerala Familienreise"
 description: "Perfekte Reise für Familien mit Kindern."
-image: "/images/smiling-traveler.jpg"
+image: "/images/kerala-family-travel.jpg"
 pricefrom: 1590
 duration: "12 Tage"
 categories: ["Familie", "Kerala", "Kultur"]

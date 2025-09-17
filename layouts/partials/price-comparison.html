@@ -1,0 +1,123 @@
+{{/*
+  Price comparison widget showing value proposition
+  Usage: {{ partial "price-comparison.html" . }}
+*/}}
+<div class="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-6 my-8">
+  <h3 class="typography-heading-3 text-center mb-6">Vergleichen Sie Ihre Optionen</h3>
+  
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- Our Service -->
+    <div class="bg-white rounded-lg p-6 shadow-md border-2 border-yellow-500 relative">
+      <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+        <span class="bg-yellow-500 text-white px-4 py-1 rounded-full text-sm font-semibold">Empfohlen</span>
+      </div>
+      <h4 class="font-bold text-lg mb-4 text-center">Kerala Reisen</h4>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-center">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>Deutschsprachige Beratung</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>Persönliche Betreuung</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>Geprüfte Partner vor Ort</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>24/7 WhatsApp Support</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>Individuelle Reiseplanung</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>Transparente Preise</span>
+        </li>
+      </ul>
+      <div class="mt-6 text-center">
+        <div class="text-2xl font-bold text-yellow-600">Kostenlose Beratung</div>
+        <div class="text-sm text-gray-600">Keine versteckten Kosten</div>
+      </div>
+    </div>
+    
+    <!-- Generic Travel Agency -->
+    <div class="bg-white rounded-lg p-6 shadow-md border border-gray-200">
+      <h4 class="font-bold text-lg mb-4 text-center text-gray-600">Andere Anbieter</h4>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Oft nur Englisch</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Unpersönliche Beratung</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Unbekannte Partner</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Begrenzte Erreichbarkeit</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Standard-Pakete</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Versteckte Zusatzkosten</span>
+        </li>
+      </ul>
+      <div class="mt-6 text-center">
+        <div class="text-2xl font-bold text-gray-400">Beratungsgebühr</div>
+        <div class="text-sm text-gray-500">Oft 50-100€</div>
+      </div>
+    </div>
+    
+    <!-- DIY Travel -->
+    <div class="bg-white rounded-lg p-6 shadow-md border border-gray-200">
+      <h4 class="font-bold text-lg mb-4 text-center text-gray-600">Selbst organisieren</h4>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Keine lokale Expertise</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Sprachbarrieren</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Unsichere Qualität</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Kein Support vor Ort</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Zeitaufwändig</span>
+        </li>
+        <li class="flex items-center">
+          <span class="text-gray-400 mr-2">✗</span>
+          <span class="text-gray-500">Risiko von Betrug</span>
+        </li>
+      </ul>
+      <div class="mt-6 text-center">
+        <div class="text-2xl font-bold text-gray-400">Viel Zeit</div>
+        <div class="text-sm text-gray-500">Wochen der Planung</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="text-center mt-6">
+    <a href="/kontakt/" class="bg-yellow-600 text-white px-8 py-3 rounded-lg btn-primary btn-enhanced">
+      Jetzt kostenlos beraten lassen
+    </a>
+  </div>
+</div>

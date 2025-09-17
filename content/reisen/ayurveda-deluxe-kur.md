@@ -2,12 +2,12 @@
 title: "Ayurveda Deluxe Kur in Kerala"
 date: 2025-09-16
 description: "Luxuriöse Ayurveda-Kur mit persönlicher Betreuung."
-image: "/images/ayurveda-massage.jpg"
+image: "/images/kerala-ayurveda-massage.png"
 type: "reisen"
 tags: ["Ayurveda", "Panchakarma", "Gesundheit"]
 categories: ["Ayurveda"]
 duration: "14–21 Tage"
-priceFrom: "ab 1.690 € p.P."
+pricefrom: 1690
 slug: "ayurveda-deluxe-kur"
 ratingValue: 4.8
 reviewCount: 37

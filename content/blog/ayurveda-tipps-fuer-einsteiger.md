@@ -2,7 +2,7 @@
 title: "Ayurveda für Einsteiger: 7 praktische Tipps"
 date: 2025-09-16
 description: "So gelingt der Start mit Ayurveda – einfache Routinen, Ernährung und Selbstfürsorge."
-image: "/images/ayurveda.jpg"
+image: "/images/kerala-ayurveda-massage.png"
 tags: ["Ayurveda", "Gesundheit"]
 categories: ["Ayurveda"]
 slug: "ayurveda-tipps-fuer-einsteiger"

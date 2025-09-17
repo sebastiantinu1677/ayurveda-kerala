@@ -1,12 +1,12 @@
 ---
 title: "Impressum"
-description: "Impressum und rechtliche Angaben von Ayurveda Kerala - Reiseberatung für Ayurveda-Kuren und Yoga-Retreats in Kerala, Indien."
+description: "Impressum und rechtliche Angaben von Kerala Reisen - Reiseberatung für Kerala-Reisen, Ayurveda-Kuren und Yoga-Retreats in Kerala, Indien."
 url: "/impressum/"
 ---
 
 **Angaben gemäß § 5 TMG**
 
-Ayurveda Kerala Reisen  
+Kerala Reisen  
 Musterstraße 12  
 70193 Stuttgart / Leonberg  
 Deutschland  

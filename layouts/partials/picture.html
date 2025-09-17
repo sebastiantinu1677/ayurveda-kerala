@@ -1,4 +1,5 @@
 {{/*
+  Enhanced picture partial with WebP support, lazy loading, and responsive images
   Usage: {{ partial "picture.html" (dict "src" .Params.image "alt" $.Title "class" "w-full h-48 object-cover rounded-t-lg" "loading" "lazy") }}
 */}}
 {{ $src := .src }}
@@ -7,10 +8,36 @@
 {{ $loading := or .loading "lazy" }}
 {{ $decoding := or .decoding "async" }}
 {{ $priority := or .priority false }}
+{{ $width := or .width 400 }}
+{{ $height := or .height 300 }}
+
+{{/* Generate WebP path */}}
+{{ $webpSrc := $src }}
+{{ if strings.HasSuffix $src ".jpg" }}
+  {{ $webpSrc = replace $src ".jpg" ".webp" }}
+{{ else if strings.HasSuffix $src ".png" }}
+  {{ $webpSrc = replace $src ".png" ".webp" }}
+{{ end }}
+{{ $webpSrc = replace $webpSrc "/images/" "/images/webp/" }}
+
+{{/* Generate AVIF path */}}
+{{ $avifSrc := $src }}
+{{ if strings.HasSuffix $src ".jpg" }}
+  {{ $avifSrc = replace $src ".jpg" ".avif" }}
+{{ else if strings.HasSuffix $src ".png" }}
+  {{ $avifSrc = replace $src ".png" ".avif" }}
+{{ end }}
+{{ $avifSrc = replace $avifSrc "/images/" "/images/avif/" }}
 
 {{ if $priority }}
-  <img loading="eager" decoding="sync" src="{{ $src | relURL }}" alt="{{ $alt }}" class="{{ $class }}">
+  <picture>
+    <source srcset="{{ $webpSrc | relURL }}" type="image/webp">
+    <img loading="eager" decoding="sync" src="{{ $src | relURL }}" alt="{{ $alt }}" class="{{ $class }}" width="{{ $width }}" height="{{ $height }}" fetchpriority="high">
+  </picture>
 {{ else }}
-  <img loading="{{ $loading }}" decoding="{{ $decoding }}" src="{{ $src | relURL }}" alt="{{ $alt }}" class="{{ $class }}">
+  <picture>
+    <source srcset="{{ $webpSrc | relURL }}" type="image/webp">
+    <img loading="{{ $loading }}" decoding="{{ $decoding }}" src="{{ $src | relURL }}" alt="{{ $alt }}" class="{{ $class }}" width="{{ $width }}" height="{{ $height }}">
+  </picture>
 {{ end }}
 

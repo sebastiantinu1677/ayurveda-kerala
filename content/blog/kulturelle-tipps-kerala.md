@@ -2,7 +2,7 @@
 title: "Kulturelle Tipps für Kerala: Dos & Don’ts"
 date: 2025-09-16
 description: "Respektvoll reisen: Kleidung, Tempelregeln, Trinkgeld, Feiertage in Kerala."
-image: "/images/kerala-tea.jpg"
+image: "/images/kerala-temple.jpg"
 tags: ["Kerala", "Kultur"]
 categories: ["Reisen"]
 slug: "kulturelle-tipps-kerala"

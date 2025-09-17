@@ -2,9 +2,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ if .Title }}{{ .Title }} | Ayurveda Kerala{{ else }}Ayurveda Kerala – Reisen & Ayurveda-Kuren{{ end }}</title>
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}Ayurveda-Reisen, Yoga-Retreats und Rundreisen in Kerala, Indien.{{ end }}">
+  <title>{{ if .Title }}{{ .Title }} | Kerala Reisen{{ else }}Kerala Reisen – Authentische Reisen nach Kerala, Indien{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}Kerala Reisen: Ayurveda-Kuren, Yoga-Retreats, Rundreisen und Backwaters-Erlebnisse in Kerala, Indien.{{ end }}">
+  <meta name="keywords" content="{{ with .Params.keywords }}{{ . }}{{ else }}{{ with .Site.Params.keywords }}{{ . }}{{ else }}Kerala Reisen, Ayurveda Kur, Yoga Retreat, Indien Reisen, Backwaters, deutschsprachige Beratung{{ end }}{{ end }}" />
+  <meta name="author" content="{{ with .Site.Params.author }}{{ . }}{{ else }}Kerala Reisen{{ end }}" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="bingbot" content="index,follow" />
+  <meta name="language" content="{{ with .Site.Params.language }}{{ . }}{{ else }}de{{ end }}" />
+  <meta name="geo.region" content="DE-SH" />
+  <meta name="geo.placename" content="Kiel" />
+  <meta name="geo.position" content="54.3233;10.1228" />
+  <meta name="ICBM" content="54.3233, 10.1228" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 
@@ -33,7 +42,12 @@
         custom_map: {
           'custom_parameter_1': 'page_category',
           'custom_parameter_2': 'user_type'
-        }
+        },
+        // Enhanced tracking for Netlify deployment
+        send_page_view: true,
+        anonymize_ip: true,
+        allow_google_signals: true,
+        allow_ad_personalization_signals: false
       });
       
       // Enhanced ecommerce tracking
@@ -45,33 +59,45 @@
   </script>
   {{ end }}
 
-  {{- $org := dict "@context" "https://schema.org" "@type" "Organization" "name" "Ayurveda Kerala" "url" .Site.BaseURL "logo" (printf "%simages/logo.png" .Site.BaseURL) "contactPoint" (dict "@type" "ContactPoint" "telephone" (printf "+%s" (default "4915233145220" .Site.Params.whatsapp.number)) "contactType" "customer service" "areaServed" "DE" "availableLanguage" "German") "sameAs" (slice "https://www.facebook.com/ayurvedakerala" "https://www.instagram.com/ayurvedakerala") -}}
+  {{- $org := dict "@context" "https://schema.org" "@type" "Organization" "name" "Kerala Reisen" "url" .Site.BaseURL "logo" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "contactPoint" (dict "@type" "ContactPoint" "contactType" "customer service" "areaServed" "DE" "availableLanguage" "German") "sameAs" (slice "https://www.facebook.com/keralareisen" "https://www.instagram.com/keralareisen") -}}
   <script type="application/ld+json">{{ $org | jsonify | safeHTML }}</script>
 
-  {{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Ayurveda Kerala" "image" (printf "%simages/logo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Hauptstraße 12" "addressLocality" "Leonberg" "postalCode" "71229" "addressCountry" "DE") "telephone" (printf "+%s" (default "4915233145220" .Site.Params.whatsapp.number)) "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" -}}
+  {{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Kerala Reisen" "image" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Myerhofstraße 9" "addressLocality" "Kiel" "postalCode" "24106" "addressCountry" "DE") "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" -}}
   <script type="application/ld+json">{{ $lb | jsonify | safeHTML }}</script>
 
-  {{- $service := dict "@context" "https://schema.org" "@type" "Service" "name" "Ayurveda Reisen Kerala" "description" "Deutschsprachige Beratung für Ayurveda-Kuren, Yoga-Retreats und Rundreisen in Kerala, Indien" "provider" (dict "@type" "Organization" "name" "Ayurveda Kerala") "areaServed" (dict "@type" "Country" "name" "Deutschland") "serviceType" "Reiseberatung" "offers" (dict "@type" "Offer" "priceCurrency" "EUR" "availability" "https://schema.org/InStock") -}}
+  {{- $service := dict "@context" "https://schema.org" "@type" "Service" "name" "Kerala Reisen" "description" "Deutschsprachige Beratung für Kerala-Reisen: Ayurveda-Kuren, Yoga-Retreats, Rundreisen und Backwaters-Erlebnisse in Kerala, Indien" "provider" (dict "@type" "Organization" "name" "Kerala Reisen") "areaServed" (dict "@type" "Country" "name" "Deutschland") "serviceType" "Reiseberatung" "offers" (dict "@type" "Offer" "priceCurrency" "EUR" "availability" "https://schema.org/InStock") -}}
   <script type="application/ld+json">{{ $service | jsonify | safeHTML }}</script>
 
-  <link rel="icon" href="/images/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  {{- if eq .Kind "page" -}}
+  {{- $breadcrumb := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.BaseURL) -}}
+  {{- $position := 2 -}}
+  {{- range .Ancestors.Reverse -}}
+  {{- $breadcrumb = $breadcrumb | append (dict "@type" "ListItem" "position" $position "name" .Title "item" (.RelPermalink | absURL)) -}}
+  {{- $position = add $position 1 -}}
+  {{- end -}}
+  {{- $breadcrumb = $breadcrumb | append (dict "@type" "ListItem" "position" $position "name" .Title "item" (.RelPermalink | absURL)) -}}
+  {{- $breadcrumbList := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $breadcrumb -}}
+  <script type="application/ld+json">{{ $breadcrumbList | jsonify | safeHTML }}</script>
+  {{- end -}}
+
+  <link rel="icon" href="/images/keralareisenLogo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/keralareisenLogo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/keralareisenLogo.png">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{{ if .Title }}{{ .Title }} | Ayurveda Kerala{{ else }}Ayurveda Kerala – Reisen & Ayurveda-Kuren{{ end }}" />
-  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}Authentische Ayurveda- & Kerala-Reisen aus Deutschland{{ end }}" />
+  <meta property="og:title" content="{{ if .Title }}{{ .Title }} | Kerala Reisen{{ else }}Kerala Reisen – Authentische Reisen nach Kerala{{ end }}" />
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}Kerala Reisen: Ayurveda-Kuren, Yoga-Retreats, Rundreisen und Backwaters-Erlebnisse in Kerala, Indien.{{ end }}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:image" content="{{ with .Params.image }}{{ . | relURL }}{{ else }}{{ with .Site.Params.defaultImage }}{{ . | relURL }}{{ else }}/images/hero-backwaters.jpg{{ end }}{{ end }}" />
   <meta property="og:image:alt" content="{{ .Title }}" />
-  <meta property="og:site_name" content="Ayurveda Kerala" />
+  <meta property="og:site_name" content="Kerala Reisen" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ if .Title }}{{ .Title }} | Ayurveda Kerala{{ else }}Ayurveda Kerala – Reisen & Ayurveda-Kuren{{ end }}" />
-  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}Authentische Ayurveda- & Kerala-Reisen aus Deutschland{{ end }}" />
+  <meta name="twitter:title" content="{{ if .Title }}{{ .Title }} | Kerala Reisen{{ else }}Kerala Reisen – Authentische Reisen nach Kerala{{ end }}" />
+  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}Kerala Reisen: Ayurveda-Kuren, Yoga-Retreats, Rundreisen und Backwaters-Erlebnisse in Kerala, Indien.{{ end }}" />
   <meta name="twitter:image" content="{{ with .Params.image }}{{ . | relURL }}{{ else }}{{ with .Site.Params.defaultImage }}{{ . | relURL }}{{ else }}/images/hero-backwaters.jpg{{ end }}{{ end }}" />
 
   <!-- Crisp Chat -->
@@ -98,11 +124,26 @@
         'value': value,
         'currency': currency
       });
+      
+      // Also send to Google Ads
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17574288605/' + eventName,
+        'value': value,
+        'currency': currency
+      });
     }
   }
   
   // Track user interactions
   document.addEventListener('DOMContentLoaded', function() {
+    // Track Netlify deployment info
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'page_view', {
+        'event_category': 'deployment',
+        'event_label': 'netlify',
+        'custom_parameter_1': 'ayurveda-wellness-kerala.netlify.app'
+      });
+    }
     // Track form submissions
     document.addEventListener('submit', function(e) {
       if (e.target.id === 'leadCaptureForm') {
@@ -122,6 +163,12 @@
         trackConversion('contact_page_click', 1);
       } else if (e.target.matches('a[href*="/reisen/"]')) {
         trackConversion('tour_page_click', 1);
+      } else if (e.target.matches('a[href*="/blog/"]')) {
+        trackConversion('blog_click', 1);
+      } else if (e.target.matches('button[data-action="book"]')) {
+        trackConversion('book_now_click', 1);
+      } else if (e.target.matches('button[data-action="quote"]')) {
+        trackConversion('quote_request_click', 1);
       }
     });
     
@@ -141,6 +188,17 @@
       const timeOnPage = Math.round((Date.now() - startTime) / 1000);
       trackConversion('time_on_page', timeOnPage);
     });
+    
+    // Reading progress bar
+    const progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+      window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+      });
+    }
   });
   </script>
 
@@ -149,11 +207,94 @@
   <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
   {{- if eq .Kind "home" -}}
   <script type="application/ld+json">
-  {{- $website := dict "@context" "https://schema.org" "@type" "WebSite" "url" .Site.BaseURL "name" "Ayurveda Kerala" "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q={search_term_string}" .Site.BaseURL) "query-input" "required name=search_term_string") -}}
+  {{- $website := dict "@context" "https://schema.org" "@type" "WebSite" "url" .Site.BaseURL "name" "Kerala Reisen" "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q={search_term_string}" .Site.BaseURL) "query-input" "required name=search_term_string") -}}
   {{ $website | jsonify | safeHTML }}
   </script>
   {{- end -}}
-  <link rel="preload" href="/css/custom.css" as="style">
-  <link rel="stylesheet" href="/css/custom.css">
+  <!-- Critical CSS Inline -->
+  <style>
+    /* Critical above-the-fold styles */
+    body { font-family: system-ui, -apple-system, sans-serif; margin: 0; }
+    .hero-title-gradient { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 25%, #d97706 50%, #059669 75%, #047857 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-subtitle-glow { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+    .hero-badge { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+    .btn-primary { font-size: 1rem; font-weight: 600; letter-spacing: 0.025em; }
+    .card-enhanced { transition: all 0.3s ease; }
+    .card-enhanced:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+  </style>
+  
+  <link rel="preload" href="/css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/css/custom.css"></noscript>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function(registration) {
+            console.log('SW registered: ', registration);
+          })
+          .catch(function(registrationError) {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+
+  <!-- Enhanced Structured Data -->
+  {{ partial "structured-data.html" . }}
+
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 w-0 h-1 bg-yellow-600 z-50 transition-all duration-300"></div>
+  
+  <!-- Enhanced Lazy Loading -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Enhanced lazy loading with Intersection Observer
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.classList.remove('image-loading');
+              img.classList.add('loaded');
+              img.removeAttribute('data-src');
+              observer.unobserve(img);
+            }
+          }
+        });
+      }, {
+        rootMargin: '50px 0px',
+        threshold: 0.01
+      });
+
+      // Observe all images with data-src
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        img.classList.add('image-loading');
+        imageObserver.observe(img);
+      });
+    }
+
+    // WebP support detection
+    function supportsWebP() {
+      return new Promise((resolve) => {
+        const webP = new Image();
+        webP.onload = webP.onerror = () => resolve(webP.height === 2);
+        webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+      });
+    }
+
+    // Add WebP class to body if supported
+    supportsWebP().then(supported => {
+      if (supported) {
+        document.documentElement.classList.add('webp');
+      } else {
+        document.documentElement.classList.add('no-webp');
+      }
+    });
+  });
+  </script>
 
 </head>

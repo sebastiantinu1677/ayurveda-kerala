@@ -1,0 +1,146 @@
+{{/*
+  Enhanced exit-intent popup with better targeting and offers
+  Usage: {{ partial "exit-intent-enhanced.html" . }}
+*/}}
+<div id="exit-intent-popup" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-lg shadow-2xl max-w-md w-full relative">
+      <!-- Close button -->
+      <button id="close-popup" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">
+        ×
+      </button>
+      
+      <!-- Content -->
+      <div class="p-6">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">🎁</span>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">Warten Sie!</h3>
+          <p class="text-gray-600">Verpassen Sie nicht unser exklusives Angebot</p>
+        </div>
+        
+        <!-- Offer content -->
+        <div class="bg-gradient-to-r from-yellow-50 to-green-50 rounded-lg p-4 mb-6">
+          <div class="text-center">
+            <h4 class="font-bold text-lg text-gray-800 mb-2">🔥 Frühbucher-Rabatt</h4>
+            <p class="text-3xl font-bold text-yellow-600 mb-2">15% RABATT</p>
+            <p class="text-sm text-gray-600">auf alle Kerala-Reisen bei Buchung bis 15. Oktober 2025</p>
+          </div>
+        </div>
+        
+        <!-- Benefits -->
+        <div class="space-y-2 mb-6">
+          <div class="flex items-center text-sm text-gray-700">
+            <span class="text-green-500 mr-2">✓</span>
+            Kostenlose Beratung
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <span class="text-green-500 mr-2">✓</span>
+            Individuelle Reiseplanung
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <span class="text-green-500 mr-2">✓</span>
+            Deutschsprachige Betreuung
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <span class="text-green-500 mr-2">✓</span>
+            Geprüfte Partner vor Ort
+          </div>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="space-y-3">
+          <a href="/kontakt/" class="block w-full bg-yellow-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">
+            Jetzt Beratung anfordern
+          </a>
+          <a href="/reisen/" class="block w-full border border-yellow-600 text-yellow-600 text-center py-3 rounded-lg font-semibold hover:bg-yellow-50 transition-colors">
+            Reisen entdecken
+          </a>
+        </div>
+        
+        <!-- Trust signals -->
+        <div class="mt-4 text-center">
+          <p class="text-xs text-gray-500">
+            <span class="text-yellow-500">★★★★★</span> 4.8/5 Bewertung • 500+ zufriedene Kunden
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const popup = document.getElementById('exit-intent-popup');
+  const closeBtn = document.getElementById('close-popup');
+  let hasShownPopup = false;
+  
+  // Check if user has already seen popup
+  if (localStorage.getItem('exitIntentShown')) {
+    return;
+  }
+  
+  // Exit intent detection
+  document.addEventListener('mouseleave', function(e) {
+    if (e.clientY <= 0 && !hasShownPopup) {
+      showPopup();
+    }
+  });
+  
+  // Show popup after 30 seconds if user hasn't left
+  setTimeout(function() {
+    if (!hasShownPopup && !localStorage.getItem('exitIntentShown')) {
+      showPopup();
+    }
+  }, 30000);
+  
+  function showPopup() {
+    hasShownPopup = true;
+    popup.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    
+    // Track popup view
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'exit_intent_popup_view', {
+        event_category: 'engagement',
+        event_label: 'popup_shown'
+      });
+    }
+  }
+  
+  function hidePopup() {
+    popup.classList.add('hidden');
+    document.body.style.overflow = '';
+    localStorage.setItem('exitIntentShown', 'true');
+  }
+  
+  // Close popup handlers
+  closeBtn.addEventListener('click', hidePopup);
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      hidePopup();
+    }
+  });
+  
+  // Track CTA clicks
+  popup.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') {
+      const action = e.target.textContent.trim();
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'exit_intent_popup_click', {
+          event_category: 'conversion',
+          event_label: action
+        });
+      }
+    }
+  });
+  
+  // Escape key to close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !popup.classList.contains('hidden')) {
+      hidePopup();
+    }
+  });
+});
+</script>

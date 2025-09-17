@@ -1,6 +1,6 @@
 ---
 title: "Datenschutzerklärung"
-description: "Datenschutzerklärung von Ayurveda Kerala - Informationen zum Umgang mit Cookies und personenbezogenen Daten."
+description: "Datenschutzerklärung von Kerala Reisen - Informationen zum Umgang mit Cookies und personenbezogenen Daten."
 ---
 
 ## Datenschutzerklärung

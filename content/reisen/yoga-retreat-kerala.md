@@ -2,12 +2,12 @@
 title: "Yoga & Meditation Retreat in Kerala"
 date: 2025-09-16
 description: "Achtsamkeit am Arabischen Meer mit Yoga und Meditation."
-image: "/images/yoga-retreat.jpg"
+image: "/images/kerala-beach.png"
 type: "reisen"
 tags: ["Yoga", "Meditation", "Retreat"]
 categories: ["Yoga"]
 duration: "7–10 Tage"
-priceFrom: "ab 790 € p.P."
+pricefrom: 790
 slug: "yoga-retreat-kerala"
 ---
 

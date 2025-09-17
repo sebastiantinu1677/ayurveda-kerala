@@ -1,6 +1,6 @@
 ---
 title: "Bewertungen"
-description: "Erfahrungen unserer Gäste: Ayurveda-Kuren, Yoga-Retreats und Rundreisen in Kerala."
+description: "Erfahrungen unserer Gäste: Kerala-Reisen, Ayurveda-Kuren, Yoga-Retreats und Rundreisen."
 url: "/bewertungen/"
 layout: "reviews"
 ratingValue: 4.8

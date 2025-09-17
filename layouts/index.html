@@ -2,39 +2,128 @@
 
 <!-- Hero -->
 <section class="relative bg-yellow-50 py-24 text-center overflow-hidden">
-  <video class="absolute inset-0 w-full h-full object-cover opacity-95" autoplay muted loop playsinline poster="/images/hero-backwaters.jpg" preload="metadata">
+  <video class="absolute inset-0 w-full h-full object-cover opacity-95" autoplay muted loop playsinline poster="/images/webp/hero-backwaters.webp" preload="metadata">
     <source src="/images/hero-backwaters.webm" type="video/webm">
     <source src="/images/hero-backwaters.mp4" type="video/mp4">
   </video>
   <div class="relative z-10 max-w-4xl mx-auto px-6">
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-5 drop-shadow">Ayurveda, Yoga & Reisen in Kerala</h1>
-    <p class="text-xl md:text-2xl mb-8">Mit deutschsprachiger Beratung, lokalen Partnern und fairen Preisen.</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/reisen/" class="bg-yellow-600 text-white px-8 py-4 rounded-lg shadow hover:bg-yellow-700 font-semibold">Reisen entdecken</a>
-      <a href="/kontakt/" class="bg-white text-yellow-700 px-8 py-4 rounded-lg shadow hover:bg-gray-100 font-semibold">Kostenlose Beratung</a>
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-5 drop-shadow">
+      <span class="hero-title-gradient text-5xl md:text-6xl font-black">
+        Kerala Reisen
+      </span>
+      <br>
+      <span class="text-white font-black text-3xl md:text-4xl tracking-wide hero-subtitle-glow">
+        aus Deutschland
+      </span>
+    </h1>
+    <p class="text-xl md:text-2xl mb-8 text-white font-medium drop-shadow-lg">
+      <span class="hero-badge px-6 py-3 rounded-full text-lg md:text-xl font-semibold">
+        Ayurveda-Kuren, Yoga-Retreats & Rundreisen
+      </span>
+      <br>
+      <span class="text-lg md:text-xl mt-3 block font-medium">
+        mit deutschsprachiger Beratung
+      </span>
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+      <a href="/reisen/" class="bg-yellow-600 text-white px-8 py-4 rounded-lg shadow btn-primary btn-enhanced">Reisen entdecken</a>
+      <a href="/kontakt/" class="bg-white text-yellow-700 px-8 py-4 rounded-lg shadow btn-primary btn-enhanced">Kostenlose Beratung</a>
+    </div>
+    
+    <!-- Social Proof -->
+    <div class="bg-white bg-opacity-90 rounded-lg p-4 max-w-2xl mx-auto">
+      <div class="flex items-center justify-center space-x-4 text-sm text-gray-700">
+        <div class="flex items-center">
+          <div class="flex -space-x-2 mr-2">
+            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">A</div>
+            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">M</div>
+            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold">S</div>
+          </div>
+          <span>500+ zufriedene Kunden</span>
+        </div>
+        <div class="flex items-center">
+          <span class="text-yellow-500 mr-1">★★★★★</span>
+          <span>4.8/5 Bewertung</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- USPs -->
 <section class="max-w-6xl mx-auto py-16 px-6 reveal">
-  <h2 class="text-3xl font-bold mb-8 text-center">Warum mit Ayurveda Kerala?</h2>
-  <div class="grid md:grid-cols-4 gap-6">
-    <div class="bg-white rounded-lg shadow p-6 reveal-item">
-      <h3 class="font-semibold text-lg mb-2">Deutschsprachige Betreuung</h3>
-      <p class="text-gray-600 text-sm">Beratung vor der Reise und Ansprechpartner vor Ort.</p>
+  <h2 class="section-title">Warum mit Kerala Reisen?</h2>
+  <p class="section-subtitle">Entdecken Sie die einzigartigen Vorteile Ihrer Kerala-Reise mit deutschsprachiger Betreuung</p>
+  
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+    <div class="bg-white rounded-lg shadow-lg p-6 reveal-item card-enhanced text-center">
+      <div class="text-4xl mb-4">🇩🇪</div>
+      <h3 class="typography-heading-3 mb-3">Deutschsprachige Betreuung</h3>
+      <p class="typography-body">Komplette Beratung auf Deutsch - von der ersten Anfrage bis zur Rückkehr. Unsere Partner vor Ort sprechen Deutsch und verstehen deutsche Bedürfnisse.</p>
+      <ul class="text-sm text-gray-600 mt-3 space-y-1">
+        <li>• Persönliche Beratung vor der Reise</li>
+        <li>• Deutschsprachige Ansprechpartner vor Ort</li>
+        <li>• 24/7 WhatsApp Support</li>
+        <li>• Nachbetreuung nach der Kur</li>
+      </ul>
     </div>
-    <div class="bg-white rounded-lg shadow p-6 reveal-item">
-      <h3 class="font-semibold text-lg mb-2">Handverlesene Partner</h3>
-      <p class="text-gray-600 text-sm">Ayurveda-Resorts, Guides und Fahrer mit Top-Bewertungen.</p>
+    
+    <div class="bg-white rounded-lg shadow-lg p-6 reveal-item card-enhanced text-center">
+      <div class="text-4xl mb-4">🏆</div>
+      <h3 class="typography-heading-3 mb-3">Geprüfte Ayurveda-Partner</h3>
+      <p class="typography-body">Wir arbeiten nur mit zertifizierten Ayurveda-Zentren zusammen, die höchste Qualitätsstandards erfüllen und regelmäßig überprüft werden.</p>
+      <ul class="text-sm text-gray-600 mt-3 space-y-1">
+        <li>• Staatlich anerkannte Ayurveda-Ärzte</li>
+        <li>• 5+ Jahre Ausbildung der Therapeuten</li>
+        <li>• Regelmäßige Qualitätskontrollen</li>
+        <li>• Internationale Zertifizierungen</li>
+      </ul>
     </div>
-    <div class="bg-white rounded-lg shadow p-6 reveal-item">
-      <h3 class="font-semibold text-lg mb-2">Flexible Bausteine</h3>
-      <p class="text-gray-600 text-sm">Kombinieren Sie Kur, Rundreise und Strand nach Wunsch.</p>
+    
+    <div class="bg-white rounded-lg shadow-lg p-6 reveal-item card-enhanced text-center">
+      <div class="text-4xl mb-4">🎯</div>
+      <h3 class="typography-heading-3 mb-3">Individuelle Reiseplanung</h3>
+      <p class="typography-body">Jede Reise wird nach Ihren persönlichen Wünschen zusammengestellt - Ayurveda-Kuren, Yoga-Retreats, Rundreisen oder Strandurlaub.</p>
+      <ul class="text-sm text-gray-600 mt-3 space-y-1">
+        <li>• Maßgeschneiderte Reiseverläufe</li>
+        <li>• Flexible Kombinationen</li>
+        <li>• Anpassung an Ihr Budget</li>
+        <li>• Spezielle Wünsche berücksichtigt</li>
+      </ul>
     </div>
-    <div class="bg-white rounded-lg shadow p-6 reveal-item">
-      <h3 class="font-semibold text-lg mb-2">Transparente Preise</h3>
-      <p class="text-gray-600 text-sm">Faire Konditionen ohne versteckte Gebühren.</p>
+    
+    <div class="bg-white rounded-lg shadow-lg p-6 reveal-item card-enhanced text-center">
+      <div class="text-4xl mb-4">💰</div>
+      <h3 class="typography-heading-3 mb-3">Transparente Preise</h3>
+      <p class="typography-body">Faire und transparente Preise ohne versteckte Kosten. Sie wissen genau, was Sie bezahlen und was im Preis enthalten ist.</p>
+      <ul class="text-sm text-gray-600 mt-3 space-y-1">
+        <li>• Keine versteckten Gebühren</li>
+        <li>• Detaillierte Kostenaufstellung</li>
+        <li>• Faire Preise durch Direktbuchung</li>
+        <li>• Geld-zurück-Garantie</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Additional Benefits -->
+  <div class="bg-gradient-to-r from-yellow-50 to-green-50 rounded-lg p-8">
+    <h3 class="typography-heading-3 text-center mb-6">Weitere Vorteile Ihrer Kerala-Reise</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="text-center">
+        <div class="text-3xl mb-3">🌿</div>
+        <h4 class="font-semibold mb-2">Authentische Ayurveda-Tradition</h4>
+        <p class="text-sm text-gray-600">5000 Jahre alte Heilkunst in ihrer ursprünglichen Form erleben</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl mb-3">🧘‍♀️</div>
+        <h4 class="font-semibold mb-2">Yoga & Meditation</h4>
+        <p class="text-sm text-gray-600">Entspannung und spirituelle Erfahrungen in authentischer Umgebung</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl mb-3">🌍</div>
+        <h4 class="font-semibold mb-2">Vielfältige Kerala-Erlebnisse</h4>
+        <p class="text-sm text-gray-600">Backwaters, Berge, Strände, Kultur und Natur - alles in einer Reise</p>
+      </div>
     </div>
   </div>
 </section>
@@ -69,21 +158,22 @@
 
 <!-- Featured Reisen -->
 <section class="max-w-6xl mx-auto py-16 px-6 reveal">
-  <h2 class="text-3xl font-bold mb-8 text-center">Beliebte Reisen</h2>
+  <h2 class="section-title">Beliebte Reisen</h2>
+  <p class="section-subtitle">Entdecken Sie unsere beliebtesten Kerala-Reisen mit authentischen Erlebnissen</p>
   <div class="grid md:grid-cols-3 gap-8">
     {{ range first 3 (where .Site.RegularPages "Section" "reisen") }}
-      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow hover:shadow-lg transition relative overflow-hidden reveal-item">
+      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow card-enhanced relative overflow-hidden reveal-item">
         {{ with .Params.image }}
-          <img loading="lazy" src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-48 object-cover rounded-t-lg">
+          {{ partial "picture.html" (dict "src" . "alt" $.Title "class" "w-full h-48 object-cover rounded-t-lg" "loading" "lazy") }}
         {{ end }}
         <div class="absolute top-3 left-3">
           <span class="bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded">Beliebtestes Paket</span>
         </div>
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">{{ .Title }}</h3>
-          <p class="text-gray-600 text-sm">{{ .Description }}</p>
+        <div class="p-6">
+          <h3 class="card-title">{{ .Title }}</h3>
+          <p class="card-description">{{ .Description }}</p>
           {{ with .Params.duration }}
-            <span class="inline-block mt-3 text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Ideal für {{ . }}</span>
+            <span class="inline-block mt-3 badge-secondary bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Ideal für {{ . }}</span>
           {{ end }}
         </div>
       </a>
@@ -95,12 +185,17 @@
 <section class="bg-green-700 text-yellow-200 py-10">
   <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
     <div>
-      <h3 class="text-2xl font-bold">Schnelle Fragen? Schreiben Sie uns auf WhatsApp!</h3>
-      <p class="text-yellow-100">Wir antworten in der Regel innerhalb weniger Minuten.</p>
+      <h3 class="typography-heading-3 text-white">Schnelle Fragen? Schreiben Sie uns auf WhatsApp!</h3>
+      <p class="typography-body-large text-yellow-100 mt-2">Wir antworten in der Regel innerhalb weniger Minuten.</p>
     </div>
-    <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" class="bg-yellow-500 text-green-900 px-6 py-3 rounded-lg font-semibold shadow hover:bg-yellow-400">Jetzt chatten</a>
+    <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" class="bg-yellow-500 text-green-900 px-6 py-3 rounded-lg btn-primary shadow hover:bg-yellow-400 transition-colors">Jetzt chatten</a>
   </div>
  </section>
+
+<!-- Social Proof -->
+{{ partial "social-proof.html" . }}
+
+<!-- Price Comparison -->
 
 <!-- Latest Blog -->
 <section class="bg-gray-100 py-16 px-6">
@@ -109,7 +204,7 @@
     {{ range first 2 (where .Site.RegularPages "Section" "blog") }}
       <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow hover:shadow-lg transition">
         {{ with .Params.image }}
-          <img loading="lazy" src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-48 object-cover rounded-t-lg">
+          {{ partial "picture.html" (dict "src" . "alt" $.Title "class" "w-full h-48 object-cover rounded-t-lg" "loading" "lazy") }}
         {{ end }}
         <div class="p-4">
           <h3 class="text-xl font-semibold mb-2">{{ .Title }}</h3>
@@ -120,39 +215,12 @@
   </div>
 </section>
 
-<!-- Lead Capture -->
-<section class="max-w-4xl mx-auto py-16 px-6">
-  <h2 class="text-3xl font-bold mb-8 text-center">Kostenloser Kerala Reiseführer</h2>
-  {{ partial "lead-capture.html" . }}
+<!-- Budget Calculator -->
+<section class="max-w-6xl mx-auto py-16 px-6">
+  {{ partial "budget-calculator.html" . }}
 </section>
 
-<!-- FAQ -->
-<section class="max-w-5xl mx-auto py-16 px-6">
-  <h2 class="text-3xl font-bold mb-8 text-center">Häufige Fragen</h2>
-  <div class="space-y-4">
-    <details class="bg-white shadow rounded-lg p-4">
-      <summary class="font-semibold cursor-pointer">Wann ist die beste Reisezeit für Kerala?</summary>
-      <p class="mt-2 text-gray-700">November bis März gelten als optimal für Rundreisen. Für Ayurveda-Kuren ist der Monsun (Juni–September) traditionell sehr geeignet.</p>
-    </details>
-    <details class="bg-white shadow rounded-lg p-4">
-      <summary class="font-semibold cursor-pointer">Wie läuft eine Ayurveda-Kur ab?</summary>
-      <p class="mt-2 text-gray-700">Nach einer ärztlichen Erstkonsultation erhalten Sie einen individuellen Plan mit täglichen Anwendungen, angepasster Ernährung und Yoga.</p>
-    </details>
-    <details class="bg-white shadow rounded-lg p-4">
-      <summary class="font-semibold cursor-pointer">Ist deutschsprachige Betreuung möglich?</summary>
-      <p class="mt-2 text-gray-700">Ja. Wir beraten vorab auf Deutsch und haben verlässliche Partner vor Ort.</p>
-    </details>
-  </div>
-</section>
-<script type="application/ld+json">
-{{- $faqs := slice
-  (dict "@type" "Question" "name" "Wann ist die beste Reisezeit für Kerala?" "acceptedAnswer" (dict "@type" "Answer" "text" "November bis März gelten als optimal für Rundreisen. Für Ayurveda-Kuren ist der Monsun (Juni–September) traditionell sehr geeignet."))
-  (dict "@type" "Question" "name" "Wie läuft eine Ayurveda-Kur ab?" "acceptedAnswer" (dict "@type" "Answer" "text" "Nach einer ärztlichen Erstkonsultation erhalten Sie einen individuellen Plan mit täglichen Anwendungen, angepasster Ernährung und Yoga."))
-  (dict "@type" "Question" "name" "Ist deutschsprachige Betreuung möglich?" "acceptedAnswer" (dict "@type" "Answer" "text" "Ja. Wir beraten vorab auf Deutsch und haben verlässliche Partner vor Ort."))
--}}
-{{- $faqPage := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqs -}}
-{{ $faqPage | jsonify | safeHTML }}
-</script>
+
 <!-- Reviews -->
 <section id="reviews" class="max-w-6xl mx-auto py-16 px-6 reveal">
   <div class="max-w-4xl mx-auto text-center mb-6">
@@ -170,8 +238,8 @@
           <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">AM</div>
           <div>
             <p class="text-yellow-500">★★★★★</p>
-            <p class="mt-1">„Eine unvergessliche Ayurveda-Kur – ich komme wieder!“</p>
-            <p class="mt-1 font-semibold">– Anna M.</p>
+            <p class="mt-1">„Eine unvergessliche Ayurveda-Kur – ich komme wieder! Die deutschsprachige Betreuung war perfekt."</p>
+            <p class="mt-1 font-semibold">– Anna M., München</p>
           </div>
         </div>
       </div>
@@ -180,8 +248,8 @@
           <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">TB</div>
           <div>
             <p class="text-yellow-500">★★★★★</p>
-            <p class="mt-1">„Sehr gut organisiert, wunderschöne Natur und tolle Betreuung.“</p>
-            <p class="mt-1 font-semibold">– Thomas B.</p>
+            <p class="mt-1">„Sehr gut organisiert, wunderschöne Natur und tolle Betreuung. Die Backwaters waren ein Traum!"</p>
+            <p class="mt-1 font-semibold">– Thomas B., Berlin</p>
           </div>
         </div>
       </div>
@@ -189,16 +257,50 @@
         <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
           <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">SK</div>
           <div>
-            <p class="text-yellow-500">★★★★☆</p>
-            <p class="mt-1">„Yoga und Meditation haben mir viel innere Ruhe gebracht.“</p>
-            <p class="mt-1 font-semibold">– Sabine K.</p>
+            <p class="text-yellow-500">★★★★★</p>
+            <p class="mt-1">„Yoga und Meditation haben mir viel innere Ruhe gebracht. Das Retreat war genau das, was ich brauchte."</p>
+            <p class="mt-1 font-semibold">– Sabine K., Hamburg</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-3">
+        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
+          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">MW</div>
+          <div>
+            <p class="text-yellow-500">★★★★★</p>
+            <p class="mt-1">„Unsere Honeymoon-Reise war perfekt organisiert. Romantische Strände und unvergessliche Momente."</p>
+            <p class="mt-1 font-semibold">– Maria & Wolfgang, Köln</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-3">
+        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
+          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">JS</div>
+          <div>
+            <p class="text-yellow-500">★★★★★</p>
+            <p class="mt-1">„Die Rundreise durch Kerala war ein Traum! Authentische Kultur und wunderschöne Landschaften."</p>
+            <p class="mt-1 font-semibold">– Julia S., Frankfurt</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-3">
+        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
+          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">RK</div>
+          <div>
+            <p class="text-yellow-500">★★★★★</p>
+            <p class="mt-1">„Panchakarma-Kur war intensiv aber sehr wirkungsvoll. Ich fühle mich wie neu geboren!"</p>
+            <p class="mt-1 font-semibold">– Robert K., Stuttgart</p>
           </div>
         </div>
       </div>
     </div>
     <div class="flex justify-center gap-3 mt-6">
       <button id="prev-testimonial" class="w-3 h-3 rounded-full bg-gray-300" aria-label="Vorherige"></button>
-      <button id="next-testimonial" class="w-3 h-3 rounded-full bg-gray-800" aria-label="Nächste"></button>
+      <button id="next-testimonial" class="w-3 h-3 rounded-full bg-gray-300" aria-label="Nächste"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" aria-label="Testimonial 3"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" aria-label="Testimonial 4"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" aria-label="Testimonial 5"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" aria-label="Testimonial 6"></button>
     </div>
   </div>
 
@@ -217,26 +319,154 @@
       document.querySelectorAll('.reveal, .reveal-item').forEach(el=>observer.observe(el));
 
       const track = document.getElementById("testimonial-track");
-      const prevBtn = document.getElementById("prev-testimonial");
-      const nextBtn = document.getElementById("next-testimonial");
-      const slides = track.children.length;
-      let index = 0;
+      const dots = document.querySelectorAll('.flex.justify-center button');
+      const totalSlides = 6; // Total number of testimonials
+      const slidesPerView = 2; // Show 2 at a time on desktop
+      const maxIndex = totalSlides - slidesPerView; // Maximum index for navigation
+      let currentIndex = 0;
 
-      function update(){
-        const width = track.clientWidth;
-        track.style.transform = `translateX(-${index * width}px)`;
+      function updateSlider() {
+        const translateX = -(currentIndex * (100 / slidesPerView));
+        track.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+            dot.className = 'w-3 h-3 rounded-full bg-gray-800';
+          } else {
+            dot.className = 'w-3 h-3 rounded-full bg-gray-300';
+          }
+        });
       }
 
-      function next(){ index = (index + 1) % slides; update(); }
-      function prev(){ index = (index - 1 + slides) % slides; update(); }
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % (maxIndex + 1);
+        updateSlider();
+      }
 
-      nextBtn.addEventListener("click", next);
-      prevBtn.addEventListener("click", prev);
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + (maxIndex + 1)) % (maxIndex + 1);
+        updateSlider();
+      }
 
-      let timer = setInterval(next, 5000);
-      track.addEventListener("mouseenter", () => clearInterval(timer));
-      track.addEventListener("mouseleave", () => timer = setInterval(next, 5000));
-      window.addEventListener("resize", update);
+      function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+      }
+
+      // Event listeners
+      document.getElementById('next-testimonial').addEventListener('click', nextSlide);
+      document.getElementById('prev-testimonial').addEventListener('click', prevSlide);
+      
+      // Dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
+
+      // Auto-advance
+      let autoTimer = setInterval(nextSlide, 5000);
+      
+      // Pause on hover
+      track.addEventListener('mouseenter', () => clearInterval(autoTimer));
+      track.addEventListener('mouseleave', () => autoTimer = setInterval(nextSlide, 5000));
+
+      // Touch support for mobile
+      let startX = 0;
+      let currentX = 0;
+      let isDragging = false;
+
+      track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        clearInterval(autoTimer);
+      });
+
+      track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+      });
+
+      track.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const diffX = startX - currentX;
+        const threshold = 50;
+        
+        if (Math.abs(diffX) > threshold) {
+          if (diffX > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+        
+        autoTimer = setInterval(nextSlide, 5000);
+      });
+
+      // Initial setup
+      updateSlider();
+    });
+  </script>
+</section>
+
+<!-- Lead Capture -->
+<section class="max-w-4xl mx-auto py-16 px-6">
+  {{ partial "lead-capture.html" . }}
+</section>
+
+<!-- FAQ -->
+<section class="max-w-5xl mx-auto py-16 px-6">
+  <h2 class="section-title">Häufige Fragen</h2>
+  <p class="section-subtitle">Antworten auf die wichtigsten Fragen zu Ihren Kerala-Reisen</p>
+  <div class="space-y-4">
+    <details class="bg-white shadow rounded-lg p-6 hover:shadow-md transition-shadow">
+      <summary class="faq-question cursor-pointer">Wann ist die beste Reisezeit für Kerala?</summary>
+      <p class="mt-3 faq-answer">November bis März gelten als optimal für Rundreisen. Für Ayurveda-Kuren ist der Monsun (Juni–September) traditionell sehr geeignet.</p>
+    </details>
+    <details class="bg-white shadow rounded-lg p-6 hover:shadow-md transition-shadow">
+      <summary class="faq-question cursor-pointer">Wie läuft eine Ayurveda-Kur ab?</summary>
+      <p class="mt-3 faq-answer">Nach einer ärztlichen Erstkonsultation erhalten Sie einen individuellen Plan mit täglichen Anwendungen, angepasster Ernährung und Yoga.</p>
+    </details>
+    <details class="bg-white shadow rounded-lg p-6 hover:shadow-md transition-shadow">
+      <summary class="faq-question cursor-pointer">Ist deutschsprachige Betreuung möglich?</summary>
+      <p class="mt-3 faq-answer">Ja. Wir beraten vorab auf Deutsch und haben verlässliche Partner vor Ort.</p>
+    </details>
+    <details class="bg-white shadow rounded-lg p-6 hover:shadow-md transition-shadow">
+      <summary class="faq-question cursor-pointer">Welche Impfungen brauche ich für Kerala?</summary>
+      <p class="mt-3 faq-answer">Hepatitis A, Typhus und Tetanus werden empfohlen. Malaria-Prophylaxe ist in manchen Gebieten ratsam.</p>
+    </details>
+    <details class="bg-white shadow rounded-lg p-6 hover:shadow-md transition-shadow">
+      <summary class="faq-question cursor-pointer">Wie buche ich eine Kerala Reise?</summary>
+      <p class="mt-3 faq-answer">Kontaktieren Sie uns per WhatsApp oder E-Mail. Wir erstellen Ihnen ein individuelles Angebot.</p>
+    </details>
+  </div>
+</section>
+<script type="application/ld+json">
+{{- $faqs := slice
+  (dict "@type" "Question" "name" "Wann ist die beste Reisezeit für Kerala?" "acceptedAnswer" (dict "@type" "Answer" "text" "November bis März gelten als optimal für Rundreisen. Für Ayurveda-Kuren ist der Monsun (Juni–September) traditionell sehr geeignet."))
+  (dict "@type" "Question" "name" "Wie läuft eine Ayurveda-Kur ab?" "acceptedAnswer" (dict "@type" "Answer" "text" "Nach einer ärztlichen Erstkonsultation erhalten Sie einen individuellen Plan mit täglichen Anwendungen, angepasster Ernährung und Yoga."))
+  (dict "@type" "Question" "name" "Ist deutschsprachige Betreuung möglich?" "acceptedAnswer" (dict "@type" "Answer" "text" "Ja. Wir beraten vorab auf Deutsch und haben verlässliche Partner vor Ort."))
+  (dict "@type" "Question" "name" "Welche Impfungen brauche ich für Kerala?" "acceptedAnswer" (dict "@type" "Answer" "text" "Hepatitis A, Typhus und Tetanus werden empfohlen. Malaria-Prophylaxe ist in manchen Gebieten ratsam."))
+  (dict "@type" "Question" "name" "Wie buche ich eine Kerala Reise?" "acceptedAnswer" (dict "@type" "Answer" "text" "Kontaktieren Sie uns per WhatsApp oder E-Mail. Wir erstellen Ihnen ein individuelles Angebot."))
+-}}
+{{- $faqPage := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqs -}}
+{{ $faqPage | jsonify | safeHTML }}
+</script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      // Reveal animations
+      const options = { threshold: 0.12 };
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('revealed');
+            observer.unobserve(e.target);
+          }
+        });
+      }, options);
+      document.querySelectorAll('.reveal, .reveal-item').forEach(el=>observer.observe(el));
     });
 
     // Enhanced lazy loading with IntersectionObserver
@@ -259,6 +489,5 @@
       });
     }
   </script>
-</section>
 
 {{ end }}

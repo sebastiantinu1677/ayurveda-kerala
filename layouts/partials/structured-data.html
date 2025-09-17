@@ -1,0 +1,88 @@
+{{/*
+  Enhanced structured data for better SEO
+  Usage: {{ partial "structured-data.html" . }}
+*/}}
+
+{{/* Organization Schema */}}
+{{- $org := dict "@context" "https://schema.org" "@type" "Organization" "name" "Kerala Reisen" "url" .Site.BaseURL "logo" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "contactPoint" (dict "@type" "ContactPoint" "contactType" "customer service" "areaServed" "DE" "availableLanguage" "German" "telephone" "+49-152-33145220") "sameAs" (slice "https://www.facebook.com/keralareisen" "https://www.instagram.com/keralareisen" "https://twitter.com/keralareisen") "foundingDate" "2020" "description" "Deutschsprachige Reiseberatung für authentische Kerala-Reisen, Ayurveda-Kuren, Yoga-Retreats und Rundreisen" -}}
+<script type="application/ld+json">{{ $org | jsonify | safeHTML }}</script>
+
+{{/* Local Business Schema */}}
+{{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Kerala Reisen" "image" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Myerhofstraße 9" "addressLocality" "Kiel" "postalCode" "24106" "addressCountry" "DE") "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" "telephone" "+49-152-33145220" "url" .Site.BaseURL "description" "Deutschsprachige Beratung für Kerala-Reisen, Ayurveda-Kuren und Yoga-Retreats" -}}
+<script type="application/ld+json">{{ $lb | jsonify | safeHTML }}</script>
+
+{{/* Service Schema */}}
+{{- $service := dict "@context" "https://schema.org" "@type" "Service" "areaServed" (dict "@type" "Country" "name" "Deutschland") "description" "Deutschsprachige Beratung für Kerala-Reisen: Ayurveda-Kuren, Yoga-Retreats, Rundreisen und Backwaters-Erlebnisse in Kerala, Indien" "name" "Kerala Reisen" "offers" (dict "@type" "Offer" "availability" "https://schema.org/InStock" "priceCurrency" "EUR" "priceRange" "290-3000 EUR") "provider" (dict "@type" "Organization" "name" "Kerala Reisen") "serviceType" "Reiseberatung" "category" "Travel Agency" -}}
+<script type="application/ld+json">{{ $service | jsonify | safeHTML }}</script>
+
+{{/* WebSite Schema with SearchAction */}}
+{{- if eq .Kind "home" -}}
+{{- $website := dict "@context" "https://schema.org" "@type" "WebSite" "url" .Site.BaseURL "name" "Kerala Reisen" "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q={search_term_string}" .Site.BaseURL) "query-input" "required name=search_term_string") "description" "Authentische Kerala-Reisen mit deutschsprachiger Beratung" -}}
+<script type="application/ld+json">{{ $website | jsonify | safeHTML }}</script>
+{{- end -}}
+
+{{/* Product/Tour Schema for individual tours */}}
+{{- if eq .Type "reisen" -}}
+{{- $price := cond (isset .Params "pricefrom") .Params.pricefrom (or .Params.priceFrom "") -}}
+{{- $dur := or .Params.duration "" -}}
+{{- $img := or .Params.image (.Site.Params.defaultImage) -}}
+{{- $dest := dict "@type" "Place" "name" "Kerala, Indien" "address" (dict "@type" "PostalAddress" "addressCountry" "IN" "addressRegion" "Kerala") -}}
+{{- $itinerary := slice (dict "@type" "Trip" "name" .Title) -}}
+{{- $tour := dict "@context" "https://schema.org" "@type" "TouristTrip" "name" .Title "description" .Description "image" $img "offers" (dict "@type" "Offer" "price" $price "priceCurrency" "EUR" "availability" "https://schema.org/InStock") "itinerary" $itinerary "touristType" "Leisure" "provider" (dict "@type" "Organization" "name" "Kerala Reisen") -}}
+<script type="application/ld+json">{{ $tour | jsonify | safeHTML }}</script>
+{{- end -}}
+
+{{/* Article Schema for blog posts */}}
+{{- if eq .Type "blog" -}}
+{{- $author := dict "@type" "Person" "name" "Kerala Reisen Team" "url" .Site.BaseURL -}}
+{{- $publisher := dict "@type" "Organization" "name" "Kerala Reisen" "logo" (dict "@type" "ImageObject" "url" (printf "%simages/keralareisenLogo.png" .Site.BaseURL)) -}}
+{{- $article := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "description" .Description "image" .Params.image "author" $author "publisher" $publisher "datePublished" (.Date.Format "2006-01-02") "dateModified" (.Lastmod.Format "2006-01-02") "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink) -}}
+<script type="application/ld+json">{{ $article | jsonify | safeHTML }}</script>
+{{- end -}}
+
+{{/* FAQ Schema - Only for pages that have FAQ data */}}
+{{- if and .Params.faq (gt (len .Params.faq) 0) -}}
+{{- $faqItems := slice -}}
+{{- range .Params.faq -}}
+{{- if and .question .answer -}}
+{{- $faqItem := dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" .answer) -}}
+{{- $faqItems = $faqItems | append $faqItem -}}
+{{- end -}}
+{{- end -}}
+{{- if gt (len $faqItems) 0 -}}
+{{- $faq := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqItems -}}
+<script type="application/ld+json">{{ $faq | jsonify | safeHTML }}</script>
+{{- end -}}
+{{- end -}}
+
+{{/* Breadcrumb Schema - Simplified version */}}
+{{- if ne .Kind "home" -}}
+{{- $breadcrumbItems := slice -}}
+{{- $position := 1 -}}
+{{- $homeItem := dict "@type" "ListItem" "position" $position "name" "Home" "item" .Site.BaseURL -}}
+{{- $breadcrumbItems = $breadcrumbItems | append $homeItem -}}
+{{- $position = add $position 1 -}}
+{{- $currentItem := dict "@type" "ListItem" "position" $position "name" .Title "item" .Permalink -}}
+{{- $breadcrumbItems = $breadcrumbItems | append $currentItem -}}
+{{- $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $breadcrumbItems -}}
+<script type="application/ld+json">{{ $breadcrumb | jsonify | safeHTML }}</script>
+{{- end -}}
+
+{{/* Review Schema for tours with reviews */}}
+{{- if and (eq .Type "reisen") .Params.reviews (gt (len .Params.reviews) 0) -}}
+{{- $reviews := slice -}}
+{{- range .Params.reviews -}}
+{{- if and .name .rating .text -}}
+{{- $review := dict "@type" "Review" "author" (dict "@type" "Person" "name" .name) "reviewRating" (dict "@type" "Rating" "ratingValue" .rating "bestRating" 5) "reviewBody" .text -}}
+{{- if .date -}}
+{{- $review = merge $review (dict "datePublished" .date) -}}
+{{- end -}}
+{{- $reviews = $reviews | append $review -}}
+{{- end -}}
+{{- end -}}
+{{- if gt (len $reviews) 0 -}}
+{{- $aggregateRating := dict "@type" "AggregateRating" "ratingValue" (or .Params.ratingValue 4.5) "reviewCount" (or .Params.reviewCount (len $reviews)) "bestRating" 5 "worstRating" 1 -}}
+{{- $product := dict "@context" "https://schema.org" "@type" "Product" "name" .Title "image" (or .Params.image .Site.Params.defaultImage) "description" .Description "aggregateRating" $aggregateRating "review" $reviews -}}
+<script type="application/ld+json">{{ $product | jsonify | safeHTML }}</script>
+{{- end -}}
+{{- end -}}

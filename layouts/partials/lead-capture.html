@@ -4,8 +4,8 @@
 */}}
 <div class="bg-gradient-to-r from-yellow-50 to-green-50 border border-yellow-200 rounded-lg p-6 md:p-8">
   <div class="text-center mb-6">
-    <h3 class="text-2xl font-bold text-gray-800 mb-2">Kostenloser Kerala Reiseführer</h3>
-    <p class="text-gray-600">Erhalten Sie unseren 15-seitigen Guide mit Insider-Tipps, Packliste und Ayurveda-Basics per E-Mail.</p>
+    <h3 class="typography-heading-2 text-gray-800 mb-3">Kostenloser Kerala Reiseführer</h3>
+    <p class="typography-body-large text-gray-600">Erhalten Sie unseren 15-seitigen Guide mit Insider-Tipps für Kerala-Reisen, Packliste und Ayurveda-Basics per E-Mail.</p>
   </div>
   
   <form id="leadCaptureForm" class="space-y-4" onsubmit="return handleLeadCapture(event)">
@@ -41,22 +41,23 @@
         id="newsletter" 
         class="mt-1 h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded"
       >
-      <label for="newsletter" class="text-sm text-gray-600">
+      <label for="newsletter" class="typography-body text-gray-600">
         Ich möchte auch über neue Reiseangebote und Ayurveda-Tipps informiert werden (kann jederzeit abbestellt werden)
       </label>
     </div>
     
     <button 
       type="submit" 
-      class="w-full bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-yellow-700 transition-colors duration-200 flex items-center justify-center gap-2"
+      class="w-full bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-yellow-700 transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-5 h-5 button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
       </svg>
-      Reiseführer kostenlos herunterladen
+      <span class="button-text">Reiseführer kostenlos herunterladen</span>
+      <span class="loading-text hidden">Wird gesendet...</span>
     </button>
     
-    <p class="text-xs text-gray-500 text-center">
+    <p class="typography-caption text-gray-500 text-center">
       Datenschutzkonform • Keine Weitergabe an Dritte • Jederzeit abbestellbar
     </p>
   </form>
@@ -85,10 +86,17 @@ function handleLeadCapture(e) {
   };
   
   // Show loading state
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn.innerHTML;
-  submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Wird gesendet...';
-  submitBtn.disabled = true;
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const buttonText = submitBtn.querySelector('.button-text');
+          const loadingText = submitBtn.querySelector('.loading-text');
+          const buttonIcon = submitBtn.querySelector('.button-icon');
+          
+          // Show loading state
+          buttonText.classList.add('hidden');
+          loadingText.classList.remove('hidden');
+          buttonIcon.innerHTML = '<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>';
+          buttonIcon.classList.add('animate-spin');
+          submitBtn.disabled = true;
   
   // Send email using reisefuehrer template
   emailjs.send('service_6n7cbrb', 'template_reisefuehrer', {
@@ -118,15 +126,19 @@ E-Mail wurde automatisch versendet.`;
   }, function(error) {
     console.log('FAILED...', error);
     
+    // Restore button state
+    buttonText.classList.remove('hidden');
+    loadingText.classList.add('hidden');
+    buttonIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>';
+    buttonIcon.classList.remove('animate-spin');
+    submitBtn.disabled = false;
+    
     // Show error message
     const errorDiv = document.createElement('div');
     errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mt-4';
     errorDiv.innerHTML = '<p class="font-semibold">Fehler beim Senden</p><p>Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt per WhatsApp.</p>';
     form.appendChild(errorDiv);
     
-    // Reset button
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
   });
   
   return false;

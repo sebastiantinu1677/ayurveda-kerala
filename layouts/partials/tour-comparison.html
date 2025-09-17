@@ -1,0 +1,123 @@
+{{/*
+  Interactive tour comparison tool
+  Usage: {{ partial "tour-comparison.html" . }}
+*/}}
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+  <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Reisen vergleichen</h3>
+  
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Tour Selection -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Reise 1 auswählen</label>
+      <select id="tour1" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+        <option value="">Reise auswählen...</option>
+        {{ range where .Site.RegularPages "Section" "reisen" }}
+        <option value="{{ .RelPermalink }}" data-title="{{ .Title }}" data-price="{{ .Params.pricefrom }}" data-duration="{{ .Params.duration }}" data-description="{{ .Description }}">
+          {{ .Title }} ({{ .Params.pricefrom }}€)
+        </option>
+        {{ end }}
+      </select>
+    </div>
+    
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Reise 2 auswählen</label>
+      <select id="tour2" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+        <option value="">Reise auswählen...</option>
+        {{ range where .Site.RegularPages "Section" "reisen" }}
+        <option value="{{ .RelPermalink }}" data-title="{{ .Title }}" data-price="{{ .Params.pricefrom }}" data-duration="{{ .Params.duration }}" data-description="{{ .Description }}">
+          {{ .Title }} ({{ .Params.pricefrom }}€)
+        </option>
+        {{ end }}
+      </select>
+    </div>
+  </div>
+  
+  <!-- Comparison Results -->
+  <div id="comparison-results" class="mt-6 hidden">
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Tour 1 Details -->
+      <div class="border border-gray-200 rounded-lg p-4">
+        <h4 id="tour1-title" class="font-semibold text-lg mb-2"></h4>
+        <div class="space-y-2 text-sm">
+          <div><span class="font-medium">Preis:</span> <span id="tour1-price" class="text-green-600 font-semibold"></span></div>
+          <div><span class="font-medium">Dauer:</span> <span id="tour1-duration"></span></div>
+          <div><span class="font-medium">Beschreibung:</span> <span id="tour1-description"></span></div>
+        </div>
+        <a id="tour1-link" href="#" class="inline-block mt-3 bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors">
+          Details ansehen
+        </a>
+      </div>
+      
+      <!-- Tour 2 Details -->
+      <div class="border border-gray-200 rounded-lg p-4">
+        <h4 id="tour2-title" class="font-semibold text-lg mb-2"></h4>
+        <div class="space-y-2 text-sm">
+          <div><span class="font-medium">Preis:</span> <span id="tour2-price" class="text-green-600 font-semibold"></span></div>
+          <div><span class="font-medium">Dauer:</span> <span id="tour2-duration"></span></div>
+          <div><span class="font-medium">Beschreibung:</span> <span id="tour2-description"></span></div>
+        </div>
+        <a id="tour2-link" href="#" class="inline-block mt-3 bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors">
+          Details ansehen
+        </a>
+      </div>
+    </div>
+    
+    <!-- Price Comparison -->
+    <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+      <h5 class="font-semibold mb-2">Preisvergleich</h5>
+      <div id="price-comparison" class="text-sm"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tour1Select = document.getElementById('tour1');
+  const tour2Select = document.getElementById('tour2');
+  const results = document.getElementById('comparison-results');
+  
+  function updateComparison() {
+    const tour1Option = tour1Select.selectedOptions[0];
+    const tour2Option = tour2Select.selectedOptions[0];
+    
+    if (tour1Option && tour2Option) {
+      // Update tour 1 details
+      document.getElementById('tour1-title').textContent = tour1Option.dataset.title;
+      document.getElementById('tour1-price').textContent = tour1Option.dataset.price + '€';
+      document.getElementById('tour1-duration').textContent = tour1Option.dataset.duration;
+      document.getElementById('tour1-description').textContent = tour1Option.dataset.description;
+      document.getElementById('tour1-link').href = tour1Option.value;
+      
+      // Update tour 2 details
+      document.getElementById('tour2-title').textContent = tour2Option.dataset.title;
+      document.getElementById('tour2-price').textContent = tour2Option.dataset.price + '€';
+      document.getElementById('tour2-duration').textContent = tour2Option.dataset.duration;
+      document.getElementById('tour2-description').textContent = tour2Option.dataset.description;
+      document.getElementById('tour2-link').href = tour2Option.value;
+      
+      // Price comparison
+      const price1 = parseInt(tour1Option.dataset.price);
+      const price2 = parseInt(tour2Option.dataset.price);
+      const difference = Math.abs(price1 - price2);
+      const cheaper = price1 < price2 ? tour1Option.dataset.title : tour2Option.dataset.title;
+      
+      document.getElementById('price-comparison').innerHTML = `
+        <div class="flex justify-between items-center">
+          <span>Preisunterschied:</span>
+          <span class="font-semibold">${difference}€</span>
+        </div>
+        <div class="mt-1 text-green-600">
+          <strong>${cheaper}</strong> ist günstiger
+        </div>
+      `;
+      
+      results.classList.remove('hidden');
+    } else {
+      results.classList.add('hidden');
+    }
+  }
+  
+  tour1Select.addEventListener('change', updateComparison);
+  tour2Select.addEventListener('change', updateComparison);
+});
+</script>

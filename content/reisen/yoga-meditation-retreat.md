@@ -1,7 +1,7 @@
 ---
 title: "Yoga & Meditation Retreat"
 description: "Yoga-Retreat mit Meditation und Strand-Entspannung."
-image: "/images/yoga-retreat.jpg"
+image: "/images/kerala-yoga-openspace.jpg"
 pricefrom: 1290
 duration: "10 Tage"
 categories: ["Yoga", "Meditation", "Wellness"]

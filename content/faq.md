@@ -1,13 +1,13 @@
 ---
-title: "Häufige Fragen - Ayurveda Kerala Reisen"
-description: "Antworten auf die wichtigsten Fragen zu Ayurveda-Kuren, Yoga-Retreats und Rundreisen in Kerala."
+title: "Häufige Fragen - Kerala Reisen"
+description: "Antworten auf die wichtigsten Fragen zu Kerala-Reisen, Ayurveda-Kuren, Yoga-Retreats und Rundreisen."
 url: "/faq/"
 layout: "faq"
 ---
 
-# Häufige Fragen zu Ayurveda Kerala Reisen
+# Häufige Fragen zu Kerala Reisen
 
-Hier finden Sie Antworten auf die wichtigsten Fragen zu unseren Ayurveda-Kuren, Yoga-Retreats und Rundreisen in Kerala.
+Hier finden Sie Antworten auf die wichtigsten Fragen zu unseren Kerala-Reisen, Ayurveda-Kuren, Yoga-Retreats und Rundreisen.
 
 ## Ayurveda-Kuren
 

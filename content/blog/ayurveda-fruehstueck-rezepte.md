@@ -2,7 +2,7 @@
 title: "Ayurvedische Frühstücksrezepte: Warm & leicht"
 date: 2025-09-16
 description: "Drei einfache Rezepte: Gewürzporridge, Kitchari-Light und warmer Obstkompott."
-image: "/images/herbal-medicine.jpg"
+image: "/images/kerala-ayurveda-breakfast.jpg"
 tags: ["Ayurveda", "Rezepte", "Frühstück"]
 categories: ["Ayurveda"]
 slug: "ayurveda-fruehstueck-rezepte"

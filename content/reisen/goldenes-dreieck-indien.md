@@ -2,12 +2,12 @@
 title: "Golden Triangle: Delhi – Agra – Jaipur"
 date: 2025-09-16
 description: "Die Klassiker Nordindiens: Taj Mahal, Jaipur und Delhi."
-image: "/images/sunset-beach.jpg"
+image: "/images/taj-mahal.png"
 type: "reisen"
 tags: ["Indien", "Kulturreise", "Taj Mahal"]
 categories: ["Rundreisen"]
 duration: "5–7 Tage"
-priceFrom: "ab 690 € p.P."
+pricefrom: 690
 slug: "goldenes-dreieck-indien"
 ---
 

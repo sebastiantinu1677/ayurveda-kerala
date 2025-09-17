@@ -1,7 +1,7 @@
 ---
 title: "Panchakarma Detox-Kur"
 description: "Intensive Reinigungskur für Körper und Geist."
-image: "/images/ayurveda.jpg"
+image: "/images/kerala-ayurveda-breakfast.jpg"
 pricefrom: 2890
 duration: "21 Tage"
 categories: ["Ayurveda", "Panchakarma", "Detox"]

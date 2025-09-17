@@ -1,34 +1,65 @@
 {{/*
-  Exit-intent popup for lead capture
+  Optimized exit-intent popup for lead capture
   Usage: {{ partial "exit-intent.html" . }}
 */}}
 <div id="exit-intent-popup" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
   <div class="flex items-center justify-center min-h-screen p-4">
-    <div class="bg-white rounded-lg max-w-md w-full p-6 relative">
-      <button id="close-popup" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+    <div class="bg-white rounded-lg max-w-lg w-full p-6 relative transform scale-95 transition-transform duration-300" id="popup-content">
+      <button id="close-popup" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
       
       <div class="text-center">
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Warten Sie! 🛑</h3>
-        <p class="text-gray-600 mb-4">
-          Verpassen Sie nicht unseren <strong>kostenlosen Kerala Reiseführer</strong> mit Insider-Tipps!
-        </p>
+        <!-- Urgency indicator -->
+        <div class="bg-red-100 border border-red-200 rounded-lg p-3 mb-4">
+          <div class="flex items-center justify-center">
+            <span class="text-red-600 font-bold text-sm">⚡ Nur noch heute: Kostenloser Reiseführer!</span>
+          </div>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">Warten Sie! 🛑</h3>
+                <p class="text-gray-600 mb-4">
+                  Verpassen Sie nicht unseren <strong>kostenlosen Kerala Reiseführer</strong> mit exklusiven Insider-Tipps für Ihre Kerala-Reise!
+                </p>
+        
+        <!-- Social proof -->
+        <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+          <div class="flex items-center justify-center space-x-2">
+            <div class="flex -space-x-2">
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">A</div>
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">M</div>
+              <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold">S</div>
+            </div>
+            <span class="text-green-700 text-sm font-medium">+ 500 zufriedene Kunden</span>
+          </div>
+        </div>
         
         <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
           <h4 class="font-semibold text-yellow-800 mb-2">Was Sie erhalten:</h4>
           <ul class="text-sm text-yellow-700 text-left space-y-1">
-            <li>✓ 15-seitiger Reiseführer</li>
+            <li>✓ 15-seitiger Reiseführer (PDF)</li>
             <li>✓ Ayurveda-Basics für Einsteiger</li>
             <li>✓ Komplette Packliste</li>
             <li>✓ Kulturelle Hinweise</li>
-            <li>✓ Beste Reisezeiten</li>
+            <li>✓ Beste Reisezeiten & Wetter</li>
+            <li>✓ Exklusive Partner-Kontakte</li>
           </ul>
         </div>
         
         {{ partial "lead-capture.html" . }}
+        
+        <!-- Trust signals -->
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <div class="flex items-center justify-center space-x-4 text-xs text-gray-500">
+            <span>🔒 SSL Verschlüsselt</span>
+            <span>•</span>
+            <span>📧 Kein Spam</span>
+            <span>•</span>
+            <span>❌ Jederzeit abbestellbar</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -37,46 +68,142 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const popup = document.getElementById('exit-intent-popup');
+  const popupContent = document.getElementById('popup-content');
   const closeBtn = document.getElementById('close-popup');
   let hasShown = false;
+  let timeOnPage = 0;
+  let scrollDepth = 0;
   
-  // Check if user has already seen the popup
-  if (localStorage.getItem('exit-intent-shown')) {
+  // Track user engagement
+  const startTime = Date.now();
+  
+  // Track scroll depth
+  window.addEventListener('scroll', function() {
+    const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    scrollDepth = Math.max(scrollDepth, scrollPercent);
+  });
+  
+  // Check if user has already seen the popup (24 hour cooldown)
+  const lastShown = localStorage.getItem('exit-intent-shown');
+  const now = Date.now();
+  if (lastShown && (now - parseInt(lastShown)) < 24 * 60 * 60 * 1000) {
     return;
   }
   
-  // Exit intent detection
+  // Exit intent detection (improved)
   document.addEventListener('mouseleave', function(e) {
-    if (e.clientY <= 0 && !hasShown) {
-      showPopup();
+    if (e.clientY <= 0 && !hasShown && shouldShowPopup()) {
+      showPopup('exit-intent');
     }
   });
   
-  // Show popup after 30 seconds if user hasn't left
+  // Show popup based on engagement
   setTimeout(() => {
-    if (!hasShown) {
-      showPopup();
+    if (!hasShown && shouldShowPopup()) {
+      showPopup('time-based');
     }
-  }, 30000);
+  }, 45000); // Increased to 45 seconds
   
-  function showPopup() {
+  // Show popup on scroll (if user is engaged)
+  window.addEventListener('scroll', function() {
+    if (scrollDepth > 50 && !hasShown && shouldShowPopup()) {
+      setTimeout(() => {
+        if (!hasShown) {
+          showPopup('scroll-based');
+        }
+      }, 2000);
+    }
+  });
+  
+  function shouldShowPopup() {
+    timeOnPage = Math.round((Date.now() - startTime) / 1000);
+    
+    // Only show if user has been on page for at least 15 seconds
+    // and has scrolled at least 25% or spent 30+ seconds
+    return timeOnPage > 15 && (scrollDepth > 25 || timeOnPage > 30);
+  }
+  
+  function showPopup(trigger) {
     hasShown = true;
     popup.classList.remove('hidden');
-    localStorage.setItem('exit-intent-shown', 'true');
+    
+    // Animate popup appearance
+    setTimeout(() => {
+      popupContent.classList.remove('scale-95');
+      popupContent.classList.add('scale-100');
+    }, 10);
+    
+    // Track popup shown
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'exit_intent_popup_shown', {
+        'event_category': 'engagement',
+        'event_label': trigger,
+        'value': timeOnPage
+      });
+    }
+    
+    // Set cooldown
+    localStorage.setItem('exit-intent-shown', now.toString());
   }
   
   function hidePopup() {
-    popup.classList.add('hidden');
+    popupContent.classList.remove('scale-100');
+    popupContent.classList.add('scale-95');
+    
+    setTimeout(() => {
+      popup.classList.add('hidden');
+    }, 300);
   }
   
-  closeBtn.addEventListener('click', hidePopup);
+  closeBtn.addEventListener('click', function() {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'exit_intent_popup_closed', {
+        'event_category': 'engagement',
+        'event_label': 'close_button'
+      });
+    }
+    hidePopup();
+  });
+  
   popup.addEventListener('click', function(e) {
     if (e.target === popup) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'exit_intent_popup_closed', {
+          'event_category': 'engagement',
+          'event_label': 'background_click'
+        });
+      }
       hidePopup();
     }
   });
   
-  // Hide popup after successful form submission
-  document.addEventListener('leadCaptureSuccess', hidePopup);
+  // Track successful form submission
+  document.addEventListener('leadCaptureSuccess', function() {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'exit_intent_conversion', {
+        'event_category': 'conversion',
+        'event_label': 'exit_intent_popup',
+        'value': 1
+      });
+    }
+    hidePopup();
+  });
+  
+  // Track form abandonment
+  const form = popup.querySelector('form');
+  if (form) {
+    let formStarted = false;
+    form.addEventListener('focus', function() {
+      if (!formStarted) {
+        formStarted = true;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'exit_intent_form_started', {
+            'event_category': 'engagement',
+            'event_label': 'form_interaction'
+          });
+        }
+      }
+    });
+  }
 });
 </script>

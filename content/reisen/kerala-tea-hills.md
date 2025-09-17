@@ -7,7 +7,7 @@ type: "reisen"
 tags: ["Munnar", "Natur", "Wandern"]
 categories: ["Rundreisen"]
 duration: "2–4 Tage"
-priceFrom: "ab 350 € p.P."
+pricefrom: 350
 slug: "kerala-tea-hills"
 ---
 

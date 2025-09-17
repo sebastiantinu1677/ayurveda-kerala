@@ -1,17 +1,22 @@
-baseURL = "https://ayurveda-kerala.de/"
+baseURL = "https://ayurveda-wellness-kerala.netlify.app/"
 languageCode = "de-de"
-title = "Ayurveda Kerala"
+title = "Kerala Reisen"
 
 [pagination]
   pagerSize = 5
 
 [params]
   googleAnalytics = "AW-17574288605"
-  favicon = "/images/favicon.ico"
-  defaultImage = "/images/hero-backwaters.jpg"
-  twitter = "https://twitter.com/ayurvedakerala"
-  facebook = "https://www.facebook.com/ayurvedakerala"
-  instagram = "https://www.instagram.com/ayurvedakerala"
+  favicon = "/images/keralareisenLogo.png"
+  defaultImage = "/images/webp/hero-backwaters.webp"
+  twitter = "https://twitter.com/keralareisen"
+  facebook = "https://www.facebook.com/keralareisen"
+  instagram = "https://www.instagram.com/keralareisen"
+  description = "Kerala Reisen - Authentische Ayurveda-Kuren, Yoga-Retreats & Rundreisen mit deutschsprachiger Beratung. Geprüfte Partner, individuelle Reiseplanung, transparente Preise."
+  keywords = "Kerala Reisen, Ayurveda Kur, Yoga Retreat, Indien Reisen, Backwaters, deutschsprachige Beratung"
+  author = "Kerala Reisen"
+  language = "de"
+  timezone = "Europe/Berlin"
 
 [params.whatsapp]
   number = "4915233145220"
@@ -28,6 +33,16 @@ title = "Ayurveda Kerala"
 
 [minify]
   minifyOutput = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = false
 
   [[menu.footer]]
     name = "Impressum"

@@ -1,7 +1,7 @@
 ---
 title: "Kerala Backwaters Hausboot-Erlebnis"
 description: "Berühmte Backwaters auf traditionellen Hausbooten."
-image: "/images/houseboat-backwaters.jpg"
+image: "/images/kerala-houseboat.png"
 pricefrom: 290
 duration: "2-3 Tage"
 categories: ["Rundreisen"]

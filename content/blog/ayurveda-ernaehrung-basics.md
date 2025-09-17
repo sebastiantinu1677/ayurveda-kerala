@@ -2,7 +2,7 @@
 title: "Ayurvedische Ernährung: Die Basics"
 date: 2025-09-16
 description: "Doshas verstehen, Agni stärken und alltagstauglich kochen – so geht’s."
-image: "/images/herbal-medicine.jpg"
+image: "/images/kerala-ayurveda-breakfast.jpg"
 tags: ["Ayurveda", "Ernährung"]
 categories: ["Ayurveda"]
 slug: "ayurveda-ernaehrung-basics"

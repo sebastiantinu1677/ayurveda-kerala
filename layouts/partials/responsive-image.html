@@ -1,0 +1,63 @@
+{{/*
+  Advanced responsive image partial with multiple formats and sizes
+  Usage: {{ partial "responsive-image.html" (dict "src" .Params.image "alt" $.Title "class" "w-full h-48 object-cover" "sizes" "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw") }}
+*/}}
+{{ $src := .src }}
+{{ $alt := .alt }}
+{{ $class := .class }}
+{{ $sizes := or .sizes "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" }}
+{{ $loading := or .loading "lazy" }}
+{{ $priority := or .priority false }}
+
+{{/* Generate multiple format paths */}}
+{{ $webpSrc := $src }}
+{{ $avifSrc := $src }}
+{{ if strings.HasSuffix $src ".jpg" }}
+  {{ $webpSrc = replace $src ".jpg" ".webp" }}
+  {{ $avifSrc = replace $src ".jpg" ".avif" }}
+{{ else if strings.HasSuffix $src ".png" }}
+  {{ $webpSrc = replace $src ".png" ".webp" }}
+  {{ $avifSrc = replace $src ".png" ".avif" }}
+{{ end }}
+{{ $webpSrc = replace $webpSrc "/images/" "/images/webp/" }}
+{{ $avifSrc = replace $avifSrc "/images/" "/images/avif/" }}
+
+{{/* Generate responsive srcset */}}
+{{ $baseName := replaceRE "\\.[^.]+$" "" $src }}
+{{ $webpSrcset := slice }}
+{{ $avifSrcset := slice }}
+{{ $jpgSrcset := slice }}
+
+{{/* Generate different sizes for srcset */}}
+{{ $sizes := slice "400w" "600w" "800w" "1200w" "1600w" }}
+{{ range $sizes }}
+  {{ $size := replace "w" "" . }}
+  {{ $webpSrcset = $webpSrcset | append (printf "%s-%s.webp %s" $baseName $size .) }}
+  {{ $avifSrcset = $avifSrcset | append (printf "%s-%s.avif %s" $baseName $size .) }}
+  {{ $jpgSrcset = $jpgSrcset | append (printf "%s-%s.jpg %s" $baseName $size .) }}
+{{ end }}
+
+<picture>
+  <source 
+    type="image/avif" 
+    srcset="{{ delimit $avifSrcset ", " }}"
+    sizes="{{ $sizes }}"
+  >
+  <source 
+    type="image/webp" 
+    srcset="{{ delimit $webpSrcset ", " }}"
+    sizes="{{ $sizes }}"
+  >
+  <img 
+    src="{{ $src | relURL }}" 
+    srcset="{{ delimit $jpgSrcset ", " }}"
+    sizes="{{ $sizes }}"
+    alt="{{ $alt }}" 
+    class="{{ $class }}"
+    loading="{{ $loading }}"
+    {{ if $priority }}fetchpriority="high"{{ end }}
+    width="800" 
+    height="600"
+    decoding="async"
+  >
+</picture>

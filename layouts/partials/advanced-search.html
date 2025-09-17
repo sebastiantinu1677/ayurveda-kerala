@@ -1,0 +1,158 @@
+{{/*
+  Advanced search with filters and suggestions
+  Usage: {{ partial "advanced-search.html" . }}
+*/}}
+<div class="search-container bg-white rounded-lg shadow-lg p-6">
+  <div class="flex flex-col md:flex-row gap-4">
+    <!-- Search Input -->
+    <div class="flex-1">
+      <input 
+        type="text" 
+        id="advanced-search" 
+        placeholder="Reisen, Ayurveda, Yoga, Kerala suchen..."
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+      >
+    </div>
+    
+    <!-- Category Filter -->
+    <div class="md:w-48">
+      <select id="category-filter" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500">
+        <option value="">Alle Kategorien</option>
+        <option value="ayurveda">Ayurveda</option>
+        <option value="yoga">Yoga & Meditation</option>
+        <option value="rundreise">Rundreisen</option>
+        <option value="backwaters">Backwaters</option>
+        <option value="strand">Strand & Entspannung</option>
+      </select>
+    </div>
+    
+    <!-- Duration Filter -->
+    <div class="md:w-32">
+      <select id="duration-filter" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500">
+        <option value="">Dauer</option>
+        <option value="7">7 Tage</option>
+        <option value="14">14 Tage</option>
+        <option value="21">21 Tage</option>
+        <option value="28">28+ Tage</option>
+      </select>
+    </div>
+    
+    <!-- Search Button -->
+    <button id="search-btn" class="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition-colors">
+      Suchen
+    </button>
+  </div>
+  
+  <!-- Search Suggestions -->
+  <div id="search-suggestions" class="mt-4 hidden">
+    <div class="bg-gray-50 rounded-lg p-4">
+      <h4 class="font-semibold mb-2">Beliebte Suchen:</h4>
+      <div class="flex flex-wrap gap-2">
+        <span class="suggestion-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm cursor-pointer">Ayurveda Kur 14 Tage</span>
+        <span class="suggestion-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm cursor-pointer">Yoga Retreat</span>
+        <span class="suggestion-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm cursor-pointer">Backwaters Hausboot</span>
+        <span class="suggestion-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm cursor-pointer">Kerala Rundreise</span>
+        <span class="suggestion-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm cursor-pointer">Familienreise</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Search Results -->
+  <div id="search-results" class="mt-4 hidden">
+    <div class="space-y-4">
+      <!-- Results will be populated by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('advanced-search');
+  const categoryFilter = document.getElementById('category-filter');
+  const durationFilter = document.getElementById('duration-filter');
+  const searchBtn = document.getElementById('search-btn');
+  const suggestions = document.getElementById('search-suggestions');
+  const results = document.getElementById('search-results');
+  
+  // Show suggestions on focus
+  searchInput.addEventListener('focus', function() {
+    suggestions.classList.remove('hidden');
+  });
+  
+  // Hide suggestions when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-container')) {
+      suggestions.classList.add('hidden');
+    }
+  });
+  
+  // Handle suggestion clicks
+  document.querySelectorAll('.suggestion-tag').forEach(tag => {
+    tag.addEventListener('click', function() {
+      searchInput.value = this.textContent;
+      performSearch();
+    });
+  });
+  
+  // Perform search
+  function performSearch() {
+    const query = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
+    const duration = durationFilter.value;
+    
+    if (query.length < 2) return;
+    
+    // Simulate search results (replace with actual search logic)
+    const mockResults = [
+      { title: 'Ayurveda Kur in Kerala', type: 'reisen', category: 'ayurveda', duration: '14', url: '/reisen/ayurveda-kur/' },
+      { title: 'Yoga & Meditation Retreat', type: 'reisen', category: 'yoga', duration: '7', url: '/reisen/yoga-meditation/' },
+      { title: 'Kerala Rundreise', type: 'reisen', category: 'rundreise', duration: '14', url: '/reisen/kerala-rundreise/' },
+      { title: 'Ayurveda Tipps für Einsteiger', type: 'blog', category: 'ayurveda', duration: '', url: '/blog/ayurveda-tipps-fuer-einsteiger/' }
+    ];
+    
+    const filteredResults = mockResults.filter(item => {
+      const matchesQuery = item.title.toLowerCase().includes(query);
+      const matchesCategory = !category || item.category === category;
+      const matchesDuration = !duration || item.duration === duration;
+      
+      return matchesQuery && matchesCategory && matchesDuration;
+    });
+    
+    displayResults(filteredResults);
+  }
+  
+  function displayResults(results) {
+    if (results.length === 0) {
+      results.innerHTML = '<p class="text-gray-500 text-center py-4">Keine Ergebnisse gefunden.</p>';
+    } else {
+      results.innerHTML = results.map(item => `
+        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-lg mb-2">
+            <a href="${item.url}" class="text-yellow-600 hover:text-yellow-700">${item.title}</a>
+          </h3>
+          <p class="text-gray-600 text-sm">
+            ${item.type === 'reisen' ? 'Reise' : 'Blog'} 
+            ${item.category ? '• ' + item.category.charAt(0).toUpperCase() + item.category.slice(1) : ''}
+            ${item.duration ? '• ' + item.duration + ' Tage' : ''}
+          </p>
+        </div>
+      `).join('');
+    }
+    
+    results.classList.remove('hidden');
+    suggestions.classList.add('hidden');
+  }
+  
+  // Event listeners
+  searchBtn.addEventListener('click', performSearch);
+  searchInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      performSearch();
+    }
+  });
+  
+  categoryFilter.addEventListener('change', performSearch);
+  durationFilter.addEventListener('change', performSearch);
+});
+</script>
+

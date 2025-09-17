@@ -1,0 +1,183 @@
+{{/*
+  Interactive Kerala map with destinations
+  Usage: {{ partial "kerala-map.html" . }}
+*/}}
+<div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+  <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">🗺️ Kerala entdecken</h3>
+  
+  <div class="grid lg:grid-cols-2 gap-6">
+    <!-- Map Container -->
+    <div class="relative">
+      <div id="kerala-map" class="w-full h-96 bg-gradient-to-br from-green-50 to-blue-50 rounded-lg relative overflow-hidden border border-gray-200">
+        <!-- Kerala outline -->
+        <svg viewBox="0 0 400 300" class="w-full h-full">
+          <!-- Background -->
+          <rect width="400" height="300" fill="rgba(240, 253, 244, 0.5)"/>
+          
+          <!-- Kerala state outline - proper curved coastal shape -->
+          <path d="M50 20 L70 18 L90 15 L110 12 L130 10 L150 8 L170 6 L190 5 L210 4 L230 3 L250 2 L270 1 L290 2 L310 3 L330 5 L350 8 L370 12 L380 20 L375 40 L370 60 L365 80 L360 100 L355 120 L350 140 L345 160 L340 180 L335 200 L330 220 L325 240 L320 260 L315 280 L310 300 L300 305 L280 300 L260 295 L240 290 L220 285 L200 280 L180 275 L160 270 L140 265 L120 260 L100 255 L80 250 L60 245 L50 235 L45 215 L40 195 L35 175 L30 155 L25 135 L20 115 L15 95 L10 75 L5 55 L0 35 L5 15 L10 5 L20 2 L30 5 L40 8 Z" 
+                fill="rgba(34, 197, 94, 0.2)" 
+                stroke="rgba(34, 197, 94, 0.6)" 
+                stroke-width="3"/>
+          
+          <!-- Destinations -->
+          <g id="destinations">
+            <!-- Kochi (Cochin) - Central Kerala, coastal -->
+            <circle cx="200" cy="150" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2" class="destination-point cursor-pointer transition-all duration-200 hover:r-12" data-destination="kochi"/>
+            <text x="200" y="170" text-anchor="middle" class="text-xs font-semibold fill-gray-700">Kochi</text>
+            
+            <!-- Munnar - Eastern hills -->
+            <circle cx="250" cy="100" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2" class="destination-point cursor-pointer transition-all duration-200 hover:r-12" data-destination="munnar"/>
+            <text x="250" y="120" text-anchor="middle" class="text-xs font-semibold fill-gray-700">Munnar</text>
+            
+            <!-- Alleppey (Alappuzha) - Southern backwaters -->
+            <circle cx="180" cy="200" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2" class="destination-point cursor-pointer transition-all duration-200 hover:r-12" data-destination="alleppey"/>
+            <text x="180" y="220" text-anchor="middle" class="text-xs font-semibold fill-gray-700">Alleppey</text>
+            
+            <!-- Kumarakom - Central backwaters -->
+            <circle cx="190" cy="180" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2" class="destination-point cursor-pointer transition-all duration-200 hover:r-12" data-destination="kumarakom"/>
+            <text x="190" y="160" text-anchor="middle" class="text-xs font-semibold fill-gray-700">Kumarakom</text>
+            
+            <!-- Thekkady - Eastern hills -->
+            <circle cx="280" cy="120" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2" class="destination-point cursor-pointer transition-all duration-200 hover:r-12" data-destination="thekkady"/>
+            <text x="280" y="140" text-anchor="middle" class="text-xs font-semibold fill-gray-700">Thekkady</text>
+            
+            <!-- Varkala - Southern coast -->
+            <circle cx="150" cy="220" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2" class="destination-point cursor-pointer transition-all duration-200 hover:r-12" data-destination="varkala"/>
+            <text x="150" y="240" text-anchor="middle" class="text-xs font-semibold fill-gray-700">Varkala</text>
+            
+            <!-- Wayanad - Northern hills -->
+            <circle cx="220" cy="60" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2" class="destination-point cursor-pointer transition-all duration-200 hover:r-12" data-destination="wayanad"/>
+            <text x="220" y="80" text-anchor="middle" class="text-xs font-semibold fill-gray-700">Wayanad</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    
+    <!-- Destination Info -->
+    <div>
+      <div id="destination-info" class="space-y-4">
+        <div class="text-center text-gray-500 py-8">
+          <div class="text-4xl mb-2">🗺️</div>
+          <p>Klicken Sie auf einen Ort, um mehr zu erfahren</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Destination data -->
+  <div id="destination-data" class="hidden">
+    <div data-destination="kochi">
+      <h4 class="font-bold text-lg mb-2">🏛️ Kochi (Cochin)</h4>
+      <p class="text-gray-600 mb-3">Die historische Hafenstadt mit chinesischen Fischernetzen und kolonialer Architektur.</p>
+      <div class="space-y-2 text-sm">
+        <div><span class="font-semibold">Highlights:</span> Chinesische Fischernetze, Fort Kochi, Jüdische Synagoge</div>
+        <div><span class="font-semibold">Aktivitäten:</span> Stadtrundgang, Gewürzmarkt, Kathakali-Tanz</div>
+        <div><span class="font-semibold">Beste Zeit:</span> Oktober bis März</div>
+      </div>
+    </div>
+    
+    <div data-destination="munnar">
+      <h4 class="font-bold text-lg mb-2">🌿 Munnar</h4>
+      <p class="text-gray-600 mb-3">Bekannt für endlose Teeplantagen und kühles Bergklima.</p>
+      <div class="space-y-2 text-sm">
+        <div><span class="font-semibold">Highlights:</span> Teeplantagen, Eravikulam National Park, Mattupetty Dam</div>
+        <div><span class="font-semibold">Aktivitäten:</span> Teeplantagen-Tour, Trekking, Wildlife-Safari</div>
+        <div><span class="font-semibold">Beste Zeit:</span> Ganzjährig (kühl)</div>
+      </div>
+    </div>
+    
+    <div data-destination="alleppey">
+      <h4 class="font-bold text-lg mb-2">🚤 Alleppey (Alappuzha)</h4>
+      <p class="text-gray-600 mb-3">Das "Venedig des Ostens" mit berühmten Backwaters.</p>
+      <div class="space-y-2 text-sm">
+        <div><span class="font-semibold">Highlights:</span> Backwaters, Hausboote, Reisfelder</div>
+        <div><span class="font-semibold">Aktivitäten:</span> Hausboot-Tour, Kanufahren, Ayurveda</div>
+        <div><span class="font-semibold">Beste Zeit:</span> Oktober bis März</div>
+      </div>
+    </div>
+    
+    <div data-destination="kumarakom">
+      <h4 class="font-bold text-lg mb-2">🦅 Kumarakom</h4>
+      <p class="text-gray-600 mb-3">Vogelparadies am Vembanad-See mit luxuriösen Resorts.</p>
+      <div class="space-y-2 text-sm">
+        <div><span class="font-semibold">Highlights:</span> Vogelschutzgebiet, Vembanad-See, Luxus-Resorts</div>
+        <div><span class="font-semibold">Aktivitäten:</span> Vogelbeobachtung, Bootsfahrten, Entspannung</div>
+        <div><span class="font-semibold">Beste Zeit:</span> November bis Februar</div>
+      </div>
+    </div>
+    
+    <div data-destination="thekkady">
+      <h4 class="font-bold text-lg mb-2">🐘 Thekkady</h4>
+      <p class="text-gray-600 mb-3">Wildlife-Hauptstadt mit Periyar-Nationalpark.</p>
+      <div class="space-y-2 text-sm">
+        <div><span class="font-semibold">Highlights:</span> Periyar-Nationalpark, Elefanten, Gewürzplantagen</div>
+        <div><span class="font-semibold">Aktivitäten:</span> Wildlife-Safari, Trekking, Gewürz-Tour</div>
+        <div><span class="font-semibold">Beste Zeit:</span> Oktober bis April</div>
+      </div>
+    </div>
+    
+    <div data-destination="varkala">
+      <h4 class="font-bold text-lg mb-2">🏖️ Varkala</h4>
+      <p class="text-gray-600 mb-3">Hippie-Strand mit Klippen und spiritueller Atmosphäre.</p>
+      <div class="space-y-2 text-sm">
+        <div><span class="font-semibold">Highlights:</span> Klippenstrand, Janardhana-Tempel, Yoga</div>
+        <div><span class="font-semibold">Aktivitäten:</span> Strand, Yoga, Ayurveda, Surfen</div>
+        <div><span class="font-semibold">Beste Zeit:</span> Oktober bis März</div>
+      </div>
+    </div>
+    
+    <div data-destination="wayanad">
+      <h4 class="font-bold text-lg mb-2">🌲 Wayanad</h4>
+      <p class="text-gray-600 mb-3">Bergregion mit dichten Wäldern und Stammeskulturen.</p>
+      <div class="space-y-2 text-sm">
+        <div><span class="font-semibold">Highlights:</span> Edakkal-Höhlen, Chembra Peak, Stammesdörfer</div>
+        <div><span class="font-semibold">Aktivitäten:</span> Trekking, Höhlenbesichtigung, Kaffee-Tour</div>
+        <div><span class="font-semibold">Beste Zeit:</span> Oktober bis Mai</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const destinationPoints = document.querySelectorAll('.destination-point');
+  const destinationInfo = document.getElementById('destination-info');
+  const destinationData = document.getElementById('destination-data');
+  
+  destinationPoints.forEach(point => {
+    point.addEventListener('click', function() {
+      const destination = this.dataset.destination;
+      const data = destinationData.querySelector(`[data-destination="${destination}"]`);
+      
+      if (data) {
+        destinationInfo.innerHTML = data.innerHTML;
+        
+        // Add click animation
+        this.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 200);
+        
+        // Track interaction
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'map_destination_click', {
+            event_category: 'engagement',
+            event_label: destination
+          });
+        }
+      }
+    });
+    
+    // Hover effects
+    point.addEventListener('mouseenter', function() {
+      this.style.fill = '#d97706';
+      this.style.cursor = 'pointer';
+    });
+    
+    point.addEventListener('mouseleave', function() {
+      this.style.fill = '#f59e0b';
+    });
+  });
+});
+</script>

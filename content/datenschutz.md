@@ -1,6 +1,6 @@
 ---
 title: "Datenschutz"
-description: "Datenschutzerklärung von Ayurveda Kerala - Informationen zum Umgang mit personenbezogenen Daten bei Reiseberatung und Buchungen."
+description: "Datenschutzerklärung von Kerala Reisen - Informationen zum Umgang mit personenbezogenen Daten bei Reiseberatung und Buchungen."
 url: "/datenschutz/"
 ---
 
@@ -9,7 +9,7 @@ url: "/datenschutz/"
 Wir freuen uns über Ihr Interesse an unserer Website. Der Schutz Ihrer personenbezogenen Daten ist uns sehr wichtig. Nachfolgend informieren wir Sie über die Verarbeitung Ihrer Daten.
 
 ### 1. Verantwortlicher  
-Ayurveda Kerala Reisen  
+Kerala Reisen  
 Musterstraße 12, 70193 Stuttgart / Leonberg  
 Telefon: +49 15233145220  
 E-Mail: sebastiantinu@gmail.com  

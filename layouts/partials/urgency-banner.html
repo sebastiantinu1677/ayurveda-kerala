@@ -1,13 +1,15 @@
 {{/*
-  Urgency banner for limited offers
+  Urgency banner for limited-time offers
   Usage: {{ partial "urgency-banner.html" . }}
 */}}
-<div class="bg-gradient-to-r from-red-500 to-orange-500 text-white py-2">
-  <div class="max-w-7xl mx-auto px-4 text-center">
-    <div class="flex items-center justify-center space-x-2 text-sm">
+<div class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-3">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-wrap items-center justify-center gap-2 text-sm md:text-base">
       <span class="animate-pulse">🔥</span>
-      <span><strong>Begrenzte Plätze verfügbar!</strong> Nur noch 3 Ayurveda-Kuren im März verfügbar</span>
-      <span class="animate-pulse">🔥</span>
+      <span class="font-semibold">Frühbucher-Rabatt: Bis zu 15% sparen bei Buchung bis 15. Oktober 2025!</span>
+      <a href="/kontakt/" class="ml-2 bg-white text-red-600 px-3 py-1 rounded-full text-xs font-bold hover:bg-gray-100 transition-colors">
+        Jetzt anfragen →
+      </a>
     </div>
   </div>
 </div>

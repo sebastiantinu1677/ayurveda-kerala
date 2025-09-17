@@ -1,7 +1,7 @@
 ---
 title: "Ayurveda Wellness-Woche"
 description: "Eine Woche Entspannung mit ayurvedischen Behandlungen."
-image: "/images/ayurveda-massage.jpg"
+image: "/images/kerala-ayurveda-nutrition.jpg"
 pricefrom: 890
 duration: "7 Tage"
 categories: ["Ayurveda", "Wellness"]

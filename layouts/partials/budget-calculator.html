@@ -1,0 +1,152 @@
+{{/*
+  Interactive travel budget calculator
+  Usage: {{ partial "budget-calculator.html" . }}
+*/}}
+<div class="bg-gradient-to-br from-yellow-50 to-green-50 rounded-lg shadow-lg p-6 mb-8">
+  <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">💰 Reisebudget-Rechner</h3>
+  
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Input Section -->
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Anzahl Personen</label>
+        <input type="number" id="participants" min="1" max="10" value="2" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Reisedauer (Tage)</label>
+        <input type="number" id="duration" min="1" max="30" value="14" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Reiseart</label>
+        <select id="travel-type" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+          <option value="budget">Budget (Backpacker)</option>
+          <option value="mid-range" selected>Mittelklasse</option>
+          <option value="luxury">Luxus</option>
+        </select>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Saison</label>
+        <select id="season" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+          <option value="low">Niedrige Saison (Mai-Sep)</option>
+          <option value="shoulder">Zwischensaison (Okt-Nov, Mär-Apr)</option>
+          <option value="high" selected>Hauptsaison (Dez-Feb)</option>
+        </select>
+      </div>
+      
+      <button id="calculate-budget" class="w-full bg-yellow-600 text-white py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">
+        Budget berechnen
+      </button>
+    </div>
+    
+    <!-- Results Section -->
+    <div id="budget-results" class="hidden">
+      <div class="bg-white rounded-lg p-4 shadow">
+        <h4 class="font-semibold text-lg mb-4">💰 Geschätztes Budget</h4>
+        
+        <div class="space-y-3">
+          <div class="flex justify-between">
+            <span>Flug (pro Person):</span>
+            <span id="flight-cost" class="font-semibold"></span>
+          </div>
+          <div class="flex justify-between">
+            <span>Unterkunft (pro Tag):</span>
+            <span id="accommodation-cost" class="font-semibold"></span>
+          </div>
+          <div class="flex justify-between">
+            <span>Verpflegung (pro Tag):</span>
+            <span id="food-cost" class="font-semibold"></span>
+          </div>
+          <div class="flex justify-between">
+            <span>Transport vor Ort:</span>
+            <span id="transport-cost" class="font-semibold"></span>
+          </div>
+          <div class="flex justify-between">
+            <span>Aktivitäten:</span>
+            <span id="activities-cost" class="font-semibold"></span>
+          </div>
+          <div class="flex justify-between">
+            <span>Visa & Versicherung:</span>
+            <span id="visa-cost" class="font-semibold"></span>
+          </div>
+        </div>
+        
+        <hr class="my-4">
+        
+        <div class="flex justify-between text-lg font-bold">
+          <span>Gesamt pro Person:</span>
+          <span id="total-per-person" class="text-green-600"></span>
+        </div>
+        
+        <div class="flex justify-between text-xl font-bold mt-2">
+          <span>Gesamt für alle:</span>
+          <span id="total-all" class="text-yellow-600"></span>
+        </div>
+        
+        <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+          <p class="text-sm text-blue-800">
+            <strong>💡 Tipp:</strong> Dies ist eine Schätzung. Kontaktieren Sie uns für ein individuelles Angebot!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const calculateBtn = document.getElementById('calculate-budget');
+  const results = document.getElementById('budget-results');
+  
+  // Cost estimates (in EUR)
+  const costs = {
+    flight: { low: 400, shoulder: 500, high: 800 },
+    accommodation: {
+      budget: { low: 15, shoulder: 20, high: 25 },
+      'mid-range': { low: 40, shoulder: 60, high: 80 },
+      luxury: { low: 120, shoulder: 150, high: 200 }
+    },
+    food: {
+      budget: { low: 15, shoulder: 20, high: 25 },
+      'mid-range': { low: 30, shoulder: 40, high: 50 },
+      luxury: { low: 60, shoulder: 80, high: 100 }
+    },
+    transport: { low: 5, shoulder: 7, high: 10 },
+    activities: { low: 10, shoulder: 15, high: 25 },
+    visa: 25
+  };
+  
+  calculateBtn.addEventListener('click', function() {
+    const participants = parseInt(document.getElementById('participants').value);
+    const duration = parseInt(document.getElementById('duration').value);
+    const travelType = document.getElementById('travel-type').value;
+    const season = document.getElementById('season').value;
+    
+    // Calculate costs
+    const flightCost = costs.flight[season] * participants;
+    const accommodationCost = costs.accommodation[travelType][season] * duration * participants;
+    const foodCost = costs.food[travelType][season] * duration * participants;
+    const transportCost = costs.transport[season] * duration * participants;
+    const activitiesCost = costs.activities[season] * duration * participants;
+    const visaCost = costs.visa * participants;
+    
+    const totalPerPerson = (flightCost + accommodationCost + foodCost + transportCost + activitiesCost + visaCost) / participants;
+    const totalAll = totalPerPerson * participants;
+    
+    // Update display
+    document.getElementById('flight-cost').textContent = Math.round(flightCost / participants) + '€';
+    document.getElementById('accommodation-cost').textContent = costs.accommodation[travelType][season] + '€';
+    document.getElementById('food-cost').textContent = costs.food[travelType][season] + '€';
+    document.getElementById('transport-cost').textContent = costs.transport[season] + '€';
+    document.getElementById('activities-cost').textContent = costs.activities[season] + '€';
+    document.getElementById('visa-cost').textContent = costs.visa + '€';
+    document.getElementById('total-per-person').textContent = Math.round(totalPerPerson) + '€';
+    document.getElementById('total-all').textContent = Math.round(totalAll) + '€';
+    
+    results.classList.remove('hidden');
+    results.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>

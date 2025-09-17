@@ -1,7 +1,7 @@
 ---
 title: "Kerala Rundreise Klassik"
 description: "Klassische Rundreise durch Kerala mit Ayurveda-Erlebnis."
-image: "/images/hero-backwaters.jpg"
+image: "/images/kerala-nature.png"
 pricefrom: 1890
 duration: "14 Tage"
 categories: ["Rundreise", "Kerala"]

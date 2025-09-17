@@ -2,7 +2,7 @@
 title: "Kerala Festivals: Onam, Thrissur Pooram & mehr"
 date: 2025-09-16
 description: "Die wichtigsten Feste in Kerala mit Reisetipps und Terminen."
-image: "/images/houseboat-backwaters.jpg"
+image: "/images/kerala-festival.jpg"
 tags: ["Kerala", "Feste"]
 categories: ["Reisen"]
 slug: "kerala-festivals"

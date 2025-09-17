@@ -1,13 +1,19 @@
 {{ define "main" }}
 <section class="max-w-6xl mx-auto py-12 px-4">
-  <h1 class="text-3xl font-bold mb-8">Unsere Reisen</h1>
+  <h1 class="section-title">Unsere Reisen</h1>
+  <p class="section-subtitle">Entdecken Sie unsere vielfältigen Kerala-Reisen für jeden Geschmack und jedes Budget</p>
   
+  <!-- Tour Comparison Tool -->
+  <div class="mb-8">
+    {{ partial "tour-comparison.html" . }}
+  </div>
+
   <!-- Filter System -->
   <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-    <h2 class="text-lg font-semibold mb-4">Reisen filtern</h2>
+    <h2 class="typography-heading-3 mb-4">Reisen filtern</h2>
     <div class="grid md:grid-cols-4 gap-4">
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">Kategorie</label>
+        <label class="form-label">Kategorie</label>
         <select id="categoryFilter" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
           <option value="">Alle Kategorien</option>
           <option value="ayurveda">Ayurveda-Kuren</option>
@@ -60,7 +66,7 @@
   <!-- Tours Grid -->
   <div id="toursGrid" class="grid md:grid-cols-3 gap-8">
     {{ range .Pages }}
-      <div class="tour-card bg-white rounded-lg shadow hover:shadow-lg transition" 
+      <div class="tour-card bg-white rounded-lg shadow card-enhanced" 
            data-category="{{ .Params.categories | default (slice) | jsonify }}"
            data-duration="{{ .Params.duration }}"
            data-price="{{ .Params.pricefrom }}"
@@ -69,26 +75,26 @@
           {{ with .Params.image }}
             {{ partial "picture.html" (dict "src" . "alt" $.Title "class" "w-full h-40 object-cover rounded-t-lg" "loading" "lazy") }}
           {{ end }}
-          <div class="p-4">
-            <h2 class="text-xl font-semibold mb-2">{{ .Title }}</h2>
-            <p class="text-gray-600 text-sm mb-3">{{ .Description }}</p>
+          <div class="p-6">
+            <h2 class="card-title">{{ .Title }}</h2>
+            <p class="card-description">{{ .Description }}</p>
             
             <!-- Tour Details -->
-            <div class="flex flex-wrap gap-2 mb-3">
+            <div class="flex flex-wrap gap-2 mb-4">
               {{ with .Params.duration }}
-                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">{{ . }}</span>
+                <span class="badge-secondary bg-blue-100 text-blue-800 px-3 py-1 rounded-full">{{ . }}</span>
               {{ end }}
               {{ with .Params.pricefrom }}
-                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">{{ . }}€ p.P.</span>
+                <span class="badge-secondary bg-green-100 text-green-800 px-3 py-1 rounded-full price-small">{{ . }}€ p.P.</span>
               {{ end }}
               {{ with .Params.categories }}
                 {{ range first 1 . }}
-                  <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">{{ . }}</span>
+                  <span class="badge-secondary bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">{{ . }}</span>
                 {{ end }}
               {{ end }}
             </div>
             
-            <div class="text-yellow-600 font-semibold text-sm">
+            <div class="link-primary text-sm">
               Mehr erfahren →
             </div>
           </div>

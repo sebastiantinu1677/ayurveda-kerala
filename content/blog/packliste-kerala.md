@@ -2,7 +2,7 @@
 title: "Packliste Kerala: Was wirklich mit muss"
 date: 2025-09-16
 description: "Leicht und sinnvoll packen: Kleidung, Medikamente, Adapter, Ayurveda-Extras."
-image: "/images/smiling-traveler.jpg"
+image: "/images/kerala-family-travel.jpg"
 tags: ["Kerala", "Packliste"]
 categories: ["Reisen"]
 slug: "packliste-kerala"

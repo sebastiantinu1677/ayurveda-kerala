@@ -1,4 +1,13 @@
 {
+  "name": "kerala-reisen",
+  "version": "1.0.0",
+  "description": "Kerala Reisen website with WebP image optimization",
+  "scripts": {
+    "convert-images": "node convert-images.js",
+    "build": "hugo --minify",
+    "serve": "hugo server -D",
+    "dev": "hugo server -D --disableFastRender"
+  },
   "devDependencies": {
     "favicons": "^7.2.0"
   }

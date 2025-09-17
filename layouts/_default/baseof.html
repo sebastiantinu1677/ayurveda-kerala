@@ -2,11 +2,16 @@
 <html lang="de">
 {{ partial "head.html" . }}
 <body class="bg-gray-50 text-gray-900">
+  <!-- Skip Links for Accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-yellow-600 text-white p-2 z-50">Zum Hauptinhalt springen</a>
+  <a href="#navigation" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-yellow-600 text-white p-2 z-50">Zur Navigation springen</a>
+  
   {{ partial "header.html" . }}
-  <main class="container mx-auto px-4 py-8">
+  {{ partial "breadcrumb.html" . }}
+  <main id="main-content" class="container mx-auto px-4 py-8" role="main">
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
-  {{ partial "exit-intent.html" . }}
+  {{ partial "exit-intent-enhanced.html" . }}
 </body>
 </html>

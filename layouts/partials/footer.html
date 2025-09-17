@@ -1,10 +1,129 @@
 <footer class="bg-[#1B5E20] text-[#DAA520] mt-12">
+  <!-- Trust Signals Section -->
+  <div class="bg-[#2E7D32] py-6">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div class="flex flex-col items-center">
+          <div class="text-2xl mb-2">🔒</div>
+          <div class="text-sm font-semibold">SSL Verschlüsselt</div>
+          <div class="text-xs text-yellow-300">Sichere Datenübertragung</div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="text-2xl mb-2">✅</div>
+          <div class="text-sm font-semibold">500+ Kunden</div>
+          <div class="text-xs text-yellow-300">Zufriedene Reisende</div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="text-2xl mb-2">🏆</div>
+                  <div class="text-sm font-semibold">Geprüfte Partner</div>
+                  <div class="text-xs text-yellow-300">Zertifizierte Kerala-Partner</div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="text-2xl mb-2">🇩🇪</div>
+          <div class="text-sm font-semibold">Deutschsprachig</div>
+          <div class="text-xs text-yellow-300">Persönliche Betreuung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Footer -->
   <div class="max-w-7xl mx-auto px-4 py-8 text-center space-x-6">
     <a href="/impressum/" class="hover:underline">Impressum</a>
     <a href="/datenschutz/" class="hover:underline">Datenschutz</a>
     <a href="/kontakt/" class="hover:underline">Kontakt</a>
   </div>
   <div class="text-center pb-6 text-yellow-600 text-sm">
-    © {{ now.Format "2006" }} Ayurveda Kerala – Alle Rechte vorbehalten
+    © {{ now.Format "2006" }} Kerala Reisen – Alle Rechte vorbehalten
   </div>
 </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-6 right-6 bg-yellow-600 text-white p-3 rounded-full shadow-lg hover:bg-yellow-700 transition-all duration-300 opacity-0 invisible z-50">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+  </svg>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const backToTopButton = document.getElementById('backToTop');
+  
+  // Show/hide button based on scroll position
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.remove('opacity-0', 'invisible');
+      backToTopButton.classList.add('opacity-100', 'visible');
+    } else {
+      backToTopButton.classList.add('opacity-0', 'invisible');
+      backToTopButton.classList.remove('opacity-100', 'visible');
+    }
+  });
+  
+  // Smooth scroll to top
+  backToTopButton.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+
+<!-- Live Chat Widget -->
+<div id="chat-widget" class="fixed bottom-6 left-6 z-50">
+  <div id="chat-toggle" class="bg-green-600 text-white p-4 rounded-full shadow-lg cursor-pointer hover:bg-green-700 transition-colors">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+    </svg>
+  </div>
+  
+  <div id="chat-window" class="hidden bg-white rounded-lg shadow-xl w-80 h-96 flex flex-col">
+    <div class="bg-green-600 text-white p-4 rounded-t-lg flex justify-between items-center">
+      <div>
+        <h3 class="font-semibold">Kerala Reisen Support</h3>
+        <p class="text-sm text-green-100">Wir sind online</p>
+      </div>
+      <button id="chat-close" class="text-white hover:text-green-200">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="flex-1 p-4 overflow-y-auto">
+      <div class="space-y-3">
+        <div class="bg-gray-100 rounded-lg p-3">
+          <p class="text-sm">Hallo! Wie können wir Ihnen bei Ihrer Kerala-Reise helfen?</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="p-4 border-t">
+      <div class="flex space-x-2">
+        <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" class="flex-1 bg-green-600 text-white text-center py-2 rounded-lg hover:bg-green-700 transition-colors">
+          WhatsApp Chat
+        </a>
+        <a href="/kontakt/" class="flex-1 bg-yellow-600 text-white text-center py-2 rounded-lg hover:bg-yellow-700 transition-colors">
+          Kontakt
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const chatClose = document.getElementById('chat-close');
+    
+    chatToggle.addEventListener('click', function() {
+      chatWindow.classList.toggle('hidden');
+    });
+    
+    chatClose.addEventListener('click', function() {
+      chatWindow.classList.add('hidden');
+    });
+  });
+</script>

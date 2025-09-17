@@ -1,6 +1,6 @@
 ---
 title: "Kerala Reiseführer - Kostenloser Download"
-description: "Kostenloser 15-seitiger Kerala Reiseführer mit Insider-Tipps, Packliste und Ayurveda-Basics zum Download."
+description: "Kostenloser 15-seitiger Kerala Reiseführer mit Insider-Tipps für Kerala-Reisen, Ayurveda-Kuren, Yoga-Retreats und Rundreisen."
 url: "/kerala-reisefuehrer/"
 layout: "guide"
 ---
