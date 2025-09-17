@@ -1,49 +1,49 @@
 {{ define "main" }}
 
 <!-- Hero -->
-<section class="relative bg-yellow-50 py-24 text-center overflow-hidden">
+<section class="relative bg-yellow-50 py-12 sm:py-16 md:py-20 lg:py-24 text-center overflow-hidden">
   <video class="absolute inset-0 w-full h-full object-cover opacity-95" autoplay muted loop playsinline poster="/images/webp/hero-backwaters.webp" preload="metadata">
     <source src="/images/hero-backwaters.webm" type="video/webm">
     <source src="/images/hero-backwaters.mp4" type="video/mp4">
   </video>
   <div class="relative z-10 max-w-4xl mx-auto px-6">
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-5 drop-shadow">
-      <span class="hero-title-gradient text-5xl md:text-6xl font-black">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 drop-shadow">
+      <span class="hero-title-gradient text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">
         Kerala Reisen
       </span>
       <br>
-      <span class="text-white font-black text-3xl md:text-4xl tracking-wide hero-subtitle-glow">
+      <span class="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-wide hero-subtitle-glow">
         aus Deutschland
       </span>
     </h1>
-    <p class="text-xl md:text-2xl mb-8 text-white font-medium drop-shadow-lg">
-      <span class="hero-badge px-6 py-3 rounded-full text-lg md:text-xl font-semibold">
+    <p class="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 text-white font-medium drop-shadow-lg">
+      <span class="hero-badge px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base md:text-lg lg:text-xl font-semibold block sm:inline">
         Ayurveda-Kuren, Yoga-Retreats & Rundreisen
       </span>
-      <br>
-      <span class="text-lg md:text-xl mt-3 block font-medium">
+      <br class="hidden sm:block">
+      <span class="text-sm sm:text-base md:text-lg lg:text-xl mt-2 sm:mt-3 block font-medium">
         mit deutschsprachiger Beratung
       </span>
     </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-      <a href="/reisen/" class="bg-yellow-600 text-white px-8 py-4 rounded-lg shadow btn-primary btn-enhanced">Reisen entdecken</a>
-      <a href="/kontakt/" class="bg-white text-yellow-700 px-8 py-4 rounded-lg shadow btn-primary btn-enhanced">Kostenlose Beratung</a>
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-8">
+      <a href="/reisen/" class="bg-yellow-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg shadow btn-primary btn-enhanced text-sm sm:text-base font-semibold">Reisen entdecken</a>
+      <a href="/kontakt/" class="bg-white text-yellow-700 px-6 py-3 sm:px-8 sm:py-4 rounded-lg shadow btn-primary btn-enhanced text-sm sm:text-base font-semibold">Kostenlose Beratung</a>
     </div>
     
     <!-- Social Proof -->
-    <div class="bg-white bg-opacity-90 rounded-lg p-4 max-w-2xl mx-auto">
-      <div class="flex items-center justify-center space-x-4 text-sm text-gray-700">
+    <div class="bg-white bg-opacity-90 rounded-lg p-3 sm:p-4 max-w-2xl mx-auto">
+      <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-gray-700">
         <div class="flex items-center">
-          <div class="flex -space-x-2 mr-2">
-            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">A</div>
-            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">M</div>
-            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold">S</div>
+          <div class="flex -space-x-1 sm:-space-x-2 mr-2">
+            <div class="w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">A</div>
+            <div class="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">M</div>
+            <div class="w-6 h-6 sm:w-8 sm:h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold">S</div>
           </div>
-          <span>500+ zufriedene Kunden</span>
+          <span class="text-xs sm:text-sm">500+ zufriedene Kunden</span>
         </div>
         <div class="flex items-center">
-          <span class="text-yellow-500 mr-1">★★★★★</span>
-          <span>4.8/5 Bewertung</span>
+          <span class="text-yellow-500 mr-1 text-sm sm:text-base">★★★★★</span>
+          <span class="text-xs sm:text-sm">4.8/5 Bewertung</span>
         </div>
       </div>
     </div>
@@ -51,16 +51,16 @@
 </section>
 
 <!-- USPs -->
-<section class="max-w-6xl mx-auto py-16 px-6 reveal">
-  <h2 class="section-title">Warum mit Kerala Reisen?</h2>
-  <p class="section-subtitle">Entdecken Sie die einzigartigen Vorteile Ihrer Kerala-Reise mit deutschsprachiger Betreuung</p>
+<section class="max-w-6xl mx-auto py-12 sm:py-16 px-4 sm:px-6 reveal">
+  <h2 class="section-title text-2xl sm:text-3xl md:text-4xl">Warum mit Kerala Reisen?</h2>
+  <p class="section-subtitle text-base sm:text-lg md:text-xl">Entdecken Sie die einzigartigen Vorteile Ihrer Kerala-Reise mit deutschsprachiger Betreuung</p>
   
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-    <div class="bg-white rounded-lg shadow-lg p-6 reveal-item card-enhanced text-center">
-      <div class="text-4xl mb-4">🇩🇪</div>
-      <h3 class="typography-heading-3 mb-3">Deutschsprachige Betreuung</h3>
-      <p class="typography-body">Komplette Beratung auf Deutsch - von der ersten Anfrage bis zur Rückkehr. Unsere Partner vor Ort sprechen Deutsch und verstehen deutsche Bedürfnisse.</p>
-      <ul class="text-sm text-gray-600 mt-3 space-y-1">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
+    <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6 reveal-item card-enhanced text-center">
+      <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">🇩🇪</div>
+      <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Deutschsprachige Betreuung</h3>
+      <p class="text-sm sm:text-base text-gray-700 mb-3">Komplette Beratung auf Deutsch - von der ersten Anfrage bis zur Rückkehr. Unsere Partner vor Ort sprechen Deutsch und verstehen deutsche Bedürfnisse.</p>
+      <ul class="text-xs sm:text-sm text-gray-600 mt-3 space-y-1">
         <li>• Persönliche Beratung vor der Reise</li>
         <li>• Deutschsprachige Ansprechpartner vor Ort</li>
         <li>• 24/7 WhatsApp Support</li>
@@ -68,11 +68,11 @@
       </ul>
     </div>
     
-    <div class="bg-white rounded-lg shadow-lg p-6 reveal-item card-enhanced text-center">
-      <div class="text-4xl mb-4">🏆</div>
-      <h3 class="typography-heading-3 mb-3">Geprüfte Ayurveda-Partner</h3>
-      <p class="typography-body">Wir arbeiten nur mit zertifizierten Ayurveda-Zentren zusammen, die höchste Qualitätsstandards erfüllen und regelmäßig überprüft werden.</p>
-      <ul class="text-sm text-gray-600 mt-3 space-y-1">
+    <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6 reveal-item card-enhanced text-center">
+      <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">🏆</div>
+      <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Geprüfte Ayurveda-Partner</h3>
+      <p class="text-sm sm:text-base text-gray-700 mb-3">Wir arbeiten nur mit zertifizierten Ayurveda-Zentren zusammen, die höchste Qualitätsstandards erfüllen und regelmäßig überprüft werden.</p>
+      <ul class="text-xs sm:text-sm text-gray-600 mt-3 space-y-1">
         <li>• Staatlich anerkannte Ayurveda-Ärzte</li>
         <li>• 5+ Jahre Ausbildung der Therapeuten</li>
         <li>• Regelmäßige Qualitätskontrollen</li>
@@ -80,11 +80,11 @@
       </ul>
     </div>
     
-    <div class="bg-white rounded-lg shadow-lg p-6 reveal-item card-enhanced text-center">
-      <div class="text-4xl mb-4">🎯</div>
-      <h3 class="typography-heading-3 mb-3">Individuelle Reiseplanung</h3>
-      <p class="typography-body">Jede Reise wird nach Ihren persönlichen Wünschen zusammengestellt - Ayurveda-Kuren, Yoga-Retreats, Rundreisen oder Strandurlaub.</p>
-      <ul class="text-sm text-gray-600 mt-3 space-y-1">
+    <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6 reveal-item card-enhanced text-center">
+      <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">🎯</div>
+      <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Individuelle Reiseplanung</h3>
+      <p class="text-sm sm:text-base text-gray-700 mb-3">Jede Reise wird nach Ihren persönlichen Wünschen zusammengestellt - Ayurveda-Kuren, Yoga-Retreats, Rundreisen oder Strandurlaub.</p>
+      <ul class="text-xs sm:text-sm text-gray-600 mt-3 space-y-1">
         <li>• Maßgeschneiderte Reiseverläufe</li>
         <li>• Flexible Kombinationen</li>
         <li>• Anpassung an Ihr Budget</li>
@@ -92,11 +92,11 @@
       </ul>
     </div>
     
-    <div class="bg-white rounded-lg shadow-lg p-6 reveal-item card-enhanced text-center">
-      <div class="text-4xl mb-4">💰</div>
-      <h3 class="typography-heading-3 mb-3">Transparente Preise</h3>
-      <p class="typography-body">Faire und transparente Preise ohne versteckte Kosten. Sie wissen genau, was Sie bezahlen und was im Preis enthalten ist.</p>
-      <ul class="text-sm text-gray-600 mt-3 space-y-1">
+    <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6 reveal-item card-enhanced text-center">
+      <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">💰</div>
+      <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Transparente Preise</h3>
+      <p class="text-sm sm:text-base text-gray-700 mb-3">Faire und transparente Preise ohne versteckte Kosten. Sie wissen genau, was Sie bezahlen und was im Preis enthalten ist.</p>
+      <ul class="text-xs sm:text-sm text-gray-600 mt-3 space-y-1">
         <li>• Keine versteckten Gebühren</li>
         <li>• Detaillierte Kostenaufstellung</li>
         <li>• Faire Preise durch Direktbuchung</li>

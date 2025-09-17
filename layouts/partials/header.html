@@ -3,25 +3,27 @@
   
   <!-- Trust Bar -->
   <div class="bg-gray-900 text-yellow-200 text-xs md:text-sm">
-    <div class="max-w-7xl mx-auto px-6 py-2 text-center">
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <span>🔒 SSL Verschlüsselt</span>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 text-center">
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
+        <span class="hidden sm:inline">🔒 SSL Verschlüsselt</span>
+        <span class="hidden sm:inline">•</span>
+        <span>✅ 500+ Kunden</span>
         <span>•</span>
-        <span>✅ 500+ zufriedene Kunden</span>
+        <span class="hidden sm:inline">🏆 Geprüfte Partner</span>
+        <span class="sm:hidden">🏆 Partner</span>
         <span>•</span>
-        <span>🏆 Geprüfte Kerala-Partner</span>
-        <span>•</span>
-        <span>🇩🇪 Deutschsprachige Beratung</span>
+        <span class="hidden sm:inline">🇩🇪 Deutschsprachige Beratung</span>
+        <span class="sm:hidden">🇩🇪 Deutsch</span>
       </div>
     </div>
   </div>
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
     <!-- Logo + Site Title -->
-    <a href="/" class="flex items-center space-x-3 group header-brand px-4 py-2 rounded-lg transition-all duration-300">
-      {{ partial "picture.html" (dict "src" "/images/keralareisenLogo.png" "alt" "Kerala Reisen Logo" "class" "h-12 transition-transform duration-300 group-hover:scale-105" "loading" "eager" "priority" true) }}
+    <a href="/" class="flex items-center space-x-2 sm:space-x-3 group header-brand px-2 sm:px-4 py-1 sm:py-2 rounded-lg transition-all duration-300">
+      {{ partial "picture.html" (dict "src" "/images/keralareisenLogo.png" "alt" "Kerala Reisen Logo" "class" "h-8 sm:h-10 md:h-12 transition-transform duration-300 group-hover:scale-105" "loading" "eager" "priority" true) }}
       <div class="flex flex-col">
-        <span class="header-title text-xl group-hover:text-yellow-600 transition-colors duration-300">Kerala Reisen</span>
-        <span class="header-subtitle text-xs">Authentische Kerala Reisen</span>
+        <span class="header-title text-lg sm:text-xl group-hover:text-yellow-600 transition-colors duration-300">Kerala Reisen</span>
+        <span class="header-subtitle text-xs hidden sm:block">Authentische Kerala Reisen</span>
       </div>
     </a>
 
@@ -41,8 +43,8 @@
     </div>
 
     <!-- Mobile Hamburger Button -->
-    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
            viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16" />
