@@ -21,24 +21,19 @@ var klaroConfig = {
                 description: 'Wir nutzen Cookies, um unsere Website und Werbedienste zu verbessern. Bitte wählen Sie, welche Sie erlauben möchten.',
             },
             consentNotice: {
-                description: 'Wir verwenden Cookies für Analyse und Werbung. Sie können wählen.',
+                description: 'Wir verwenden Cookies für Werbung. Sie können wählen.',
                 learnMore: 'Mehr erfahren',
             },
             acceptAll: 'Alle akzeptieren',
             decline: 'Nur notwendige Cookies',
             purposes: {
-                analytics: 'Besucherstatistiken (Google Analytics)',
                 ads: 'Marketing & Werbung (Google Ads)',
             },
         }
     },
 
     services: [
-        {
-            name: 'google-analytics',
-            purposes: ['analytics'],
-            cookies: [/^_ga/, /^_gid/, /^_gat/],
-        },
+        // Google Analytics is now loaded directly, not controlled by Klaro
         {
             name: 'google-ads',
             purposes: ['ads'],

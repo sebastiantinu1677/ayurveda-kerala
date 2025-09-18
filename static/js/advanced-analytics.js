@@ -281,8 +281,6 @@
         trackTimeOnPage();
         trackFormInteractions();
         trackBusinessInteractions();
-        trackPagePerformance();
-        trackUserEngagement();
       } else if (retryCount < 20) {
         setTimeout(() => waitForGtag(retryCount + 1), 500);
       } else {

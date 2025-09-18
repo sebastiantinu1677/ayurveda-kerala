@@ -22,17 +22,12 @@
   <link rel="dns-prefetch" href="//www.google-analytics.com">
   <link rel="dns-prefetch" href="//www.googletagmanager.com">
   
-  <!-- Preload critical resources -->
-  <link rel="preload" href="{{ .Site.BaseURL }}images/logo.png" as="image">
-  <link rel="preload" href="{{ .Site.BaseURL }}images/favicon.ico" as="image">
+  <!-- Critical resources will be loaded when needed -->
   
-  <!-- Font optimization and preloading -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+  <!-- Font optimization -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   
-  <!-- Preload critical font files -->
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Font files will be loaded by the stylesheet above -->
 
   <link rel="icon" href="{{ .Site.Params.favicon }}" type="image/x-icon">
   <!-- Critical CSS - Inline for faster loading -->
@@ -52,47 +47,40 @@
   <script type="text/javascript" src="/js/klaro-config.js"></script>
   <script type="text/javascript" src="https://cdn.kiprotect.com/klaro/latest/klaro.js"></script>
 
-  <!-- Google Analytics & Google Ads (wrapped by Klaro) -->
+  <!-- Google Analytics & Google Ads - Load directly (not controlled by Klaro) -->
   {{ if or .Site.Params.googleAnalytics .Site.Params.googleAds }}
-  <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
-    (function(){
-      // Load gtag script
-      var gtagScript = document.createElement('script');
-      gtagScript.async = true;
-      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + ({{ .Site.Params.googleAnalytics | default .Site.Params.googleAds }});
-      document.head.appendChild(gtagScript);
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-      // Configure Google Analytics if available
-      {{ with .Site.Params.googleAnalytics }}
-      {{ if ne . "" }}
-      gtag('config', '{{ . }}', {
-        custom_map: {
-          'custom_parameter_1': 'page_category',
-          'custom_parameter_2': 'user_type'
-        },
-        send_page_view: true,
-        anonymize_ip: true,
-        allow_google_signals: true,
-        allow_ad_personalization_signals: false
-      });
-      console.log('Google Analytics initialized with ID: {{ . }}');
-      {{ end }}
-      {{ end }}
-      
-      // Configure Google Ads if available
-      {{ with .Site.Params.googleAds }}
-      {{ if ne . "" }}
-      gtag('config', '{{ . }}', {
-        send_page_view: true
-      });
-      console.log('Google Ads tracking initialized with ID: {{ . }}');
-      {{ end }}
-      {{ end }}
-    })();
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics | default .Site.Params.googleAds }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    // Configure Google Analytics if available
+    {{ with .Site.Params.googleAnalytics }}
+    {{ if ne . "" }}
+    gtag('config', '{{ . }}', {
+      custom_map: {
+        'custom_parameter_1': 'page_category',
+        'custom_parameter_2': 'user_type'
+      },
+      send_page_view: true,
+      anonymize_ip: true,
+      allow_google_signals: true,
+      allow_ad_personalization_signals: false
+    });
+    console.log('Google Analytics initialized with ID: {{ . }}');
+    {{ end }}
+    {{ end }}
+    
+    // Configure Google Ads if available
+    {{ with .Site.Params.googleAds }}
+    {{ if ne . "" }}
+    gtag('config', '{{ . }}', {
+      send_page_view: true
+    });
+    console.log('Google Ads tracking initialized with ID: {{ . }}');
+    {{ end }}
+    {{ end }}
   </script>
   {{ else }}
   <script>

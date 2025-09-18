@@ -6,7 +6,7 @@
   <link rel="preload" href="{{ .Site.BaseURL }}css/critical.css" as="style">
   <link rel="preload" href="{{ .Site.BaseURL }}css/tailwind.css" as="style">
   <link rel="preload" href="{{ .Site.BaseURL }}js/lazy-loading.js" as="script">
-  <link rel="preload" href="{{ .Site.BaseURL }}images/logo.png" as="image">
+  <!-- Logo will be loaded when needed -->
   
   <!-- Push critical CSS -->
   <link rel="preload" href="{{ .Site.BaseURL }}css/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -16,12 +16,10 @@
   <link rel="preload" href="{{ .Site.BaseURL }}js/lazy-loading.js" as="script">
   <link rel="preload" href="{{ .Site.BaseURL }}js/analytics-enhanced.js" as="script">
   
-  <!-- Push critical images -->
-  <link rel="preload" href="{{ .Site.BaseURL }}images/hero-backwaters.webp" as="image">
-  <link rel="preload" href="{{ .Site.BaseURL }}images/logo.webp" as="image">
-  
-  <!-- Push fonts -->
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Push critical images - only preload if actually used -->
+  {{ if .IsHome }}
+  <link rel="preload" href="{{ .Site.BaseURL }}images/webp/hero-backwaters.webp" as="image">
+  {{ end }}
 {{ end }}
 
 {{/* Service Worker for HTTP/2 push fallback */}}
@@ -41,7 +39,7 @@
                 '/css/tailwind.css',
                 '/js/lazy-loading.js',
                 '/images/logo.png',
-                '/images/hero-backwaters.webp'
+                '/images/webp/hero-backwaters.webp'
               ]
             });
           }
