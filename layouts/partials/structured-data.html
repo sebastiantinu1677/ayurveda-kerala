@@ -4,21 +4,94 @@
 */}}
 
 {{/* Organization Schema */}}
-{{- $org := dict "@context" "https://schema.org" "@type" "Organization" "name" "Kerala Reisen" "url" .Site.BaseURL "logo" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "contactPoint" (dict "@type" "ContactPoint" "contactType" "customer service" "areaServed" "DE" "availableLanguage" "German" "telephone" "+49-152-33145220") "sameAs" (slice "https://www.facebook.com/keralareisen" "https://www.instagram.com/keralareisen" "https://twitter.com/keralareisen") "foundingDate" "2020" "description" "Deutschsprachige Reiseberatung für authentische Kerala-Reisen, Ayurveda-Kuren, Yoga-Retreats und Rundreisen" -}}
-<script type="application/ld+json">{{ $org | jsonify | safeHTML }}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Kerala Reisen",
+  "url": "{{ .Site.BaseURL }}",
+  "logo": "{{ .Site.BaseURL }}images/keralareisenLogo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "areaServed": "DE",
+    "availableLanguage": "German",
+    "telephone": "+49-152-33145220"
+  },
+  "sameAs": [
+    "https://www.facebook.com/keralareisen",
+    "https://www.instagram.com/keralareisen",
+    "https://twitter.com/keralareisen"
+  ],
+  "foundingDate": "2020",
+  "description": "Deutschsprachige Reiseberatung für authentische Kerala-Reisen, Ayurveda-Kuren, Yoga-Retreats und Rundreisen"
+}
+</script>
 
 {{/* Local Business Schema */}}
-{{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Kerala Reisen" "image" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Meyerhofstraße 9" "addressLocality" "Kiel" "postalCode" "24106" "addressCountry" "DE") "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" "telephone" "+49-152-33145220" "url" .Site.BaseURL "description" "Deutschsprachige Beratung für Kerala-Reisen, Ayurveda-Kuren und Yoga-Retreats" -}}
-<script type="application/ld+json">{{ $lb | jsonify | safeHTML }}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Kerala Reisen",
+  "image": "{{ .Site.BaseURL }}images/keralareisenLogo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Meyerhofstraße 9",
+    "addressLocality": "Kiel",
+    "postalCode": "24106",
+    "addressCountry": "DE"
+  },
+  "priceRange": "$$",
+  "openingHours": "Mo-Fr 09:00-18:00,Sa 10:00-14:00",
+  "telephone": "+49-152-33145220",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "Deutschsprachige Beratung für Kerala-Reisen, Ayurveda-Kuren und Yoga-Retreats"
+}
+</script>
 
 {{/* Service Schema */}}
-{{- $service := dict "@context" "https://schema.org" "@type" "Service" "areaServed" (dict "@type" "Country" "name" "Deutschland") "description" "Deutschsprachige Beratung für Kerala-Reisen: Ayurveda-Kuren, Yoga-Retreats, Rundreisen und Backwaters-Erlebnisse in Kerala, Indien" "name" "Kerala Reisen" "offers" (dict "@type" "Offer" "availability" "https://schema.org/InStock" "priceCurrency" "EUR" "priceRange" "290-3000 EUR") "provider" (dict "@type" "Organization" "name" "Kerala Reisen") "serviceType" "Reiseberatung" "category" "Travel Agency" -}}
-<script type="application/ld+json">{{ $service | jsonify | safeHTML }}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Deutschland"
+  },
+  "description": "Deutschsprachige Beratung für Kerala-Reisen: Ayurveda-Kuren, Yoga-Retreats, Rundreisen und Backwaters-Erlebnisse in Kerala, Indien",
+  "name": "Kerala Reisen",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "EUR",
+    "priceRange": "290-3000 EUR"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Kerala Reisen"
+  },
+  "serviceType": "Reiseberatung",
+  "category": "Travel Agency"
+}
+</script>
 
 {{/* WebSite Schema with SearchAction */}}
 {{- if eq .Kind "home" -}}
-{{- $website := dict "@context" "https://schema.org" "@type" "WebSite" "url" .Site.BaseURL "name" "Kerala Reisen" "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q={search_term_string}" .Site.BaseURL) "query-input" "required name=search_term_string") "description" "Authentische Kerala-Reisen mit deutschsprachiger Beratung" -}}
-<script type="application/ld+json">{{ $website | jsonify | safeHTML }}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "{{ .Site.BaseURL }}",
+  "name": "Kerala Reisen",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ .Site.BaseURL }}?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "description": "Authentische Kerala-Reisen mit deutschsprachiger Beratung"
+}
+</script>
 {{- end -}}
 
 {{/* Product/Tour Schema for individual tours */}}

@@ -281,12 +281,6 @@
   <script src="{{ .Site.BaseURL }}js/advanced-analytics.js" defer></script>
   <script src="{{ .Site.BaseURL }}js/accessibility-enhanced.js" defer></script>
   <script src="{{ .Site.BaseURL }}js/ux-enhancements.js" defer></script>
-  {{- if eq .Kind "home" -}}
-  <script type="application/ld+json">
-  {{- $website := dict "@context" "https://schema.org" "@type" "WebSite" "url" .Site.BaseURL "name" "Kerala Reisen" "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q={search_term_string}" .Site.BaseURL) "query-input" "required name=search_term_string") -}}
-  {{ $website | jsonify | safeHTML }}
-  </script>
-  {{- end -}}
   <!-- Critical CSS Inline -->
   <style>
     /* Critical above-the-fold styles */
