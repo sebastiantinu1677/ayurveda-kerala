@@ -65,26 +65,62 @@
   display: none !important;
 }
 
-/* Ensure our custom buttons are properly positioned */
+/* Ensure our custom buttons are properly positioned and visible on mobile */
 #whatsappChatButton, #backToTop, #crispChatButton {
   position: fixed !important;
   z-index: 9999 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Force specific positioning for each button */
 #whatsappChatButton {
   right: 5rem !important; /* right-20 = 5rem */
   left: auto !important;
+  bottom: 1.5rem !important; /* bottom-6 = 1.5rem */
 }
 
 #crispChatButton {
   right: 1.5rem !important; /* right-6 = 1.5rem */
   left: auto !important;
+  bottom: 1.5rem !important; /* bottom-6 = 1.5rem */
 }
 
 #backToTop {
   left: 1.5rem !important; /* left-6 = 1.5rem */
   right: auto !important;
+  bottom: 1.5rem !important; /* bottom-6 = 1.5rem */
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  #whatsappChatButton, #backToTop, #crispChatButton {
+    bottom: 1rem !important; /* Closer to bottom on mobile */
+    transform: scale(1) !important;
+  }
+  
+  #whatsappChatButton {
+    right: 4rem !important; /* Slightly closer on mobile */
+  }
+  
+  #crispChatButton {
+    right: 1rem !important; /* Slightly closer on mobile */
+  }
+  
+  #backToTop {
+    left: 1rem !important; /* Slightly closer on mobile */
+  }
+}
+
+/* Ensure buttons are always visible and not hidden by any CSS */
+@media (max-width: 640px) {
+  #whatsappChatButton, #backToTop, #crispChatButton {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    bottom: 0.75rem !important;
+  }
 }
 </style>
 
