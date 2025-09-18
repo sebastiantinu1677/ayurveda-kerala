@@ -1,5 +1,6 @@
 {{ define "main" }}
 
+
 <!-- Hero -->
 <section class="relative bg-yellow-50 py-12 sm:py-16 md:py-20 lg:py-24 text-center overflow-hidden">
   <video class="absolute inset-0 w-full h-full object-cover opacity-95" autoplay muted loop playsinline poster="/images/webp/hero-backwaters.webp" preload="metadata">
@@ -48,6 +49,313 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- Top Ziele -->
+<section class="max-w-6xl mx-auto py-12 sm:py-16 px-4 sm:px-6 reveal">
+  <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Top Ziele in Kerala</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+    <a href="/reisen/kerala-backwaters/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
+      {{ partial "picture.html" (dict "ctx" . "src" "/images/kerala-houseboat.png" "alt" "Backwaters" "class" "w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300" "loading" "lazy") }}
+      <div class="p-4">
+        <h3 class="text-lg sm:text-xl font-semibold">Backwaters</h3>
+        <p class="text-gray-600 text-sm">Hausboot, Kanäle & Dorferlebnisse</p>
+      </div>
+    </a>
+    <a href="/reisen/kerala-tea-hills/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
+      {{ partial "picture.html" (dict "ctx" . "src" "/images/kerala-tea.jpg" "alt" "Munnar Teehügel" "class" "w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300" "loading" "lazy") }}
+      <div class="p-4">
+        <h3 class="text-lg sm:text-xl font-semibold">Munnar</h3>
+        <p class="text-gray-600 text-sm">Teeplantagen & milde Wanderungen</p>
+      </div>
+    </a>
+    <a href="/reisen/yoga-retreat-kerala/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
+      <img src="/images/sunset-beach.jpg" alt="Strand Kerala" class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+      <div class="p-4">
+        <h3 class="text-lg sm:text-xl font-semibold">Strand</h3>
+        <p class="text-gray-600 text-sm">Yoga am Meer & Ayurveda</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Featured Reisen -->
+<section class="max-w-6xl mx-auto py-12 sm:py-16 px-4 sm:px-6 reveal">
+  <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Beliebte Reisen</h2>
+  <p class="text-base sm:text-lg text-gray-600 text-center mb-6 sm:mb-8">Entdecken Sie unsere beliebtesten Kerala-Reisen mit authentischen Erlebnissen</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+    {{ $reisen := where .Site.RegularPages "Section" "reisen" }}
+    {{ $sortedReisen := sort $reisen "Params.weight" "asc" }}
+    {{ range first 3 $sortedReisen }}
+      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow card-enhanced relative overflow-hidden reveal-item">
+        {{ with .Params.image }}
+          <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-40 sm:h-48 object-cover rounded-t-lg" loading="lazy">
+        {{ end }}
+        <div class="absolute top-2 sm:top-3 left-2 sm:left-3">
+          <span class="bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded">Beliebtestes Paket</span>
+        </div>
+        <div class="p-4 sm:p-6">
+          <h3 class="text-lg sm:text-xl font-bold mb-2">{{ .Title }}</h3>
+          <p class="text-sm sm:text-base text-gray-600 mb-3">{{ .Description }}</p>
+          {{ with .Params.duration }}
+            <span class="inline-block mt-2 sm:mt-3 bg-gray-100 text-gray-700 text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full">Ideal für {{ . }}</span>
+          {{ end }}
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</section>
+
+
+
+<!-- WhatsApp CTA -->
+<section class="bg-green-700 text-yellow-200 py-10">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div>
+      <h3 class="typography-heading-3 text-white">Schnelle Fragen? Schreiben Sie uns auf WhatsApp!</h3>
+      <p class="typography-body-large text-yellow-100 mt-2">Wir antworten in der Regel innerhalb weniger Minuten.</p>
+    </div>
+    <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" class="bg-yellow-500 text-green-900 px-6 py-3 rounded-lg btn-primary shadow hover:bg-yellow-400 transition-colors">Jetzt chatten</a>
+  </div>
+ </section>
+
+<!-- Social Proof -->
+{{ partial "social-proof.html" . }}
+
+<!-- Price Comparison -->
+
+<!-- Latest Blog -->
+<section class="bg-gray-100 py-16 px-6">
+  <h2 class="text-3xl font-bold mb-8 text-center">Neu im Blog</h2>
+  <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+    {{ range first 2 (where .Site.RegularPages "Section" "blog") }}
+      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow hover:shadow-lg transition">
+        {{ with .Params.image }}
+          {{ partial "picture.html" (dict "src" . "alt" $.Title "class" "w-full h-48 object-cover rounded-t-lg" "loading" "lazy") }}
+        {{ end }}
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">{{ .Title }}</h3>
+          <p class="text-gray-600 text-sm">{{ .Description }}</p>
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</section>
+
+<!-- Budget Calculator -->
+<section class="max-w-6xl mx-auto py-16 px-6">
+  {{ partial "budget-calculator.html" . }}
+</section>
+
+
+<!-- Reviews -->
+<section id="reviews" class="max-w-6xl mx-auto py-12 sm:py-16 px-4 sm:px-6 reveal">
+  <div class="max-w-4xl mx-auto text-center mb-4 sm:mb-6">
+    <div class="inline-flex items-center gap-1 sm:gap-2 bg-white shadow rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
+      <span class="text-yellow-500 text-sm sm:text-base">★★★★★</span>
+      <span class="font-semibold text-sm sm:text-base">4,8/5</span>
+      <span class="text-gray-600 text-xs sm:text-sm">aus 120+ Bewertungen</span>
+    </div>
+  </div>
+  <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Kundenstimmen</h2>
+  <div class="relative overflow-hidden">
+    <div id="testimonial-track" class="flex transition-transform duration-500 ease-out">
+      <div class="min-w-full md:min-w-[50%] px-2 sm:px-3">
+        <div class="bg-white shadow rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center text-sm sm:text-lg font-semibold text-gray-700 flex-shrink-0">AM</div>
+          <div class="flex-1">
+            <p class="text-yellow-500 text-sm sm:text-base">★★★★★</p>
+            <p class="mt-1 text-sm sm:text-base leading-relaxed">„Eine unvergessliche Ayurveda-Kur – ich komme wieder! Die deutschsprachige Betreuung war perfekt."</p>
+            <p class="mt-1 font-semibold text-xs sm:text-sm">– Anna M., München</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-2 sm:px-3">
+        <div class="bg-white shadow rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center text-sm sm:text-lg font-semibold text-gray-700 flex-shrink-0">TB</div>
+          <div class="flex-1">
+            <p class="text-yellow-500 text-sm sm:text-base">★★★★★</p>
+            <p class="mt-1 text-sm sm:text-base leading-relaxed">„Sehr gut organisiert, wunderschöne Natur und tolle Betreuung. Die Backwaters waren ein Traum!"</p>
+            <p class="mt-1 font-semibold text-xs sm:text-sm">– Thomas B., Berlin</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-2 sm:px-3">
+        <div class="bg-white shadow rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center text-sm sm:text-lg font-semibold text-gray-700 flex-shrink-0">SK</div>
+          <div class="flex-1">
+            <p class="text-yellow-500 text-sm sm:text-base">★★★★★</p>
+            <p class="mt-1 text-sm sm:text-base leading-relaxed">„Yoga und Meditation haben mir viel innere Ruhe gebracht. Das Retreat war genau das, was ich brauchte."</p>
+            <p class="mt-1 font-semibold text-xs sm:text-sm">– Sabine K., Hamburg</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-2 sm:px-3">
+        <div class="bg-white shadow rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center text-sm sm:text-lg font-semibold text-gray-700 flex-shrink-0">MW</div>
+          <div class="flex-1">
+            <p class="text-yellow-500 text-sm sm:text-base">★★★★★</p>
+            <p class="mt-1 text-sm sm:text-base leading-relaxed">„Unsere Honeymoon-Reise war perfekt organisiert. Romantische Strände und unvergessliche Momente."</p>
+            <p class="mt-1 font-semibold text-xs sm:text-sm">– Maria & Wolfgang, Köln</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-2 sm:px-3">
+        <div class="bg-white shadow rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center text-sm sm:text-lg font-semibold text-gray-700 flex-shrink-0">JS</div>
+          <div class="flex-1">
+            <p class="text-yellow-500 text-sm sm:text-base">★★★★★</p>
+            <p class="mt-1 text-sm sm:text-base leading-relaxed">„Die Rundreise durch Kerala war ein Traum! Authentische Kultur und wunderschöne Landschaften."</p>
+            <p class="mt-1 font-semibold text-xs sm:text-sm">– Julia S., Frankfurt</p>
+          </div>
+        </div>
+      </div>
+      <div class="min-w-full md:min-w-[50%] px-2 sm:px-3">
+        <div class="bg-white shadow rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gray-200 flex items-center justify-center text-sm sm:text-lg font-semibold text-gray-700 flex-shrink-0">RK</div>
+          <div class="flex-1">
+            <p class="text-yellow-500 text-sm sm:text-base">★★★★★</p>
+            <p class="mt-1 text-sm sm:text-base leading-relaxed">„Panchakarma-Kur war intensiv aber sehr wirkungsvoll. Ich fühle mich wie neu geboren!"</p>
+            <p class="mt-1 font-semibold text-xs sm:text-sm">– Robert K., Stuttgart</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center gap-0.5 sm:gap-1 mt-4 sm:mt-6 testimonial-dots">
+      <button id="prev-testimonial" class="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" aria-label="Vorherige"></button>
+      <button id="next-testimonial" class="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" aria-label="Nächste"></button>
+      <button class="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" aria-label="Testimonial 3"></button>
+      <button class="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" aria-label="Testimonial 4"></button>
+      <button class="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" aria-label="Testimonial 5"></button>
+      <button class="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" aria-label="Testimonial 6"></button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      // Reveal animations
+      const options = { threshold: 0.12 };
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('revealed');
+            observer.unobserve(e.target);
+          }
+        });
+      }, options);
+      document.querySelectorAll('.reveal, .reveal-item').forEach(el=>observer.observe(el));
+
+      const track = document.getElementById("testimonial-track");
+      const dots = document.querySelectorAll('.flex.justify-center button');
+      const totalSlides = 6; // Total number of testimonials
+      let currentIndex = 0;
+
+      function getSlidesPerView() {
+        return window.innerWidth >= 768 ? 2 : 1; // 2 on desktop, 1 on mobile
+      }
+
+      function getMaxIndex() {
+        return totalSlides - getSlidesPerView();
+      }
+
+      function updateSlider() {
+        const slidesPerView = getSlidesPerView();
+        const maxIndex = getMaxIndex();
+        
+        // Ensure currentIndex doesn't exceed maxIndex
+        if (currentIndex > maxIndex) {
+          currentIndex = maxIndex;
+        }
+        
+        const translateX = -(currentIndex * (100 / slidesPerView));
+        track.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+            dot.className = 'w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full bg-gray-800';
+          } else {
+            dot.className = 'w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors';
+          }
+        });
+      }
+
+      function nextSlide() {
+        const maxIndex = getMaxIndex();
+        currentIndex = (currentIndex + 1) % (maxIndex + 1);
+        updateSlider();
+      }
+
+      function prevSlide() {
+        const maxIndex = getMaxIndex();
+        currentIndex = (currentIndex - 1 + (maxIndex + 1)) % (maxIndex + 1);
+        updateSlider();
+      }
+
+      function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+      }
+
+      // Event listeners
+      document.getElementById('next-testimonial').addEventListener('click', nextSlide);
+      document.getElementById('prev-testimonial').addEventListener('click', prevSlide);
+      
+      // Dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
+
+      // Auto-advance
+      let autoTimer = setInterval(nextSlide, 5000);
+      
+      // Pause on hover
+      track.addEventListener('mouseenter', () => clearInterval(autoTimer));
+      track.addEventListener('mouseleave', () => autoTimer = setInterval(nextSlide, 5000));
+
+      // Touch support for mobile
+      let startX = 0;
+      let currentX = 0;
+      let isDragging = false;
+
+      track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        clearInterval(autoTimer);
+      });
+
+      track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+      });
+
+      track.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const diffX = startX - currentX;
+        const threshold = 50;
+        
+        if (Math.abs(diffX) > threshold) {
+          if (diffX > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+        
+        autoTimer = setInterval(nextSlide, 5000);
+      });
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        updateSlider();
+      });
+
+      // Initial setup
+      updateSlider();
+    });
+  </script>
 </section>
 
 <!-- USPs -->
@@ -126,288 +434,6 @@
       </div>
     </div>
   </div>
-</section>
-
-<!-- Top Ziele -->
-<section class="max-w-6xl mx-auto py-16 px-6 reveal">
-  <h2 class="text-3xl font-bold mb-8 text-center">Top Ziele in Kerala</h2>
-  <div class="grid md:grid-cols-3 gap-8">
-    <a href="/reisen/kerala-backwaters/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
-      {{ partial "picture.html" (dict "ctx" . "src" "/images/houseboat-backwaters.jpg" "alt" "Backwaters" "class" "w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" "loading" "lazy") }}
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Backwaters</h3>
-        <p class="text-gray-600 text-sm">Hausboot, Kanäle & Dorferlebnisse</p>
-      </div>
-    </a>
-    <a href="/reisen/kerala-tea-hills/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
-      {{ partial "picture.html" (dict "ctx" . "src" "/images/kerala-tea.jpg" "alt" "Munnar Teehügel" "class" "w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" "loading" "lazy") }}
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Munnar</h3>
-        <p class="text-gray-600 text-sm">Teeplantagen & milde Wanderungen</p>
-      </div>
-    </a>
-    <a href="/reisen/yoga-retreat-kerala/" class="group block bg-white rounded-lg shadow overflow-hidden reveal-item">
-      {{ partial "picture.html" (dict "ctx" . "src" "/images/sunset-beach.jpg" "alt" "Strand Kerala" "class" "w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" "loading" "lazy") }}
-      <div class="p-4">
-        <h3 class="text-xl font-semibold">Strand</h3>
-        <p class="text-gray-600 text-sm">Yoga am Meer & Ayurveda</p>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- Featured Reisen -->
-<section class="max-w-6xl mx-auto py-16 px-6 reveal">
-  <h2 class="section-title">Beliebte Reisen</h2>
-  <p class="section-subtitle">Entdecken Sie unsere beliebtesten Kerala-Reisen mit authentischen Erlebnissen</p>
-  <div class="grid md:grid-cols-3 gap-8">
-    {{ range first 3 (where .Site.RegularPages "Section" "reisen") }}
-      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow card-enhanced relative overflow-hidden reveal-item">
-        {{ with .Params.image }}
-          {{ partial "picture.html" (dict "src" . "alt" $.Title "class" "w-full h-48 object-cover rounded-t-lg" "loading" "lazy") }}
-        {{ end }}
-        <div class="absolute top-3 left-3">
-          <span class="bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded">Beliebtestes Paket</span>
-        </div>
-        <div class="p-6">
-          <h3 class="card-title">{{ .Title }}</h3>
-          <p class="card-description">{{ .Description }}</p>
-          {{ with .Params.duration }}
-            <span class="inline-block mt-3 badge-secondary bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Ideal für {{ . }}</span>
-          {{ end }}
-        </div>
-      </a>
-    {{ end }}
-  </div>
-</section>
-
-<!-- WhatsApp CTA -->
-<section class="bg-green-700 text-yellow-200 py-10">
-  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-    <div>
-      <h3 class="typography-heading-3 text-white">Schnelle Fragen? Schreiben Sie uns auf WhatsApp!</h3>
-      <p class="typography-body-large text-yellow-100 mt-2">Wir antworten in der Regel innerhalb weniger Minuten.</p>
-    </div>
-    <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" class="bg-yellow-500 text-green-900 px-6 py-3 rounded-lg btn-primary shadow hover:bg-yellow-400 transition-colors">Jetzt chatten</a>
-  </div>
- </section>
-
-<!-- Social Proof -->
-{{ partial "social-proof.html" . }}
-
-<!-- Price Comparison -->
-
-<!-- Latest Blog -->
-<section class="bg-gray-100 py-16 px-6">
-  <h2 class="text-3xl font-bold mb-8 text-center">Neu im Blog</h2>
-  <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-    {{ range first 2 (where .Site.RegularPages "Section" "blog") }}
-      <a href="{{ .RelPermalink }}" class="block bg-white rounded-lg shadow hover:shadow-lg transition">
-        {{ with .Params.image }}
-          {{ partial "picture.html" (dict "src" . "alt" $.Title "class" "w-full h-48 object-cover rounded-t-lg" "loading" "lazy") }}
-        {{ end }}
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">{{ .Title }}</h3>
-          <p class="text-gray-600 text-sm">{{ .Description }}</p>
-        </div>
-      </a>
-    {{ end }}
-  </div>
-</section>
-
-<!-- Budget Calculator -->
-<section class="max-w-6xl mx-auto py-16 px-6">
-  {{ partial "budget-calculator.html" . }}
-</section>
-
-
-<!-- Reviews -->
-<section id="reviews" class="max-w-6xl mx-auto py-16 px-6 reveal">
-  <div class="max-w-4xl mx-auto text-center mb-6">
-    <div class="inline-flex items-center gap-2 bg-white shadow rounded-full px-4 py-2">
-      <span class="text-yellow-500">★★★★★</span>
-      <span class="font-semibold">4,8/5</span>
-      <span class="text-gray-600">aus 120+ Bewertungen</span>
-    </div>
-  </div>
-  <h2 class="text-3xl font-bold mb-8 text-center">Kundenstimmen</h2>
-  <div class="relative overflow-hidden">
-    <div id="testimonial-track" class="flex transition-transform duration-500 ease-out">
-      <div class="min-w-full md:min-w-[50%] px-3">
-        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
-          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">AM</div>
-          <div>
-            <p class="text-yellow-500">★★★★★</p>
-            <p class="mt-1">„Eine unvergessliche Ayurveda-Kur – ich komme wieder! Die deutschsprachige Betreuung war perfekt."</p>
-            <p class="mt-1 font-semibold">– Anna M., München</p>
-          </div>
-        </div>
-      </div>
-      <div class="min-w-full md:min-w-[50%] px-3">
-        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
-          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">TB</div>
-          <div>
-            <p class="text-yellow-500">★★★★★</p>
-            <p class="mt-1">„Sehr gut organisiert, wunderschöne Natur und tolle Betreuung. Die Backwaters waren ein Traum!"</p>
-            <p class="mt-1 font-semibold">– Thomas B., Berlin</p>
-          </div>
-        </div>
-      </div>
-      <div class="min-w-full md:min-w-[50%] px-3">
-        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
-          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">SK</div>
-          <div>
-            <p class="text-yellow-500">★★★★★</p>
-            <p class="mt-1">„Yoga und Meditation haben mir viel innere Ruhe gebracht. Das Retreat war genau das, was ich brauchte."</p>
-            <p class="mt-1 font-semibold">– Sabine K., Hamburg</p>
-          </div>
-        </div>
-      </div>
-      <div class="min-w-full md:min-w-[50%] px-3">
-        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
-          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">MW</div>
-          <div>
-            <p class="text-yellow-500">★★★★★</p>
-            <p class="mt-1">„Unsere Honeymoon-Reise war perfekt organisiert. Romantische Strände und unvergessliche Momente."</p>
-            <p class="mt-1 font-semibold">– Maria & Wolfgang, Köln</p>
-          </div>
-        </div>
-      </div>
-      <div class="min-w-full md:min-w-[50%] px-3">
-        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
-          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">JS</div>
-          <div>
-            <p class="text-yellow-500">★★★★★</p>
-            <p class="mt-1">„Die Rundreise durch Kerala war ein Traum! Authentische Kultur und wunderschöne Landschaften."</p>
-            <p class="mt-1 font-semibold">– Julia S., Frankfurt</p>
-          </div>
-        </div>
-      </div>
-      <div class="min-w-full md:min-w-[50%] px-3">
-        <div class="bg-white shadow rounded-lg p-6 flex items-center gap-4">
-          <div class="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-lg font-semibold text-gray-700">RK</div>
-          <div>
-            <p class="text-yellow-500">★★★★★</p>
-            <p class="mt-1">„Panchakarma-Kur war intensiv aber sehr wirkungsvoll. Ich fühle mich wie neu geboren!"</p>
-            <p class="mt-1 font-semibold">– Robert K., Stuttgart</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-center gap-3 mt-6">
-      <button id="prev-testimonial" class="w-3 h-3 rounded-full bg-gray-300" aria-label="Vorherige"></button>
-      <button id="next-testimonial" class="w-3 h-3 rounded-full bg-gray-300" aria-label="Nächste"></button>
-      <button class="w-3 h-3 rounded-full bg-gray-300" aria-label="Testimonial 3"></button>
-      <button class="w-3 h-3 rounded-full bg-gray-300" aria-label="Testimonial 4"></button>
-      <button class="w-3 h-3 rounded-full bg-gray-300" aria-label="Testimonial 5"></button>
-      <button class="w-3 h-3 rounded-full bg-gray-300" aria-label="Testimonial 6"></button>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function(){
-      // Reveal animations
-      const options = { threshold: 0.12 };
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            e.target.classList.add('revealed');
-            observer.unobserve(e.target);
-          }
-        });
-      }, options);
-      document.querySelectorAll('.reveal, .reveal-item').forEach(el=>observer.observe(el));
-
-      const track = document.getElementById("testimonial-track");
-      const dots = document.querySelectorAll('.flex.justify-center button');
-      const totalSlides = 6; // Total number of testimonials
-      const slidesPerView = 2; // Show 2 at a time on desktop
-      const maxIndex = totalSlides - slidesPerView; // Maximum index for navigation
-      let currentIndex = 0;
-
-      function updateSlider() {
-        const translateX = -(currentIndex * (100 / slidesPerView));
-        track.style.transform = `translateX(${translateX}%)`;
-        
-        // Update dots
-        dots.forEach((dot, index) => {
-          if (index === currentIndex) {
-            dot.className = 'w-3 h-3 rounded-full bg-gray-800';
-          } else {
-            dot.className = 'w-3 h-3 rounded-full bg-gray-300';
-          }
-        });
-      }
-
-      function nextSlide() {
-        currentIndex = (currentIndex + 1) % (maxIndex + 1);
-        updateSlider();
-      }
-
-      function prevSlide() {
-        currentIndex = (currentIndex - 1 + (maxIndex + 1)) % (maxIndex + 1);
-        updateSlider();
-      }
-
-      function goToSlide(index) {
-        currentIndex = index;
-        updateSlider();
-      }
-
-      // Event listeners
-      document.getElementById('next-testimonial').addEventListener('click', nextSlide);
-      document.getElementById('prev-testimonial').addEventListener('click', prevSlide);
-      
-      // Dot navigation
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => goToSlide(index));
-      });
-
-      // Auto-advance
-      let autoTimer = setInterval(nextSlide, 5000);
-      
-      // Pause on hover
-      track.addEventListener('mouseenter', () => clearInterval(autoTimer));
-      track.addEventListener('mouseleave', () => autoTimer = setInterval(nextSlide, 5000));
-
-      // Touch support for mobile
-      let startX = 0;
-      let currentX = 0;
-      let isDragging = false;
-
-      track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-        clearInterval(autoTimer);
-      });
-
-      track.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        currentX = e.touches[0].clientX;
-      });
-
-      track.addEventListener('touchend', () => {
-        if (!isDragging) return;
-        isDragging = false;
-        
-        const diffX = startX - currentX;
-        const threshold = 50;
-        
-        if (Math.abs(diffX) > threshold) {
-          if (diffX > 0) {
-            nextSlide();
-          } else {
-            prevSlide();
-          }
-        }
-        
-        autoTimer = setInterval(nextSlide, 5000);
-      });
-
-      // Initial setup
-      updateSlider();
-    });
-  </script>
 </section>
 
 <!-- Lead Capture -->

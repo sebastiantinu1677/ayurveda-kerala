@@ -1,0 +1,270 @@
+{{/* Advanced SEO Features */}}
+
+{{/* Enhanced Open Graph Tags */}}
+<meta property="og:type" content="{{ if .IsHome }}website{{ else if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="de_DE">
+
+{{ if .IsPage }}
+  <meta property="article:author" content="{{ .Site.Params.author }}">
+  <meta property="article:publisher" content="{{ .Site.BaseURL }}">
+  {{ if .Date }}
+    <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{ end }}
+  {{ if .Lastmod }}
+    <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{ end }}
+  {{ if .Params.tags }}
+    {{ range .Params.tags }}
+      <meta property="article:tag" content="{{ . }}">
+    {{ end }}
+  {{ end }}
+  {{ if .Params.categories }}
+    {{ range .Params.categories }}
+      <meta property="article:section" content="{{ . }}">
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Enhanced Twitter Card Tags */}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@keralareisen">
+<meta name="twitter:creator" content="@keralareisen">
+
+{{/* Travel-specific meta tags */}}
+{{ if .Params.pricefrom }}
+  <meta property="product:price:amount" content="{{ .Params.pricefrom }}">
+  <meta property="product:price:currency" content="EUR">
+{{ end }}
+
+{{ if .Params.duration }}
+  <meta name="duration" content="{{ .Params.duration }}">
+{{ end }}
+
+{{ if .Params.bestSeason }}
+  <meta name="best-season" content="{{ .Params.bestSeason }}">
+{{ end }}
+
+{{ if .Params.location }}
+  <meta name="geo.placename" content="{{ .Params.location }}">
+  <meta name="geo.region" content="IN-KL">
+  <meta name="geo.country" content="India">
+{{ end }}
+
+{{/* Enhanced Image Tags */}}
+{{ if .Params.image }}
+  <meta property="og:image" content="{{ .Params.image | absURL }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ .Title }}">
+  <meta name="twitter:image" content="{{ .Params.image | absURL }}">
+  <meta name="twitter:image:alt" content="{{ .Title }}">
+{{ else }}
+  <meta property="og:image" content="{{ .Site.BaseURL }}images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ .Site.Title }}">
+  <meta name="twitter:image" content="{{ .Site.BaseURL }}images/og-default.jpg">
+  <meta name="twitter:image:alt" content="{{ .Site.Title }}">
+{{ end }}
+
+{{/* Multiple Image Support for Galleries */}}
+{{ if .Params.gallery }}
+  {{ range first 4 .Params.gallery }}
+    <meta property="og:image" content="{{ . | absURL }}">
+  {{ end }}
+{{ end }}
+
+{{/* Enhanced Structured Data for Travel */}}
+{{ if .IsPage }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "{{ if eq .Section "reisen" }}TravelAgency{{ else if eq .Section "blog" }}BlogPosting{{ else }}WebPage{{ end }}",
+    "name": "{{ .Title }}",
+    "description": "{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+    "url": "{{ .Permalink }}",
+    {{ if .Params.image }}
+    "image": "{{ .Params.image | absURL }}",
+    {{ end }}
+    {{ if .Date }}
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+    {{ end }}
+    {{ if .Lastmod }}
+    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+    {{ end }}
+    "author": {
+      "@type": "Organization",
+      "name": "{{ .Site.Params.author }}",
+      "url": "{{ .Site.BaseURL }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}",
+      "url": "{{ .Site.BaseURL }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ .Site.BaseURL }}images/logo.png"
+      }
+    }
+    {{ if eq .Section "reisen" }},
+    "offers": {
+      "@type": "Offer",
+      "price": "{{ .Params.pricefrom }}",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "{{ now.Format "2006-01-02" }}"
+    },
+    "duration": "{{ .Params.duration }}",
+    {{ if .Params.categories }}
+    "touristType": "{{ delimit .Params.categories ", " }}"
+    {{ else }}
+    "touristType": "Travel"
+    {{ end }}
+    {{ end }}
+  }
+  </script>
+{{ end }}
+
+{{/* FAQ Schema for FAQ Pages */}}
+{{ if .Params.faq }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {{ range $index, $faq := .Params.faq }}
+      {
+        "@type": "Question",
+        "name": "{{ $faq.question }}",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{ $faq.answer }}"
+        }
+      }{{ if ne $index (sub (len $.Params.faq) 1) }},{{ end }}
+      {{ end }}
+    ]
+  }
+  </script>
+{{ end }}
+
+{{/* Review Schema */}}
+{{ if .Params.reviews }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "{{ if eq .Section "reisen" }}TravelAgency{{ else }}Organization{{ end }}",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{{ .Params.ratingValue }}",
+      "reviewCount": "{{ .Params.reviewCount }}",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {{ range $index, $review := .Params.reviews }}
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "{{ $review.name }}"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "{{ $review.rating }}",
+          "bestRating": "5"
+        },
+        "reviewBody": "{{ $review.text }}"
+      }{{ if ne $index (sub (len $.Params.reviews) 1) }},{{ end }}
+      {{ end }}
+    ]
+  }
+  </script>
+{{ end }}
+
+{{/* Local Business Schema for Contact Page */}}
+{{ if eq .Kind "page" }}
+  {{ if or (eq .Title "Kontakt") (eq .Title "Contact") }}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "{{ .Site.Title }}",
+      "description": "{{ .Site.Params.description }}",
+      "url": "{{ .Site.BaseURL }}",
+      "telephone": "{{ .Site.Params.phone }}",
+      "email": "{{ .Site.Params.email }}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "DE",
+        "addressLocality": "Germany"
+      },
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "priceRange": "€€",
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+      "currenciesAccepted": "EUR",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Germany"
+      },
+      "serviceType": "Travel Agency",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Kerala Travel Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Ayurveda Retreats",
+              "description": "Traditional Ayurvedic treatments and wellness programs"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Yoga Retreats",
+              "description": "Yoga classes and meditation sessions in Kerala"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Kerala Tours",
+              "description": "Guided tours of Kerala's backwaters, beaches, and cultural sites"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+  {{ end }}
+{{ end }}
+
+{{/* Enhanced Meta Tags for Search Engines */}}
+<meta name="google-site-verification" content="your-google-verification-code">
+<meta name="msvalidate.01" content="your-bing-verification-code">
+<meta name="yandex-verification" content="your-yandex-verification-code">
+
+{{/* Rich Snippets for Travel Content */}}
+{{ if eq .Section "reisen" }}
+  <meta name="travel-destination" content="Kerala, India">
+  {{ if .Params.categories }}
+    <meta name="travel-type" content="{{ delimit .Params.categories ", " }}">
+  {{ else }}
+    <meta name="travel-type" content="Travel">
+  {{ end }}
+  <meta name="travel-duration" content="{{ .Params.duration }}">
+  <meta name="travel-price" content="{{ .Params.pricefrom }} EUR">
+{{ end }}
+
+{{/* Enhanced URL Structure */}}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ if .PrevInSection }}
+  <link rel="prev" href="{{ .PrevInSection.Permalink }}">
+{{ end }}
+{{ if .NextInSection }}
+  <link rel="next" href="{{ .NextInSection.Permalink }}">
+{{ end }}

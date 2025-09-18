@@ -1,0 +1,54 @@
+{{/* HTTP/2 Server Push Configuration */}}
+
+{{/* Critical resources for HTTP/2 push */}}
+{{ if hugo.IsProduction }}
+  <!-- HTTP/2 Server Push for critical resources -->
+  <link rel="preload" href="{{ .Site.BaseURL }}css/critical.css" as="style">
+  <link rel="preload" href="{{ .Site.BaseURL }}css/tailwind.css" as="style">
+  <link rel="preload" href="{{ .Site.BaseURL }}js/lazy-loading.js" as="script">
+  <link rel="preload" href="{{ .Site.BaseURL }}images/logo.png" as="image">
+  
+  <!-- Push critical CSS -->
+  <link rel="preload" href="{{ .Site.BaseURL }}css/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ .Site.BaseURL }}css/critical.css"></noscript>
+  
+  <!-- Push critical JavaScript -->
+  <link rel="preload" href="{{ .Site.BaseURL }}js/lazy-loading.js" as="script">
+  <link rel="preload" href="{{ .Site.BaseURL }}js/analytics-enhanced.js" as="script">
+  
+  <!-- Push critical images -->
+  <link rel="preload" href="{{ .Site.BaseURL }}images/hero-backwaters.webp" as="image">
+  <link rel="preload" href="{{ .Site.BaseURL }}images/logo.webp" as="image">
+  
+  <!-- Push fonts -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
+{{ end }}
+
+{{/* Service Worker for HTTP/2 push fallback */}}
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registered successfully:', registration.scope);
+          
+          // Enable HTTP/2 push for critical resources
+          if (registration.active) {
+            registration.active.postMessage({
+              type: 'PUSH_RESOURCES',
+              resources: [
+                '/css/critical.css',
+                '/css/tailwind.css',
+                '/js/lazy-loading.js',
+                '/images/logo.png',
+                '/images/hero-backwaters.webp'
+              ]
+            });
+          }
+        })
+        .catch(function(error) {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>

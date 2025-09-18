@@ -1,0 +1,33 @@
+{{/* Enhanced Hreflang Tags for International SEO */}}
+
+{{/* Default language */}}
+<link rel="alternate" hreflang="de" href="{{ .Permalink }}">
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+
+{{/* Additional language versions if available */}}
+{{ range .Site.Languages }}
+  {{ if ne .Lang $.Site.LanguageCode }}
+    {{ $langPage := $.Site.GetPage (printf "/%s" .Lang) }}
+    {{ if $langPage }}
+      <link rel="alternate" hreflang="{{ .Lang }}" href="{{ $langPage.Permalink }}">
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Regional variants for German */}}
+<link rel="alternate" hreflang="de-DE" href="{{ .Permalink }}">
+<link rel="alternate" hreflang="de-AT" href="{{ .Permalink }}">
+<link rel="alternate" hreflang="de-CH" href="{{ .Permalink }}">
+
+{{/* English version for international visitors */}}
+{{ if .Site.GetPage "/en" }}
+  <link rel="alternate" hreflang="en" href="{{ .Site.GetPage "/en" | relURL }}">
+  <link rel="alternate" hreflang="en-US" href="{{ .Site.GetPage "/en" | relURL }}">
+  <link rel="alternate" hreflang="en-GB" href="{{ .Site.GetPage "/en" | relURL }}">
+{{ end }}
+
+{{/* Canonical URL */}}
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{/* Language and content direction */}}
+<html lang="{{ .Site.LanguageCode }}" dir="ltr">

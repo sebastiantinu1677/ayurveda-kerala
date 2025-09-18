@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisp Chat Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        #crispChatButton { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            background: #3b82f6; 
+            color: white; 
+            border: none; 
+            border-radius: 50%; 
+            width: 60px; 
+            height: 60px; 
+            font-size: 20px; 
+            cursor: pointer; 
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crisp Chat Button Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Manual Tests</h2>
+        <button onclick="testCrisp1()">Test 1: Check if $crisp exists</button>
+        <button onclick="testCrisp2()">Test 2: Try to open chat</button>
+        <button onclick="testCrisp3()">Test 3: Check Crisp website ID</button>
+        <button onclick="testCrisp4()">Test 4: Force open chat</button>
+    </div>
+
+    <!-- Crisp Chat Button -->
+    <button id="crispChatButton" onclick="openCrispChat()">💬</button>
+
+    <!-- Crisp Chat Script -->
+    <script type="text/javascript">
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "b96ad9f7-853f-4c78-a0e6-a7eaa36eab93";
+    (function() {
+        d = document;
+        s = d.createElement("script");
+        s.src = "https://client.crisp.chat/l.js";
+        s.async = 1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+    </script>
+
+    <script>
+        function log(message, type = 'info') {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `test-section ${type}`;
+            div.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            results.appendChild(div);
+            console.log(message);
+        }
+
+        function testCrisp1() {
+            if (window.$crisp) {
+                log('✅ $crisp exists: ' + typeof window.$crisp, 'success');
+            } else {
+                log('❌ $crisp does not exist', 'error');
+            }
+        }
+
+        function testCrisp2() {
+            if (window.$crisp && window.$crisp.push) {
+                log('✅ Trying to open Crisp chat...', 'info');
+                window.$crisp.push(['do', 'chat:open']);
+                window.$crisp.push(['do', 'chat:show']);
+            } else {
+                log('❌ Cannot open chat - $crisp.push not available', 'error');
+            }
+        }
+
+        function testCrisp3() {
+            log('Crisp Website ID: ' + window.CRISP_WEBSITE_ID, 'info');
+        }
+
+        function testCrisp4() {
+            log('🔄 Force opening chat with retry logic...', 'info');
+            openCrispChat();
+        }
+
+        function openCrispChat(retryCount = 0) {
+            log(`Attempt ${retryCount + 1}: Opening Crisp chat...`, 'info');
+            
+            if (window.$crisp && window.$crisp.push) {
+                log('✅ Crisp loaded, opening chat...', 'success');
+                window.$crisp.push(['do', 'chat:open']);
+                window.$crisp.push(['do', 'chat:show']);
+            } else if (retryCount < 10) {
+                log(`⏳ Crisp not ready, retrying in 500ms... (${retryCount + 1}/10)`, 'info');
+                setTimeout(() => openCrispChat(retryCount + 1), 500);
+            } else {
+                log('❌ Crisp failed to load after 10 attempts', 'error');
+            }
+        }
+
+        // Auto-test on page load
+        window.addEventListener('load', function() {
+            log('🚀 Page loaded, starting auto-tests...', 'info');
+            setTimeout(testCrisp1, 1000);
+            setTimeout(testCrisp3, 1500);
+        });
+
+        // Test button click
+        document.getElementById('crispChatButton').addEventListener('click', function() {
+            log('🖱️ Crisp button clicked!', 'info');
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    </script>
+</body>
+</html>

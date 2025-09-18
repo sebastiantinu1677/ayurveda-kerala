@@ -1,35 +1,110 @@
-{{/*
-  Breadcrumb navigation for better SEO and UX
-  Usage: {{ partial "breadcrumb.html" . }}
-*/}}
 {{ if not .IsHome }}
-<nav class="bg-gray-50 py-3" aria-label="Breadcrumb">
-  <div class="max-w-6xl mx-auto px-6">
+<nav class="bg-gray-50 border-b border-gray-200" aria-label="Breadcrumb">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3">
     <ol class="flex items-center space-x-2 text-sm">
       <li>
-        <a href="/" class="text-gray-500 hover:text-yellow-600 transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+        <a href="{{ .Site.BaseURL }}" class="text-gray-500 hover:text-gray-700 transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
           </svg>
+          <span class="sr-only">Home</span>
         </a>
       </li>
+      
       {{ range $index, $element := .Ancestors.Reverse }}
-        <li class="flex items-center">
-          <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+        {{ if ne $index 0 }}
+          <li>
+            <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+            </svg>
+          </li>
+          <li>
+            <a href="{{ .RelPermalink }}" class="text-gray-500 hover:text-gray-700 transition-colors">
+              {{ if .Title }}
+                {{ .Title }}
+              {{ else }}
+                {{ .Section | title }}
+              {{ end }}
+            </a>
+          </li>
+        {{ end }}
+      {{ end }}
+      
+      {{ if .Parent }}
+        <li>
+          <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
           </svg>
-          <a href="{{ .RelPermalink }}" class="text-gray-500 hover:text-yellow-600 transition-colors">
-            {{ .Title }}
+        </li>
+        <li>
+          <a href="{{ .Parent.RelPermalink }}" class="text-gray-500 hover:text-gray-700 transition-colors">
+            {{ if .Parent.Title }}
+              {{ .Parent.Title }}
+            {{ else }}
+              {{ .Parent.Section | title }}
+            {{ end }}
           </a>
         </li>
       {{ end }}
-      <li class="flex items-center">
-        <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+      
+      <li>
+        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
         </svg>
-        <span class="text-gray-900 font-medium">{{ .Title }}</span>
+      </li>
+      <li>
+        <span class="text-gray-900 font-medium" aria-current="page">
+          {{ .Title }}
+        </span>
       </li>
     </ol>
   </div>
 </nav>
+
+<!-- Enhanced Breadcrumb Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ .Site.BaseURL }}",
+      "description": "Startseite von {{ .Site.Title }}"
+    }
+    {{ $position := 2 }}
+    {{ range .Ancestors.Reverse }}
+      {{ if ne .IsHome true }}
+        ,{
+          "@type": "ListItem",
+          "position": {{ $position }},
+          "name": {{ if .Title }}"{{ .Title }}"{{ else }}"{{ .Section | title }}"{{ end }},
+          "item": "{{ .Site.BaseURL }}{{ .RelPermalink }}",
+          "description": {{ if .Description }}"{{ .Description }}"{{ else }}"{{ .Section | title }} bei {{ $.Site.Title }}"{{ end }}
+        }
+        {{ $position = add $position 1 }}
+      {{ end }}
+    {{ end }}
+    {{ if .Parent }}
+      ,{
+        "@type": "ListItem",
+        "position": {{ $position }},
+        "name": {{ if .Parent.Title }}"{{ .Parent.Title }}"{{ else }}"{{ .Parent.Section | title }}"{{ end }},
+        "item": "{{ .Site.BaseURL }}{{ .Parent.RelPermalink }}",
+        "description": {{ if .Parent.Description }}"{{ .Parent.Description }}"{{ else }}"{{ .Parent.Section | title }} bei {{ $.Site.Title }}"{{ end }}
+      }
+      {{ $position = add $position 1 }}
+    {{ end }}
+    ,{
+      "@type": "ListItem",
+      "position": {{ $position }},
+      "name": "{{ .Title }}",
+      "item": "{{ .Site.BaseURL }}{{ .RelPermalink }}",
+      "description": {{ if .Description }}"{{ .Description }}"{{ else }}"{{ .Title }} bei {{ .Site.Title }}"{{ end }}
+    }
+  ]
+}
+</script>
 {{ end }}

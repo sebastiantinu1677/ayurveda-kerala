@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Kerala Reisen</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .offline-container {
+            text-align: center;
+            max-width: 500px;
+            padding: 2rem;
+        }
+        .offline-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .retry-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .retry-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .features {
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .feature {
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">🌴</div>
+        <h1>Sie sind offline</h1>
+        <p>Es scheint, als hätten Sie keine Internetverbindung. Keine Sorge - einige Funktionen sind weiterhin verfügbar!</p>
+        
+        <a href="/" class="retry-btn" onclick="window.location.reload()">
+            Erneut versuchen
+        </a>
+        
+        <div class="features">
+            <div class="feature">✅ Cached Seiten anzeigen</div>
+            <div class="feature">✅ Kontaktformular offline speichern</div>
+            <div class="feature">✅ Reiseinformationen anzeigen</div>
+        </div>
+    </div>
+    
+    <script>
+        // Check if we're back online
+        window.addEventListener('online', function() {
+            window.location.reload();
+        });
+        
+        // Retry button functionality
+        document.querySelector('.retry-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (navigator.onLine) {
+                window.location.href = '/';
+            } else {
+                window.location.reload();
+            }
+        });
+    </script>
+</body>
+</html>

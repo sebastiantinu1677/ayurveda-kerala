@@ -1,0 +1,105 @@
+{
+  "name": "Kerala Reisen - Ayurveda & Wellness",
+  "short_name": "Kerala Reisen",
+  "description": "Authentische Kerala Reisen mit Ayurveda-Kuren, Yoga-Retreats und Rundreisen",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3CB371",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "de",
+  "dir": "ltr",
+  "categories": ["travel", "lifestyle", "health"],
+  "icons": [
+    {
+      "src": "/images/webp/favicon-16x16.webp",
+      "sizes": "16x16",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/webp/favicon-32x32.webp",
+      "sizes": "32x32",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/webp/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/webp/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshots/homepage-mobile.webp",
+      "sizes": "390x844",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Homepage auf Mobile"
+    },
+    {
+      "src": "/images/screenshots/homepage-desktop.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Homepage auf Desktop"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Reisen",
+      "short_name": "Reisen",
+      "description": "Alle verfügbaren Reisen anzeigen",
+      "url": "/reisen/",
+      "icons": [
+        {
+          "src": "/images/webp/logo-leaf-boat.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Reisetipps und Informationen",
+      "url": "/blog/",
+      "icons": [
+        {
+          "src": "/images/webp/logo-lotus.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "Kontakt",
+      "short_name": "Kontakt",
+      "description": "Kontakt aufnehmen",
+      "url": "/kontakt/",
+      "icons": [
+        {
+          "src": "/images/webp/logo-yoga.webp",
+          "sizes": "96x96",
+          "type": "image/webp"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}

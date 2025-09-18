@@ -2,12 +2,14 @@
   Urgency banner for limited-time offers
   Usage: {{ partial "urgency-banner.html" . }}
 */}}
-<div class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-3">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-wrap items-center justify-center gap-2 text-sm md:text-base">
-      <span class="animate-pulse">🔥</span>
-      <span class="font-semibold">Frühbucher-Rabatt: Bis zu 15% sparen bei Buchung bis 15. Oktober 2025!</span>
-      <a href="/kontakt/" class="ml-2 bg-white text-red-600 px-3 py-1 rounded-full text-xs font-bold hover:bg-gray-100 transition-colors">
+<div class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-2 sm:py-3">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base">
+      <div class="flex items-center gap-1 sm:gap-2">
+        <span class="animate-pulse text-sm sm:text-base">🔥</span>
+        <span class="font-semibold text-center sm:text-left">Frühbucher-Rabatt: Bis zu 15% sparen!</span>
+      </div>
+      <a href="/kontakt/" class="bg-white text-red-600 px-2 sm:px-3 py-1 rounded-full text-xs font-bold hover:bg-gray-100 transition-colors whitespace-nowrap">
         Jetzt anfragen →
       </a>
     </div>

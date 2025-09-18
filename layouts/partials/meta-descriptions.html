@@ -1,0 +1,68 @@
+{{/* Enhanced Meta Descriptions for All Pages */}}
+
+{{ if .IsHome }}
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <meta property="og:description" content="{{ .Site.Params.description }}">
+  <meta name="twitter:description" content="{{ .Site.Params.description }}">
+{{ else if .IsPage }}
+  {{ if .Params.description }}
+    <meta name="description" content="{{ .Params.description }}">
+    <meta property="og:description" content="{{ .Params.description }}">
+    <meta name="twitter:description" content="{{ .Params.description }}">
+  {{ else }}
+    {{/* Auto-generate description from content */}}
+    {{ $description := .Summary | plainify | truncate 160 }}
+    {{ if not $description }}
+      {{ $description = printf "%s - %s" .Title .Site.Title }}
+    {{ end }}
+    <meta name="description" content="{{ $description }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta name="twitter:description" content="{{ $description }}">
+  {{ end }}
+{{ else if .IsSection }}
+  {{ if .Params.description }}
+    <meta name="description" content="{{ .Params.description }}">
+    <meta property="og:description" content="{{ .Params.description }}">
+    <meta name="twitter:description" content="{{ .Params.description }}">
+  {{ else }}
+    {{ $description := printf "Entdecken Sie %s bei %s - %s" (.Section | title) .Site.Title .Site.Params.description }}
+    <meta name="description" content="{{ $description }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta name="twitter:description" content="{{ $description }}">
+  {{ end }}
+{{ else }}
+  {{/* Fallback for other page types */}}
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <meta property="og:description" content="{{ .Site.Params.description }}">
+  <meta name="twitter:description" content="{{ .Site.Params.description }}">
+{{ end }}
+
+{{/* Additional SEO meta tags */}}
+<meta name="keywords" content="{{ if .Params.keywords }}{{ delimit .Params.keywords ", " }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
+<meta name="author" content="{{ .Site.Params.author }}">
+<meta name="robots" content="{{ if .Params.noindex }}noindex{{ else }}index, follow{{ end }}">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+{{/* Page-specific meta tags */}}
+{{ if .Params.ratingValue }}
+  <meta name="rating" content="{{ .Params.ratingValue }}">
+{{ end }}
+
+{{ if .Params.pricefrom }}
+  <meta name="price" content="{{ .Params.pricefrom }} EUR">
+{{ end }}
+
+{{ if .Params.duration }}
+  <meta name="duration" content="{{ .Params.duration }}">
+{{ end }}
+
+{{/* Geographic meta tags for travel content */}}
+{{ if .Params.location }}
+  <meta name="geo.region" content="{{ .Params.location }}">
+{{ end }}
+
+{{ if .Params.coordinates }}
+  <meta name="geo.position" content="{{ .Params.coordinates }}">
+  <meta name="ICBM" content="{{ .Params.coordinates }}">
+{{ end }}

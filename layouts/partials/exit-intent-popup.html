@@ -1,0 +1,220 @@
+<!-- Exit Intent Popup -->
+<div id="exit-intent-popup" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-lg shadow-2xl max-w-md w-full mx-4 relative">
+      <!-- Close Button -->
+      <button id="close-exit-popup" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      
+      <!-- Popup Content -->
+      <div class="p-6">
+        <!-- Header -->
+        <div class="text-center mb-4">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Warten Sie! 🎯</h3>
+          <p class="text-gray-600">Verpassen Sie nicht unser exklusives Angebot für Ihre Kerala-Reise!</p>
+        </div>
+        
+        <!-- Offer Content -->
+        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-4 mb-4">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-yellow-600 mb-1">15% Rabatt</div>
+            <div class="text-sm text-gray-600 mb-2">auf Ihre erste Buchung</div>
+            <div class="text-xs text-gray-500">Gültig für 24 Stunden</div>
+          </div>
+        </div>
+        
+        <!-- Benefits -->
+        <div class="space-y-2 mb-6">
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            Kostenlose Beratung & Reiseplanung
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            Bestpreis-Garantie
+          </div>
+          <div class="flex items-center text-sm text-gray-700">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            Stornierung bis 30 Tage vor Reise
+          </div>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="space-y-3">
+          <a href="/kontakt/" class="block w-full bg-yellow-600 text-white py-3 px-4 rounded-lg font-semibold text-center hover:bg-yellow-700 transition-colors">
+            Jetzt Beratung anfragen
+          </a>
+          <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" target="_blank" class="block w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold text-center hover:bg-green-700 transition-colors">
+            WhatsApp Chat starten
+          </a>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <div class="flex items-center justify-center space-x-4 text-xs text-gray-500">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              SSL Verschlüsselt
+            </div>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              Datenschutz
+            </div>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              Kostenlos
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const popup = document.getElementById('exit-intent-popup');
+  const closeBtn = document.getElementById('close-exit-popup');
+  let hasShownPopup = false;
+  let mouseY = 0;
+  
+  // Check if popup was already shown in this session
+  if (sessionStorage.getItem('exitIntentShown')) {
+    hasShownPopup = true;
+  }
+  
+  // Track mouse movement
+  document.addEventListener('mousemove', function(e) {
+    mouseY = e.clientY;
+  });
+  
+  // Exit intent detection
+  document.addEventListener('mouseleave', function(e) {
+    // Only show if:
+    // 1. Mouse is moving towards the top of the page
+    // 2. Popup hasn't been shown yet
+    // 3. User has been on page for at least 30 seconds
+    // 4. Not on mobile devices
+    
+    if (hasShownPopup || window.innerWidth < 768) return;
+    
+    const timeOnPage = Date.now() - window.pageLoadTime;
+    if (timeOnPage < 30000) return; // 30 seconds
+    
+    if (e.clientY <= 0) {
+      showPopup();
+    }
+  });
+  
+  // Alternative trigger: scroll to bottom and then try to leave
+  let hasScrolledToBottom = false;
+  window.addEventListener('scroll', function() {
+    if (hasScrolledToBottom || hasShownPopup) return;
+    
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    if (scrollTop + windowHeight >= documentHeight - 100) {
+      hasScrolledToBottom = true;
+      
+      // Show popup after 5 seconds if user tries to leave
+      setTimeout(function() {
+        if (!hasShownPopup) {
+          document.addEventListener('mouseleave', function showOnLeave(e) {
+            if (e.clientY <= 0) {
+              showPopup();
+              document.removeEventListener('mouseleave', showOnLeave);
+            }
+          });
+        }
+      }, 5000);
+    }
+  });
+  
+  function showPopup() {
+    if (hasShownPopup) return;
+    
+    hasShownPopup = true;
+    sessionStorage.setItem('exitIntentShown', 'true');
+    
+    popup.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    
+    // Track conversion event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'exit_intent_popup_shown', {
+        'event_category': 'engagement',
+        'event_label': 'popup_displayed'
+      });
+    }
+    
+    // Auto-hide after 30 seconds
+    setTimeout(function() {
+      hidePopup();
+    }, 30000);
+  }
+  
+  function hidePopup() {
+    popup.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  
+  // Close button functionality
+  closeBtn.addEventListener('click', function() {
+    hidePopup();
+    
+    // Track close event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'exit_intent_popup_closed', {
+        'event_category': 'engagement',
+        'event_label': 'popup_closed'
+      });
+    }
+  });
+  
+  // Close on background click
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      hidePopup();
+    }
+  });
+  
+  // Track CTA clicks
+  popup.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') {
+      const action = e.target.textContent.trim();
+      
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'exit_intent_cta_click', {
+          'event_category': 'conversion',
+          'event_label': action
+        });
+      }
+    }
+  });
+  
+  // Set page load time
+  window.pageLoadTime = Date.now();
+});
+</script>

@@ -1,20 +1,23 @@
 {{ define "main" }}
-<section class="max-w-6xl mx-auto py-12 px-4">
+<section class="max-w-6xl mx-auto pt-1 pb-3 px-4">
   <h1 class="section-title">Unsere Reisen</h1>
   <p class="section-subtitle">Entdecken Sie unsere vielfältigen Kerala-Reisen für jeden Geschmack und jedes Budget</p>
   
-  <!-- Tour Comparison Tool -->
-  <div class="mb-8">
-    {{ partial "tour-comparison.html" . }}
-  </div>
 
   <!-- Filter System -->
-  <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-    <h2 class="typography-heading-3 mb-4">Reisen filtern</h2>
-    <div class="grid md:grid-cols-4 gap-4">
+  <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6 mb-6 sm:mb-8">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg sm:text-xl font-bold">Reisen filtern</h2>
+      <button id="filter-toggle" class="md:hidden text-gray-600 hover:text-gray-800">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+    </div>
+    <div id="filter-content" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 hidden md:grid">
       <div>
-        <label class="form-label">Kategorie</label>
-        <select id="categoryFilter" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+        <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Kategorie</label>
+        <select id="categoryFilter" class="w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-sm focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
           <option value="">Alle Kategorien</option>
           <option value="ayurveda">Ayurveda-Kuren</option>
           <option value="yoga">Yoga-Retreats</option>
@@ -24,8 +27,8 @@
       </div>
       
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">Dauer</label>
-        <select id="durationFilter" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+        <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Dauer</label>
+        <select id="durationFilter" class="w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-sm focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
           <option value="">Alle Dauer</option>
           <option value="7">7 Tage</option>
           <option value="14">14 Tage</option>
@@ -35,8 +38,8 @@
       </div>
       
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">Preis</label>
-        <select id="priceFilter" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+        <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Preis</label>
+        <select id="priceFilter" class="w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-sm focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
           <option value="">Alle Preise</option>
           <option value="0-1000">bis 1.000€</option>
           <option value="1000-2000">1.000€ - 2.000€</option>
@@ -46,8 +49,8 @@
       </div>
       
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">Saison</label>
-        <select id="seasonFilter" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+        <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Saison</label>
+        <select id="seasonFilter" class="w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-sm focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
           <option value="">Alle Jahreszeiten</option>
           <option value="winter">Winter (Dez-Feb)</option>
           <option value="spring">Frühling (Mär-Mai)</option>
@@ -57,15 +60,16 @@
       </div>
     </div>
     
-    <div class="mt-4 flex justify-between items-center">
-      <button id="clearFilters" class="text-gray-500 hover:text-gray-700 text-sm">Filter zurücksetzen</button>
-      <span id="resultCount" class="text-sm text-gray-600">{{ len .Pages }} Reisen gefunden</span>
+    <div class="mt-3 sm:mt-4 flex justify-between items-center">
+      <button id="clearFilters" class="text-gray-500 hover:text-gray-700 text-xs sm:text-sm">Filter zurücksetzen</button>
+      <span id="resultCount" class="text-xs sm:text-sm text-gray-600">{{ len .Pages }} Reisen gefunden</span>
     </div>
   </div>
   
   <!-- Tours Grid -->
   <div id="toursGrid" class="grid md:grid-cols-3 gap-8">
-    {{ range .Pages }}
+    {{ $sortedPages := sort .Pages "Params.weight" "asc" }}
+    {{ range $sortedPages }}
       <div class="tour-card bg-white rounded-lg shadow card-enhanced" 
            data-category="{{ .Params.categories | default (slice) | jsonify }}"
            data-duration="{{ .Params.duration }}"
@@ -103,6 +107,23 @@
     {{ end }}
   </div>
 </section>
+
+<style>
+/* Mobile filter styles */
+@media (max-width: 768px) {
+  #filter-content {
+    transition: all 0.3s ease;
+  }
+  
+  #filter-content.hidden {
+    display: none !important;
+  }
+  
+  #filter-content:not(.hidden) {
+    display: grid !important;
+  }
+}
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -179,6 +200,31 @@ document.addEventListener('DOMContentLoaded', function() {
     seasonFilter.value = '';
     filterTours();
   });
+
+  // Mobile filter toggle
+  const filterToggle = document.getElementById('filter-toggle');
+  const filterContent = document.getElementById('filter-content');
+  
+  if (filterToggle && filterContent) {
+    filterToggle.addEventListener('click', function() {
+      const isHidden = filterContent.classList.contains('hidden');
+      
+      if (isHidden) {
+        // Show filters on mobile
+        filterContent.classList.remove('hidden');
+        filterContent.classList.add('block');
+      } else {
+        // Hide filters on mobile
+        filterContent.classList.add('hidden');
+        filterContent.classList.remove('block');
+      }
+      
+      // Rotate arrow
+      const arrow = filterToggle.querySelector('svg');
+      arrow.style.transform = filterContent.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+      arrow.style.transition = 'transform 0.2s ease';
+    });
+  }
 });
 </script>
 {{ end }}

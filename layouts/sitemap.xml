@@ -1,0 +1,76 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+
+{{ range .Data.Pages }}
+  {{ if not .Params.noindex }}
+    <url>
+      <loc>{{ .Permalink }}</loc>
+      {{ if not .Lastmod.IsZero }}
+        <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}</lastmod>
+      {{ end }}
+      {{ with .Sitemap.ChangeFreq }}
+        <changefreq>{{ . }}</changefreq>
+      {{ end }}
+      {{ if ge .Sitemap.Priority 0.0 }}
+        <priority>{{ .Sitemap.Priority }}</priority>
+      {{ end }}
+      
+      {{/* Add images to sitemap */}}
+      {{ if .Params.image }}
+        <image:image>
+          <image:loc>{{ .Params.image | absURL }}</image:loc>
+          <image:title>{{ .Title }}</image:title>
+          {{ if .Params.description }}
+            <image:caption>{{ .Params.description }}</image:caption>
+          {{ end }}
+        </image:image>
+      {{ end }}
+      
+      {{/* Add multiple images for gallery pages */}}
+      {{ if .Params.gallery }}
+        {{ range .Params.gallery }}
+          <image:image>
+            <image:loc>{{ . | absURL }}</image:loc>
+            <image:title>{{ $.Title }}</image:title>
+          </image:image>
+        {{ end }}
+      {{ end }}
+      
+      {{/* Add mobile version */}}
+      <mobile:mobile/>
+      
+      {{/* Add alternate language versions */}}
+      {{ range .Translations }}
+        <xhtml:link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}"/>
+      {{ end }}
+    </url>
+  {{ end }}
+{{ end }}
+
+{{/* Add static pages */}}
+{{ range .Site.Menus.main }}
+  <url>
+    <loc>{{ .URL | absURL }}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+{{ end }}
+
+{{/* Add important static files */}}
+<url>
+  <loc>{{ "robots.txt" | absURL }}</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.3</priority>
+</url>
+
+</urlset>

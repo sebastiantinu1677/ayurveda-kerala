@@ -8,7 +8,7 @@
 <script type="application/ld+json">{{ $org | jsonify | safeHTML }}</script>
 
 {{/* Local Business Schema */}}
-{{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Kerala Reisen" "image" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Myerhofstraße 9" "addressLocality" "Kiel" "postalCode" "24106" "addressCountry" "DE") "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" "telephone" "+49-152-33145220" "url" .Site.BaseURL "description" "Deutschsprachige Beratung für Kerala-Reisen, Ayurveda-Kuren und Yoga-Retreats" -}}
+{{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Kerala Reisen" "image" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Meyerhofstraße 9" "addressLocality" "Kiel" "postalCode" "24106" "addressCountry" "DE") "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" "telephone" "+49-152-33145220" "url" .Site.BaseURL "description" "Deutschsprachige Beratung für Kerala-Reisen, Ayurveda-Kuren und Yoga-Retreats" -}}
 <script type="application/ld+json">{{ $lb | jsonify | safeHTML }}</script>
 
 {{/* Service Schema */}}

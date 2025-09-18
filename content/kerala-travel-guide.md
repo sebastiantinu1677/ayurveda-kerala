@@ -252,8 +252,8 @@ Ayurveda ist eine 5000 Jahre alte Heilkunst, die auf dem Gleichgewicht der drei 
 ## 📞 Kontakte & Notfallnummern
 
 ### **Ayurveda Kerala Team**
-- **WhatsApp**: +49 123 456 789
-- **E-Mail**: info@ayurveda-kerala.de
+- **WhatsApp**: +4915233145220
+- **E-Mail**: sebastiantinu9493@gmail.com
 - **Website**: www.ayurveda-kerala.de
 - **Bürozeiten**: Mo-Fr 9-18 Uhr, Sa 10-14 Uhr
 
@@ -335,8 +335,8 @@ Mit diesem Reiseführer sind Sie bestens vorbereitet für eine unvergessliche Re
 **Viel Spaß in Kerala! 🧳✈️🌴**
 
 *Bei Fragen stehen wir gerne zur Verfügung:*
-**WhatsApp**: +49 123 456 789
-**E-Mail**: info@ayurveda-kerala.de
+**WhatsApp**: +4915233145220
+**E-Mail**: sebastiantinu9493@gmail.com
 
 ---
 

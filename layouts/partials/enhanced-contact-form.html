@@ -59,7 +59,7 @@
           id="phone" 
           name="phone" 
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors"
-          placeholder="+49 123 456789"
+          placeholder="+4915233145220"
         >
       </div>
     </div>
@@ -325,6 +325,13 @@ document.addEventListener('DOMContentLoaded', function() {
       newsletter: formData.get('newsletter') === 'on',
       source: 'Enhanced Contact Form'
     };
+    
+    // Check if EmailJS is loaded
+    if (typeof emailjs === 'undefined') {
+      console.error('EmailJS not loaded');
+      showMessage('Formular-Service nicht verfügbar. Bitte kontaktieren Sie uns direkt per E-Mail: sebastiantinu9493@gmail.com oder WhatsApp: +4915233145220', 'error');
+      return;
+    }
     
     // Send email using EmailJS
     emailjs.send('service_6n7cbrb', 'template_contact', {

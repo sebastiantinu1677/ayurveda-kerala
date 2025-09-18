@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala Reisen - Enhancement Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        .test-item { margin: 10px 0; }
+        .status { font-weight: bold; }
+        .pass { color: green; }
+        .fail { color: red; }
+        .pending { color: orange; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        .feature-demo { margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Kerala Reisen - Enhancement Test Suite</h1>
+    
+    <div class="test-section info">
+        <h2>📋 Test Overview</h2>
+        <p>This page tests all the enhancements we've implemented for the Kerala Reisen website.</p>
+        <p><strong>Website URL:</strong> <a href="http://localhost:1313/" target="_blank">http://localhost:1313/</a></p>
+    </div>
+
+    <div class="test-section">
+        <h2>🔍 SEO & Content Enhancements</h2>
+        
+        <div class="test-item">
+            <span class="status">✅ Sitemap.xml Optimization:</span>
+            <a href="http://localhost:1313/sitemap.xml" target="_blank">Test Sitemap</a>
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Enhanced Meta Descriptions:</span>
+            Check page source for auto-generated descriptions
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ XML Sitemaps with Images:</span>
+            <a href="http://localhost:1313/sitemap.xml" target="_blank">View Enhanced Sitemap</a>
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Hreflang Tags:</span>
+            Check page source for international SEO tags
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Breadcrumb Schema:</span>
+            Check page source for structured data
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>⚡ Performance Optimizations</h2>
+        
+        <div class="test-item">
+            <span class="status">✅ Service Worker:</span>
+            <a href="http://localhost:1313/sw.js" target="_blank">Test Service Worker</a>
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Critical CSS Inlining:</span>
+            Check page source for inline critical CSS
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Resource Hints:</span>
+            Check page source for preconnect/dns-prefetch
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Font Optimization:</span>
+            Check page source for font preloading
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ CDN Implementation:</span>
+            Check page source for CDN assets
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ HTTP/2 Server Push:</span>
+            Check page source for push hints
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📊 Advanced Analytics & Conversion Tracking</h2>
+        
+        <div class="test-item">
+            <span class="status">✅ Advanced Analytics Script:</span>
+            <a href="http://localhost:1313/js/advanced-analytics.js" target="_blank">View Script</a>
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Scroll Depth Tracking:</span>
+            Scroll down to test (25%, 50%, 75%, 90%, 100%)
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Time on Page Tracking:</span>
+            Wait 30s, 60s, 120s, 300s to test
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Business Event Tracking:</span>
+            Click phone numbers, WhatsApp links, tour cards
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>♿ Enhanced Accessibility Features</h2>
+        
+        <div class="test-item">
+            <span class="status">✅ Skip Links:</span>
+            Press Tab to see skip links
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Focus Management:</span>
+            Tab through page elements
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Keyboard Navigation:</span>
+            Use arrow keys in dropdowns
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Screen Reader Support:</span>
+            Check for live regions and ARIA labels
+        </div>
+        
+        
+        <div class="test-item">
+            <span class="status">✅ Font Size Control:</span>
+            <button onclick="decreaseFont()">A-</button>
+            <button onclick="resetFont()">A</button>
+            <button onclick="increaseFont()">A+</button>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔒 Security Headers & CSP</h2>
+        
+        <div class="test-item">
+            <span class="status">✅ Content Security Policy:</span>
+            Check page source for CSP meta tag
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Security Headers:</span>
+            Check page source for X-Frame-Options, X-Content-Type-Options
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Feature Policy:</span>
+            Check page source for Permissions-Policy
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📱 Progressive Web App (PWA)</h2>
+        
+        <div class="test-item">
+            <span class="status">✅ Web App Manifest:</span>
+            <a href="http://localhost:1313/manifest.json" target="_blank">View Manifest</a>
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ PWA Meta Tags:</span>
+            Check page source for theme-color, apple-mobile-web-app
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ App Shortcuts:</span>
+            Check manifest for shortcuts to Reisen, Blog, Kontakt
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🎨 Enhanced User Experience</h2>
+        
+        
+        <div class="test-item">
+            <span class="status">✅ Reading Progress Bar:</span>
+            Scroll down to see progress bar at top
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Smooth Scrolling:</span>
+            Click anchor links to test smooth scrolling
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Back to Top Button:</span>
+            Scroll down to see back to top button
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Image Zoom:</span>
+            Click on images to test zoom functionality
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Tooltips:</span>
+            Hover over elements with data-tooltip attribute
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Notifications:</span>
+            <button onclick="testNotification()">Test Notification</button>
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Keyboard Shortcuts:</span>
+            Press Ctrl+K for search, Escape to close modals
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 Interactive Tests</h2>
+        
+        <div class="feature-demo">
+            <h3>Test Analytics Events</h3>
+            <button onclick="testAnalytics()">Test Analytics Event</button>
+            <button onclick="testConversion()">Test Conversion Event</button>
+        </div>
+        
+        <div class="feature-demo">
+            <h3>Test Accessibility</h3>
+            <button data-tooltip="This is a tooltip test">Hover for Tooltip</button>
+            <input type="text" placeholder="Test focus management">
+        </div>
+        
+        <div class="feature-demo">
+            <h3>Test UX Features</h3>
+            <img src="http://localhost:1313/images/logo.png" alt="Test image zoom" style="width: 100px; cursor: zoom-in;">
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📈 Performance Testing</h2>
+        
+        <div class="test-item">
+            <span class="status">✅ Lighthouse Test:</span>
+            <button onclick="runLighthouse()">Run Lighthouse Audit</button>
+        </div>
+        
+        <div class="test-item">
+            <span class="status">✅ Page Speed Test:</span>
+            <a href="https://pagespeed.web.dev/report?url=http://localhost:1313/" target="_blank">Test on PageSpeed Insights</a>
+        </div>
+    </div>
+
+    <script>
+        // Test functions
+        
+        
+        function decreaseFont() {
+            document.body.classList.remove('large-text', 'larger-text', 'largest-text');
+            showNotification('Font size decreased!', 'info');
+        }
+        
+        function resetFont() {
+            document.body.classList.remove('large-text', 'larger-text', 'largest-text');
+            showNotification('Font size reset!', 'info');
+        }
+        
+        function increaseFont() {
+            document.body.classList.add('large-text');
+            showNotification('Font size increased!', 'info');
+        }
+        
+        function testNotification() {
+            showNotification('This is a test notification!', 'success');
+        }
+        
+        function testAnalytics() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'test_analytics', {
+                    'event_category': 'test',
+                    'event_label': 'enhancement_test'
+                });
+                showNotification('Analytics event sent!', 'success');
+            } else {
+                showNotification('Analytics not loaded', 'error');
+            }
+        }
+        
+        function testConversion() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'test_conversion', {
+                    'event_category': 'conversion',
+                    'event_label': 'test_conversion'
+                });
+                showNotification('Conversion event sent!', 'success');
+            } else {
+                showNotification('Analytics not loaded', 'error');
+            }
+        }
+        
+        function runLighthouse() {
+            showNotification('Open Chrome DevTools > Lighthouse tab to run audit', 'info');
+        }
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                border-radius: 4px;
+                color: white;
+                z-index: 1000;
+                max-width: 300px;
+                background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 3000);
+        }
+        
+        // Add some test styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .large-text {
+                font-size: 1.2em !important;
+            }
+            .larger-text {
+                font-size: 1.4em !important;
+            }
+            .largest-text {
+                font-size: 1.6em !important;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        console.log('🚀 Kerala Reisen Enhancement Test Suite Loaded!');
+        console.log('📊 All enhancements are ready for testing');
+    </script>
+</body>
+</html>

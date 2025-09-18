@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        input, textarea { width: 100%; padding: 8px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>EmailJS Configuration Test</h1>
+    
+    <div class="test-section">
+        <h2>EmailJS Status</h2>
+        <div id="emailjs-status">Checking...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test Email Sending</h2>
+        <form id="testForm">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="E-Mail" required>
+            <textarea name="message" placeholder="Nachricht" required></textarea>
+            <button type="submit">Test E-Mail senden</button>
+        </form>
+        <div id="test-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Configuration Details</h2>
+        <div id="config-details"></div>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        emailjs.init("JAtr_sIlUlFAvciuj");
+        
+        // Check EmailJS status
+        function checkEmailJSStatus() {
+            const statusDiv = document.getElementById('emailjs-status');
+            const configDiv = document.getElementById('config-details');
+            
+            if (typeof emailjs !== 'undefined') {
+                statusDiv.innerHTML = '<span style="color: green;">✅ EmailJS loaded successfully</span>';
+                statusDiv.className = 'test-section success';
+                
+                configDiv.innerHTML = `
+                    <p><strong>EmailJS Version:</strong> ${emailjs.version}</p>
+                    <p><strong>Public Key:</strong> JAtr_sIlUlFAvciuj</p>
+                    <p><strong>Service ID:</strong> service_6n7cbrb</p>
+                    <p><strong>Template ID:</strong> template_contact</p>
+                    <p><strong>Contact E-Mail:</strong> sebastiantinu9493@gmail.com</p>
+                    <p><strong>WhatsApp:</strong> +4915233145220</p>
+                `;
+            } else {
+                statusDiv.innerHTML = '<span style="color: red;">❌ EmailJS not loaded</span>';
+                statusDiv.className = 'test-section error';
+            }
+        }
+        
+        // Test form submission
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('test-result');
+            resultDiv.innerHTML = 'Sending test email...';
+            
+            const formData = new FormData(this);
+            
+            // Add timeout
+            const emailPromise = emailjs.send('service_6n7cbrb', 'template_contact', {
+                from_name: formData.get('name'),
+                from_email: formData.get('email'),
+                subject: 'Test Email from EmailJS Test Page',
+                message: formData.get('message')
+            });
+            
+            const timeoutPromise = new Promise((_, reject) => {
+                setTimeout(() => reject(new Error('Request timeout after 10 seconds')), 10000);
+            });
+            
+            Promise.race([emailPromise, timeoutPromise])
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                resultDiv.innerHTML = `<span style="color: green;">✅ Email sent successfully! Status: ${response.status}</span>`;
+                resultDiv.className = 'test-section success';
+            })
+            .catch(function(error) {
+                console.error('FAILED...', error);
+                let errorDetails = `
+                    <span style="color: red;">❌ Email sending failed!</span><br>
+                    <strong>Error Type:</strong> ${error.name || 'Unknown'}<br>
+                    <strong>Message:</strong> ${error.message}<br>
+                `;
+                
+                if (error.status) {
+                    errorDetails += `<strong>Status:</strong> ${error.status}<br>`;
+                }
+                if (error.text) {
+                    errorDetails += `<strong>Text:</strong> ${error.text}<br>`;
+                }
+                
+                // Add specific guidance for "Failed to fetch"
+                if (error.message && error.message.includes('Failed to fetch')) {
+                    errorDetails += `<br><strong>Diagnosis:</strong> Network/CORS issue. EmailJS service may be down or blocked.<br>`;
+                    errorDetails += `<strong>Solution:</strong> Check internet connection, try different network, or use mailto fallback.`;
+                }
+                
+                resultDiv.innerHTML = errorDetails;
+                resultDiv.className = 'test-section error';
+            });
+        });
+        
+        // Check status when page loads
+        window.addEventListener('load', checkEmailJSStatus);
+    </script>
+</body>
+</html>

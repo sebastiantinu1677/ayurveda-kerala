@@ -14,55 +14,96 @@
   <meta name="geo.placename" content="Kiel" />
   <meta name="geo.position" content="54.3233;10.1228" />
   <meta name="ICBM" content="54.3233, 10.1228" />
+  <!-- Resource Hints for Performance -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.kiprotect.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//www.google-analytics.com">
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="{{ .Site.BaseURL }}images/logo.png" as="image">
+  <link rel="preload" href="{{ .Site.BaseURL }}images/favicon.ico" as="image">
+  
+  <!-- Font optimization and preloading -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+  
+  <!-- Preload critical font files -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="icon" href="{{ .Site.Params.favicon }}" type="image/x-icon">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Critical CSS - Inline for faster loading -->
+  <style>
+    {{ readFile "static/css/critical.css" | safeCSS }}
+  </style>
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="{{ .Site.BaseURL }}css/tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ .Site.BaseURL }}css/tailwind.css"></noscript>
+  
+  <link rel="preload" href="{{ .Site.BaseURL }}css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css"></noscript>
 
   <!-- Klaro! Cookie Consent -->
   <link rel="stylesheet" type="text/css" href="https://cdn.kiprotect.com/klaro/latest/klaro.css"/>
   <script type="text/javascript" src="/js/klaro-config.js"></script>
   <script type="text/javascript" src="https://cdn.kiprotect.com/klaro/latest/klaro.js"></script>
 
-  <!-- Google Analytics (wrapped by Klaro) -->
-  {{ with .Site.Params.googleAnalytics }}
+  <!-- Google Analytics & Google Ads (wrapped by Klaro) -->
+  {{ if or .Site.Params.googleAnalytics .Site.Params.googleAds }}
   <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
     (function(){
-      var gaId = '{{ . }}';
+      // Load gtag script
       var gtagScript = document.createElement('script');
       gtagScript.async = true;
-      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + ({{ .Site.Params.googleAnalytics | default .Site.Params.googleAds }});
       document.head.appendChild(gtagScript);
 
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', gaId, {
+      
+      // Configure Google Analytics if available
+      {{ with .Site.Params.googleAnalytics }}
+      {{ if ne . "" }}
+      gtag('config', '{{ . }}', {
         custom_map: {
           'custom_parameter_1': 'page_category',
           'custom_parameter_2': 'user_type'
         },
-        // Enhanced tracking for Netlify deployment
         send_page_view: true,
         anonymize_ip: true,
         allow_google_signals: true,
         allow_ad_personalization_signals: false
       });
+      console.log('Google Analytics initialized with ID: {{ . }}');
+      {{ end }}
+      {{ end }}
       
-      // Enhanced ecommerce tracking
-      gtag('config', gaId, {
-        send_page_view: true,
-        enhanced_ecommerce: true
+      // Configure Google Ads if available
+      {{ with .Site.Params.googleAds }}
+      {{ if ne . "" }}
+      gtag('config', '{{ . }}', {
+        send_page_view: true
       });
+      console.log('Google Ads tracking initialized with ID: {{ . }}');
+      {{ end }}
+      {{ end }}
     })();
+  </script>
+  {{ else }}
+  <script>
+    console.warn('No Google Analytics or Google Ads ID configured in config.toml');
   </script>
   {{ end }}
 
   {{- $org := dict "@context" "https://schema.org" "@type" "Organization" "name" "Kerala Reisen" "url" .Site.BaseURL "logo" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "contactPoint" (dict "@type" "ContactPoint" "contactType" "customer service" "areaServed" "DE" "availableLanguage" "German") "sameAs" (slice "https://www.facebook.com/keralareisen" "https://www.instagram.com/keralareisen") -}}
   <script type="application/ld+json">{{ $org | jsonify | safeHTML }}</script>
 
-  {{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Kerala Reisen" "image" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Myerhofstraße 9" "addressLocality" "Kiel" "postalCode" "24106" "addressCountry" "DE") "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" -}}
+  {{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Kerala Reisen" "image" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Meyerhofstraße 9" "addressLocality" "Kiel" "postalCode" "24106" "addressCountry" "DE") "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" -}}
   <script type="application/ld+json">{{ $lb | jsonify | safeHTML }}</script>
 
   {{- $service := dict "@context" "https://schema.org" "@type" "Service" "name" "Kerala Reisen" "description" "Deutschsprachige Beratung für Kerala-Reisen: Ayurveda-Kuren, Yoga-Retreats, Rundreisen und Backwaters-Erlebnisse in Kerala, Indien" "provider" (dict "@type" "Organization" "name" "Kerala Reisen") "areaServed" (dict "@type" "Country" "name" "Deutschland") "serviceType" "Reiseberatung" "offers" (dict "@type" "Offer" "priceCurrency" "EUR" "availability" "https://schema.org/InStock") -}}
@@ -110,6 +151,15 @@
       s.src = "https://client.crisp.chat/l.js";
       s.async = 1;
       d.getElementsByTagName("head")[0].appendChild(s);
+      
+      // Wait for Crisp to load, then hide the default widget but keep it functional
+      s.onload = function() {
+        setTimeout(function() {
+          // Hide the default widget button but keep the chat functional
+          window.$crisp.push(["do", "chat:hide"]);
+          console.log('Crisp loaded and default widget hidden');
+        }, 2000);
+      };
   })();
   </script>
 
@@ -125,12 +175,14 @@
         'currency': currency
       });
       
-      // Also send to Google Ads
+      // Also send to Google Ads (if Google Ads ID is configured)
+      {{ with .Site.Params.googleAds }}
       gtag('event', 'conversion', {
-        'send_to': 'AW-17574288605/' + eventName,
+        'send_to': '{{ . }}/' + eventName,
         'value': value,
         'currency': currency
       });
+      {{ end }}
     }
   }
   
@@ -205,6 +257,62 @@
   <link rel="canonical" href="{{ .Site.BaseURL }}{{ .RelPermalink }}">
   <link rel="alternate" hreflang="de" href="{{ .Permalink }}" />
   <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function(registration) {
+            console.log('Service Worker registered successfully:', registration.scope);
+          })
+          .catch(function(error) {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
+  
+  <!-- Lazy Loading Script -->
+  <script src="{{ .Site.BaseURL }}js/lazy-loading.js" defer></script>
+  
+  <!-- Enhanced Analytics -->
+  <script src="{{ .Site.BaseURL }}js/analytics-enhanced.js" defer></script>
+  
+  <!-- Accessibility Enhancements -->
+  <script src="{{ .Site.BaseURL }}js/accessibility.js" defer></script>
+  
+  <!-- CDN Assets -->
+  {{ partial "cdn-assets.html" . }}
+  
+  <!-- HTTP/2 Server Push -->
+  {{ partial "http2-push.html" . }}
+  
+  <!-- Security Headers -->
+  {{ partial "security-headers.html" . }}
+  
+  <!-- Advanced SEO -->
+  {{ partial "advanced-seo.html" . }}
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="{{ .Site.BaseURL }}manifest.json">
+  <meta name="theme-color" content="#3CB371">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Kerala Reisen">
+  <link rel="apple-touch-icon" href="{{ .Site.BaseURL }}images/webp/logo.webp">
+  
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS
+    emailjs.init("JAtr_sIlUlFAvciuj");
+  </script>
+  
+  <!-- Enhanced Scripts -->
+  <script src="{{ .Site.BaseURL }}js/advanced-analytics.js" defer></script>
+  <script src="{{ .Site.BaseURL }}js/accessibility-enhanced.js" defer></script>
+  <script src="{{ .Site.BaseURL }}js/ux-enhancements.js" defer></script>
   {{- if eq .Kind "home" -}}
   <script type="application/ld+json">
   {{- $website := dict "@context" "https://schema.org" "@type" "WebSite" "url" .Site.BaseURL "name" "Kerala Reisen" "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q={search_term_string}" .Site.BaseURL) "query-input" "required name=search_term_string") -}}
@@ -243,6 +351,9 @@
 
   <!-- Enhanced Structured Data -->
   {{ partial "structured-data.html" . }}
+  {{ partial "seo-enhancements.html" . }}
+  {{ partial "meta-descriptions.html" . }}
+  {{ partial "hreflang.html" . }}
 
   <!-- Reading Progress Bar -->
   <div id="reading-progress" class="fixed top-0 left-0 w-0 h-1 bg-yellow-600 z-50 transition-all duration-300"></div>

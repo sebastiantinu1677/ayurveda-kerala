@@ -28,6 +28,21 @@
   }
 }
 
+/* Line clamp utilities for blog posts */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Reveal animations */
 .reveal, .reveal-item { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.revealed, .reveal-item.revealed { opacity: 1; transform: translateY(0); }
@@ -564,6 +579,26 @@ picture img {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
+/* Testimonial dots - smaller on mobile */
+@media (max-width: 640px) {
+  .testimonial-dots button {
+    width: 6px !important;
+    height: 6px !important;
+  }
+}
+
+/* Force blog filters to be hidden on mobile */
+@media (max-width: 768px) {
+  #filter-content {
+    display: none !important;
+  }
+  
+  #filter-content.show-filters {
+    display: grid !important;
+  }
+}
+
 
 .readable-text h1 {
   font-size: 2rem;

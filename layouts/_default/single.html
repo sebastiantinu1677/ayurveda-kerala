@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="max-w-6xl mx-auto py-12 px-4">
+<div class="max-w-6xl mx-auto pt-1 pb-3 px-4">
   <div class="grid lg:grid-cols-3 gap-8">
     <!-- Main Content -->
     <div class="lg:col-span-2">
@@ -13,7 +13,6 @@
         </div>
         
         {{ partial "social-share.html" . }}
-        {{ partial "related-content.html" . }}
       </article>
     </div>
     
@@ -37,6 +36,11 @@
         </div>
       {{ end }}
     </div>
+  </div>
+  
+  <!-- Related Content - moved outside grid for mobile ordering -->
+  <div class="max-w-6xl mx-auto px-4">
+    {{ partial "related-content.html" . }}
   </div>
 </div>
 

@@ -1,5 +1,5 @@
 {{ define "main" }}
-<section class="max-w-4xl mx-auto py-12 px-4">
+<section class="max-w-4xl mx-auto pt-1 pb-3 px-4">
   <div class="bg-white rounded-lg shadow p-6 md:p-8">
     <h1 class="text-3xl font-bold mb-2">{{ .Title }}</h1>
     <p class="text-gray-700 mb-6">Deutschsprachige Beratung, schnelle Rückmeldung und individuelle Reisevorschläge.</p>
@@ -7,7 +7,7 @@
     <div class="grid md:grid-cols-2 gap-6">
       <div>
         <h3 class="font-semibold mb-2">Kontakt</h3>
-        <p><strong>Kerala Reisen</strong><br>Myerhofstraße 9<br>24106 Kiel<br>Deutschland</p>
+        <p><strong>Kerala Reisen</strong><br>Meyerhofstraße 9<br>24106 Kiel<br>Deutschland</p>
 
         <div class="mt-4">
           <a href="https://wa.me/{{ .Site.Params.whatsapp.number }}" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-green-500 transition">💬 WhatsApp</a>
@@ -43,7 +43,7 @@
       </div>
       <div>
         <h3 class="font-semibold mb-2">Anfahrt</h3>
-        <a href="https://maps.google.com/?q=Myerhofstraße%209%2024106%20Kiel" target="_blank" class="block">
+        <a href="https://maps.google.com/?q=Meyerhofstraße%209%2024106%20Kiel" target="_blank" class="block">
           {{ partial "picture.html" (dict "src" "/images/kerala-office.jpg" "alt" "Büro" "class" "w-full h-40 object-cover rounded" "loading" "lazy") }}
           <span class="text-sm text-yellow-700 hover:underline">Auf Google Maps öffnen</span>
         </a>
@@ -54,12 +54,8 @@
   <p class="text-sm text-gray-600 text-center mt-4">Oder nutzen Sie den Live-Chat (unten rechts) für eine schnelle Rückfrage.</p>
 </section>
 
-<!-- EmailJS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <script>
-  // Initialize EmailJS
-  emailjs.init("JAtr_sIlUlFAvciuj");
+  // EmailJS is already loaded in head.html
 
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -84,16 +80,27 @@
       message: formData.get('message')
     };
     
+    // Check if EmailJS is loaded
+    if (typeof emailjs === 'undefined') {
+      console.error('EmailJS not loaded');
+      errorMsg.classList.remove('hidden');
+      submitBtn.classList.remove('hidden');
+      loadingBtn.classList.add('hidden');
+      return;
+    }
+    
+    console.log('Sending email with params:', templateParams);
+    
     // Send email using contact template
-            emailjs.send('service_6n7cbrb', 'template_contact', {
-              from_name: templateParams.from_name,
-              from_email: templateParams.from_email,
-              subject: templateParams.subject,
-              message: `${templateParams.message}
+    emailjs.send('service_6n7cbrb', 'template_contact', {
+      from_name: templateParams.from_name,
+      from_email: templateParams.from_email,
+      subject: templateParams.subject,
+      message: `${templateParams.message}
 
 ---
 Diese Nachricht wurde über das Kontaktformular auf ayurveda-kerala.de gesendet.`
-            })
+    })
       .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
         // Show success message
@@ -105,11 +112,28 @@ Diese Nachricht wurde über das Kontaktformular auf ayurveda-kerala.de gesendet.
         document.getElementById('contactForm').reset();
       })
       .catch(function(error) {
-        console.log('FAILED...', error);
+        console.error('EmailJS Error:', error);
+        console.error('Error details:', {
+          status: error.status,
+          text: error.text,
+          message: error.message
+        });
+        
         // Show error message
         submitBtn.classList.remove('hidden');
         loadingBtn.classList.add('hidden');
         errorMsg.classList.remove('hidden');
+        
+        // Log specific error for debugging
+        if (error.status === 400) {
+          console.error('Bad Request - Check template variables');
+        } else if (error.status === 401) {
+          console.error('Unauthorized - Check EmailJS public key');
+        } else if (error.status === 403) {
+          console.error('Forbidden - Check EmailJS service configuration');
+        } else if (error.message && error.message.includes('Failed to fetch')) {
+          console.error('Network Error - EmailJS service unreachable');
+        }
       });
   });
 </script>

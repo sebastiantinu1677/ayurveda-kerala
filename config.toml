@@ -6,7 +6,8 @@ title = "Kerala Reisen"
   pagerSize = 5
 
 [params]
-  googleAnalytics = "AW-17574288605"
+  googleAnalytics = "G-FK5RF5HVFR"  # GA4 measurement ID
+  googleAds = "AW-17574288605"  # Google Ads conversion tracking ID
   favicon = "/images/keralareisenLogo.png"
   defaultImage = "/images/webp/hero-backwaters.webp"
   twitter = "https://twitter.com/keralareisen"
@@ -26,6 +27,23 @@ title = "Kerala Reisen"
   changefreq = "weekly"
   priority = 0.5
   filename = "sitemap.xml"
+  
+  # Enhanced sitemap configuration
+  [sitemap.pages]
+    changefreq = "weekly"
+    priority = 0.8
+    
+  [sitemap.reisen]
+    changefreq = "monthly"
+    priority = 0.9
+    
+  [sitemap.blog]
+    changefreq = "weekly"
+    priority = 0.7
+    
+  [sitemap.static]
+    changefreq = "monthly"
+    priority = 0.3
 
 
 [outputs]

@@ -1,0 +1,183 @@
+{{/* Advanced SEO Enhancements */}}
+
+{{/* Open Graph Meta Tags */}}
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+<meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="de_DE">
+
+{{ if .Params.image }}
+  <meta property="og:image" content="{{ .Params.image | absURL }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ .Title }}">
+{{ else }}
+  <meta property="og:image" content="{{ .Site.Params.defaultImage | absURL }}">
+{{ end }}
+
+{{/* Twitter Card Meta Tags */}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}">
+<meta name="twitter:description" content="{{ .Description | default .Site.Params.description }}">
+{{ if .Params.image }}
+  <meta name="twitter:image" content="{{ .Params.image | absURL }}">
+{{ else }}
+  <meta name="twitter:image" content="{{ .Site.Params.defaultImage | absURL }}">
+{{ end }}
+
+{{/* Article specific meta tags */}}
+{{ if not .IsHome }}
+  <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:author" content="{{ .Site.Params.author }}">
+  <meta property="article:section" content="{{ .Section | title }}">
+  {{ range .Params.tags }}
+    <meta property="article:tag" content="{{ . }}">
+  {{ end }}
+{{ end }}
+
+{{/* Additional SEO Meta Tags */}}
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="bingbot" content="index, follow">
+
+{{/* Canonical URL */}}
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{/* Alternate Language Versions */}}
+{{ range .Site.Languages }}
+  {{ if ne .Lang $.Site.LanguageCode }}
+    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ $.Permalink | relLangURL }}">
+  {{ end }}
+{{ end }}
+
+{{/* Preconnect to external domains */}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+
+{{/* DNS Prefetch for performance */}}
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="dns-prefetch" href="//cdn.kiprotect.com">
+
+{{/* Schema.org JSON-LD for Organization */}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "logo": "{{ .Site.BaseURL }}images/logo.png",
+  "description": "{{ .Site.Params.description }}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "DE",
+    "addressRegion": "Schleswig-Holstein",
+    "addressLocality": "Kiel"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+49-152-33145220",
+    "contactType": "customer service",
+    "availableLanguage": ["German", "English"]
+  },
+  "sameAs": [
+    "{{ .Site.Params.facebook }}",
+    "{{ .Site.Params.instagram }}",
+    "{{ .Site.Params.twitter }}"
+  ]
+}
+</script>
+{{ end }}
+
+{{/* FAQ Schema for FAQ pages */}}
+{{ if and .Params.faq (gt (len .Params.faq) 0) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{ range $index, $faq := .Params.faq }}
+    {
+      "@type": "Question",
+      "name": "{{ $faq.question }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ $faq.answer }}"
+      }
+    }{{ if lt $index (sub (len $.Params.faq) 1) }},{{ end }}
+    {{ end }}
+  ]
+}
+</script>
+{{ end }}
+
+{{/* Local Business Schema for contact page */}}
+{{ if eq .Type "contact" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "{{ .Site.Title }}",
+  "description": "{{ .Site.Params.description }}",
+  "url": "{{ .Site.BaseURL }}",
+  "telephone": "+49-152-33145220",
+  "email": "info@kerala-reisen.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kiel, Germany",
+    "addressLocality": "Kiel",
+    "addressRegion": "Schleswig-Holstein",
+    "postalCode": "24103",
+    "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "54.3233",
+    "longitude": "10.1228"
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Germany"
+  },
+  "serviceType": "Travel Agency",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Kerala Travel Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Ayurveda Retreats",
+          "description": "Authentic Ayurveda treatments and wellness programs"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Yoga Retreats",
+          "description": "Traditional yoga practices in Kerala"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Kerala Tours",
+          "description": "Guided tours of Kerala's backwaters and cultural sites"
+        }
+      }
+    ]
+  }
+}
+</script>
+{{ end }}
