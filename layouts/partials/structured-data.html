@@ -97,65 +97,151 @@
 {{/* Product/Tour Schema for individual tours */}}
 {{- if eq .Type "reisen" -}}
 {{- $price := cond (isset .Params "pricefrom") .Params.pricefrom (or .Params.priceFrom "") -}}
-{{- $dur := or .Params.duration "" -}}
 {{- $img := or .Params.image (.Site.Params.defaultImage) -}}
-{{- $dest := dict "@type" "Place" "name" "Kerala, Indien" "address" (dict "@type" "PostalAddress" "addressCountry" "IN" "addressRegion" "Kerala") -}}
-{{- $itinerary := slice (dict "@type" "Trip" "name" .Title) -}}
-{{- $tour := dict "@context" "https://schema.org" "@type" "TouristTrip" "name" .Title "description" .Description "image" $img "offers" (dict "@type" "Offer" "price" $price "priceCurrency" "EUR" "availability" "https://schema.org/InStock") "itinerary" $itinerary "touristType" "Leisure" "provider" (dict "@type" "Organization" "name" "Kerala Reisen") -}}
-<script type="application/ld+json">{{ $tour | jsonify | safeHTML }}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "{{ .Title }}",
+  "description": "{{ .Description }}",
+  "image": "{{ $img }}",
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ $price }}",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  },
+  "itinerary": [
+    {
+      "@type": "Trip",
+      "name": "{{ .Title }}"
+    }
+  ],
+  "touristType": "Leisure",
+  "provider": {
+    "@type": "Organization",
+    "name": "Kerala Reisen"
+  }
+}
+</script>
 {{- end -}}
 
 {{/* Article Schema for blog posts */}}
 {{- if eq .Type "blog" -}}
-{{- $author := dict "@type" "Person" "name" "Kerala Reisen Team" "url" .Site.BaseURL -}}
-{{- $publisher := dict "@type" "Organization" "name" "Kerala Reisen" "logo" (dict "@type" "ImageObject" "url" (printf "%simages/keralareisenLogo.png" .Site.BaseURL)) -}}
-{{- $article := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "description" .Description "image" .Params.image "author" $author "publisher" $publisher "datePublished" (.Date.Format "2006-01-02") "dateModified" (.Lastmod.Format "2006-01-02") "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink) -}}
-<script type="application/ld+json">{{ $article | jsonify | safeHTML }}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ .Title }}",
+  "description": "{{ .Description }}",
+  "image": "{{ .Params.image }}",
+  "author": {
+    "@type": "Person",
+    "name": "Kerala Reisen Team",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kerala Reisen",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL }}images/keralareisenLogo.png"
+    }
+  },
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  }
+}
+</script>
 {{- end -}}
 
 {{/* FAQ Schema - Only for pages that have FAQ data */}}
 {{- if and .Params.faq (gt (len .Params.faq) 0) -}}
-{{- $faqItems := slice -}}
-{{- range .Params.faq -}}
-{{- if and .question .answer -}}
-{{- $faqItem := dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" .answer) -}}
-{{- $faqItems = $faqItems | append $faqItem -}}
-{{- end -}}
-{{- end -}}
-{{- if gt (len $faqItems) 0 -}}
-{{- $faq := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqItems -}}
-<script type="application/ld+json">{{ $faq | jsonify | safeHTML }}</script>
-{{- end -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{- range $index, $faq := .Params.faq -}}
+    {{- if and $faq.question $faq.answer -}}
+    {
+      "@type": "Question",
+      "name": "{{ $faq.question }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ $faq.answer }}"
+      }
+    }{{- if ne $index (sub (len $.Params.faq) 1) -}},{{- end -}}
+    {{- end -}}
+    {{- end -}}
+  ]
+}
+</script>
 {{- end -}}
 
 {{/* Breadcrumb Schema - Simplified version */}}
 {{- if ne .Kind "home" -}}
-{{- $breadcrumbItems := slice -}}
-{{- $position := 1 -}}
-{{- $homeItem := dict "@type" "ListItem" "position" $position "name" "Home" "item" .Site.BaseURL -}}
-{{- $breadcrumbItems = $breadcrumbItems | append $homeItem -}}
-{{- $position = add $position 1 -}}
-{{- $currentItem := dict "@type" "ListItem" "position" $position "name" .Title "item" .Permalink -}}
-{{- $breadcrumbItems = $breadcrumbItems | append $currentItem -}}
-{{- $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $breadcrumbItems -}}
-<script type="application/ld+json">{{ $breadcrumb | jsonify | safeHTML }}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ .Site.BaseURL }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
 {{- end -}}
 
 {{/* Review Schema for tours with reviews */}}
 {{- if and (eq .Type "reisen") .Params.reviews (gt (len .Params.reviews) 0) -}}
-{{- $reviews := slice -}}
-{{- range .Params.reviews -}}
-{{- if and .name .rating .text -}}
-{{- $review := dict "@type" "Review" "author" (dict "@type" "Person" "name" .name) "reviewRating" (dict "@type" "Rating" "ratingValue" .rating "bestRating" 5) "reviewBody" .text -}}
-{{- if .date -}}
-{{- $review = merge $review (dict "datePublished" .date) -}}
-{{- end -}}
-{{- $reviews = $reviews | append $review -}}
-{{- end -}}
-{{- end -}}
-{{- if gt (len $reviews) 0 -}}
-{{- $aggregateRating := dict "@type" "AggregateRating" "ratingValue" (or .Params.ratingValue 4.5) "reviewCount" (or .Params.reviewCount (len $reviews)) "bestRating" 5 "worstRating" 1 -}}
-{{- $product := dict "@context" "https://schema.org" "@type" "Product" "name" .Title "image" (or .Params.image .Site.Params.defaultImage) "description" .Description "aggregateRating" $aggregateRating "review" $reviews -}}
-<script type="application/ld+json">{{ $product | jsonify | safeHTML }}</script>
-{{- end -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ .Title }}",
+  "image": "{{ or .Params.image .Site.Params.defaultImage }}",
+  "description": "{{ .Description }}",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ or .Params.ratingValue 4.5 }}",
+    "reviewCount": "{{ or .Params.reviewCount (len .Params.reviews) }}",
+    "bestRating": 5,
+    "worstRating": 1
+  },
+  "review": [
+    {{- range $index, $review := .Params.reviews -}}
+    {{- if and $review.name $review.rating $review.text -}}
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "{{ $review.name }}"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "{{ $review.rating }}",
+        "bestRating": 5
+      },
+      "reviewBody": "{{ $review.text }}"{{- if $review.date -}},
+      "datePublished": "{{ $review.date }}"{{- end -}}
+    }{{- if ne $index (sub (len $.Params.reviews) 1) -}},{{- end -}}
+    {{- end -}}
+    {{- end -}}
+  ]
+}
+</script>
 {{- end -}}
