@@ -88,26 +88,6 @@
   </script>
   {{ end }}
 
-  {{- $org := dict "@context" "https://schema.org" "@type" "Organization" "name" "Kerala Reisen" "url" .Site.BaseURL "logo" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "contactPoint" (dict "@type" "ContactPoint" "contactType" "customer service" "areaServed" "DE" "availableLanguage" "German") "sameAs" (slice "https://www.facebook.com/keralareisen" "https://www.instagram.com/keralareisen") -}}
-  <script type="application/ld+json">{{ $org | jsonify | safeHTML }}</script>
-
-  {{- $lb := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" "Kerala Reisen" "image" (printf "%simages/keralareisenLogo.png" .Site.BaseURL) "address" (dict "@type" "PostalAddress" "streetAddress" "Meyerhofstraße 9" "addressLocality" "Kiel" "postalCode" "24106" "addressCountry" "DE") "priceRange" "$$" "openingHours" "Mo-Fr 09:00-18:00,Sa 10:00-14:00" -}}
-  <script type="application/ld+json">{{ $lb | jsonify | safeHTML }}</script>
-
-  {{- $service := dict "@context" "https://schema.org" "@type" "Service" "name" "Kerala Reisen" "description" "Deutschsprachige Beratung für Kerala-Reisen: Ayurveda-Kuren, Yoga-Retreats, Rundreisen und Backwaters-Erlebnisse in Kerala, Indien" "provider" (dict "@type" "Organization" "name" "Kerala Reisen") "areaServed" (dict "@type" "Country" "name" "Deutschland") "serviceType" "Reiseberatung" "offers" (dict "@type" "Offer" "priceCurrency" "EUR" "availability" "https://schema.org/InStock") -}}
-  <script type="application/ld+json">{{ $service | jsonify | safeHTML }}</script>
-
-  {{- if eq .Kind "page" -}}
-  {{- $breadcrumb := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.BaseURL) -}}
-  {{- $position := 2 -}}
-  {{- range .Ancestors.Reverse -}}
-  {{- $breadcrumb = $breadcrumb | append (dict "@type" "ListItem" "position" $position "name" .Title "item" (.RelPermalink | absURL)) -}}
-  {{- $position = add $position 1 -}}
-  {{- end -}}
-  {{- $breadcrumb = $breadcrumb | append (dict "@type" "ListItem" "position" $position "name" .Title "item" (.RelPermalink | absURL)) -}}
-  {{- $breadcrumbList := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $breadcrumb -}}
-  <script type="application/ld+json">{{ $breadcrumbList | jsonify | safeHTML }}</script>
-  {{- end -}}
 
   <link rel="icon" href="/images/keralareisenLogo.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/keralareisenLogo.png">
