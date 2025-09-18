@@ -72,6 +72,9 @@
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+  /* Ensure buttons are always visible regardless of scroll position */
+  transform: translateZ(0) !important;
+  will-change: transform !important;
 }
 
 /* Force specific positioning for each button */
@@ -97,7 +100,9 @@
 @media (max-width: 768px) {
   #whatsappChatButton, #backToTop, #crispChatButton {
     bottom: 1rem !important; /* Closer to bottom on mobile */
-    transform: scale(1) !important;
+    transform: translateZ(0) scale(1) !important;
+    /* Ensure they stay fixed to viewport */
+    position: fixed !important;
   }
   
   #whatsappChatButton {
@@ -120,6 +125,29 @@
     align-items: center !important;
     justify-content: center !important;
     bottom: 0.75rem !important;
+    position: fixed !important;
+    z-index: 9999 !important;
+  }
+}
+
+/* Fix for Klaro cookie consent positioning */
+.klaro .cookie-notice {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 10000 !important;
+  transform: translateZ(0) !important;
+}
+
+/* Ensure cookie notice is always visible */
+@media (max-width: 768px) {
+  .klaro .cookie-notice {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 10000 !important;
   }
 }
 </style>
@@ -128,75 +156,104 @@
 document.addEventListener('DOMContentLoaded', function() {
   const backToTopButton = document.getElementById('backToTop');
   const crispChatButton = document.getElementById('crispChatButton');
+  const whatsappChatButton = document.getElementById('whatsappChatButton');
+  
+  // Ensure all buttons are visible and properly positioned
+  function ensureButtonsVisible() {
+    [backToTopButton, crispChatButton, whatsappChatButton].forEach(button => {
+      if (button) {
+        button.style.position = 'fixed';
+        button.style.zIndex = '9999';
+        button.style.display = 'flex';
+        button.style.visibility = 'visible';
+        button.style.opacity = '1';
+        button.style.transform = 'translateZ(0)';
+        button.style.willChange = 'transform';
+      }
+    });
+  }
+  
+  // Initialize button visibility
+  ensureButtonsVisible();
+  
+  // Re-ensure visibility after a short delay (in case of other scripts interfering)
+  setTimeout(ensureButtonsVisible, 100);
   
   // Crisp Chat Button Click Handler
-  crispChatButton.addEventListener('click', function() {
-    console.log('Crisp chat button clicked');
-    
-    // Add visual feedback
-    crispChatButton.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      crispChatButton.style.transform = 'scale(1)';
-    }, 150);
-    
-    // Function to open Crisp chat
-    function openCrispChat() {
-      try {
-        if (window.$crisp && window.$crisp.push) {
-          console.log('Opening Crisp chat via API');
-          window.$crisp.push(['do', 'chat:show']);
-          window.$crisp.push(['do', 'chat:open']);
-          return true;
+  if (crispChatButton) {
+    crispChatButton.addEventListener('click', function() {
+      console.log('Crisp chat button clicked');
+      
+      // Add visual feedback
+      crispChatButton.style.transform = 'translateZ(0) scale(0.95)';
+      setTimeout(() => {
+        crispChatButton.style.transform = 'translateZ(0) scale(1)';
+      }, 150);
+      
+      // Function to open Crisp chat
+      function openCrispChat() {
+        try {
+          if (window.$crisp && window.$crisp.push) {
+            console.log('Opening Crisp chat via API');
+            window.$crisp.push(['do', 'chat:show']);
+            window.$crisp.push(['do', 'chat:open']);
+            return true;
+          }
+          return false;
+        } catch (error) {
+          console.error('Error opening Crisp chat:', error);
+          return false;
         }
-        return false;
-      } catch (error) {
-        console.error('Error opening Crisp chat:', error);
-        return false;
       }
-    }
-    
-    // Try to open Crisp chat
-    if (!openCrispChat()) {
-      // If Crisp is not available, wait a bit and try again
-      setTimeout(function() {
-        if (!openCrispChat()) {
-          console.log('Crisp not available, opening WhatsApp as fallback');
-          window.open('https://wa.me/4915233145220', '_blank');
-        }
-      }, 500);
-    }
-  });
-  
-  console.log('Crisp chat button initialized');
-  
-  // Show/hide button based on scroll position
-  window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 300) {
-      backToTopButton.classList.remove('opacity-0', 'invisible');
-      backToTopButton.classList.add('opacity-100', 'visible');
-    } else {
-      backToTopButton.classList.add('opacity-0', 'invisible');
-      backToTopButton.classList.remove('opacity-100', 'visible');
-    }
-  });
-  
-  // Smooth scroll to top
-  backToTopButton.addEventListener('click', function() {
-    // Prevent color change by maintaining button state
-    backToTopButton.style.backgroundColor = '#d97706'; // yellow-600
-    backToTopButton.style.color = 'white';
-    
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+      
+      // Try to open Crisp chat
+      if (!openCrispChat()) {
+        // If Crisp is not available, wait a bit and try again
+        setTimeout(function() {
+          if (!openCrispChat()) {
+            console.log('Crisp not available, opening WhatsApp as fallback');
+            window.open('https://wa.me/4915233145220', '_blank');
+          }
+        }, 500);
+      }
     });
     
-    // Ensure color stays after scroll
-    setTimeout(() => {
-      backToTopButton.style.backgroundColor = '#d97706';
+    console.log('Crisp chat button initialized');
+  }
+  
+  // Show/hide button based on scroll position
+  if (backToTopButton) {
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    // Smooth scroll to top
+    backToTopButton.addEventListener('click', function() {
+      // Prevent color change by maintaining button state
+      backToTopButton.style.backgroundColor = '#d97706'; // yellow-600
       backToTopButton.style.color = 'white';
-    }, 100);
-  });
+      
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      // Ensure color stays after scroll
+      setTimeout(() => {
+        backToTopButton.style.backgroundColor = '#d97706';
+        backToTopButton.style.color = 'white';
+      }, 100);
+    });
+  }
+  
+  // Ensure buttons remain visible on window resize
+  window.addEventListener('resize', ensureButtonsVisible);
 });
 </script>
 

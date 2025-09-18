@@ -1,8 +1,19 @@
-/* Force Klaro popup to bottom-left */
+/* Force Klaro popup to bottom-left and ensure visibility */
 #klaro .cookie-notice {
+  position: fixed !important;
   right: auto !important;
   left: 20px !important;
   bottom: 20px !important;
+  z-index: 10000 !important;
+  transform: translateZ(0) !important;
+}
+
+/* Ensure floating action buttons are always visible */
+#whatsappChatButton, #backToTop, #crispChatButton {
+  position: fixed !important;
+  z-index: 9999 !important;
+  transform: translateZ(0) !important;
+  will-change: transform !important;
 }
 
 /* Mobile Hero Section Optimizations */
