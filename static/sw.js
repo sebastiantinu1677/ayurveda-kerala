@@ -8,8 +8,8 @@ const STATIC_FILES = [
   '/css/tailwind.css',
   '/css/custom.css',
   '/js/klaro-config.js',
-  '/images/logo.png',
-  '/images/favicon.ico',
+  '/images/webp/logo.webp',
+  '/images/webp/favicon.ico',
   '/offline.html'
 ];
 
