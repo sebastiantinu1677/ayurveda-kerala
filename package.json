@@ -1,36 +1,27 @@
 {
-  "name": "kerala-reisen",
+  "name": "ayurveda-kerala",
   "version": "1.0.0",
-  "description": "Kerala Reisen website with WebP image optimization",
+  "description": "Kerala Ayurveda Tourism Website",
   "scripts": {
-    "convert-images": "node convert-images.js",
-    "compress-images": "node compress-images.js",
-    "minify-assets": "node minify-assets.js",
-    "optimize-images": "npm run convert-images && npm run compress-images",
-    "optimize-all": "npm run optimize-images && npm run minify-assets",
-    "build-css": ".\\.\\node_modules\\.bin\\tailwindcss.cmd -i ./src/styles.css -o ./static/css/tailwind.css --watch",
-    "build-css-prod": ".\\.\\node_modules\\.bin\\tailwindcss.cmd -i ./src/styles.css -o ./static/css/tailwind.css --minify",
-    "build": "npm run build-css-prod && npm run optimize-all && hugo --minify",
-    "build-prod": "npm run build-css-prod && npm run optimize-all && hugo --minify --environment production",
-    "serve": "hugo server -D",
-    "dev": "hugo server -D --disableFastRender",
-    "dev-css": "concurrently \"npm run build-css\" \"npm run dev\"",
-    "performance-test": "lighthouse http://localhost:1313 --output=html --output-path=./performance-report.html",
-    "seo-audit": "lighthouse http://localhost:1313 --only-categories=seo --output=html --output-path=./seo-report.html",
-    "accessibility-test": "lighthouse http://localhost:1313 --only-categories=accessibility --output=html --output-path=./accessibility-report.html"
+    "build": "hugo --minify --gc",
+    "dev": "hugo server -D --port 1313",
+    "clean": "rm -rf public resources",
+    "postinstall": "echo 'Build dependencies installed'"
   },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16",
-    "autoprefixer": "^10.4.21",
-    "chrome-launcher": "^1.0.0",
-    "clean-css-cli": "^5.6.2",
-    "concurrently": "^9.2.1",
-    "favicons": "^7.2.0",
-    "lighthouse": "^12.0.0",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
-    "tailwindcss": "^3.4.17",
-    "terser": "^5.24.0",
-    "web-vitals": "^3.5.0"
-  }
+  "engines": {
+    "hugo": ">=0.121.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/ayurveda-kerala.git"
+  },
+  "keywords": [
+    "hugo",
+    "tourism",
+    "kerala",
+    "ayurveda",
+    "static-site"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }
